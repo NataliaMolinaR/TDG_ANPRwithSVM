@@ -1,0 +1,74 @@
+% !TeX spellcheck = es_ES
+% !TeX encoding = ISO-8859-1
+
+\section{PLANTEAMIENTO DEL PROBLEMA}
+
+
+
+La aparición del transporte vehicular ha causado gran impacto en el desenvolvimiento diario de la sociedad. Los vehículos, en mayor o menor medida, se han convertido en una necesidad; permitiendo a las personas movilizarse a distintos sitios, como el trabajo, sedes de estudios, recreación, entre otros. Además, la integración de los vehículos a la vida cotidiana implica el cumplimiento de una serie de normas para su correcta utilización y prevención de accidentes, es decir, para la seguridad de los usuarios y personas alrededor.
+
+Entonces, cualquier ciudadano común, con los permisos oficiales necesarios, puede adquirir y conducir un vehículo personal. En consecuencia, las personas regularmente aparcan sus vehículos en estacionamientos, públicos o privados,  a lo largo de sus actividades diarias. Sin embargo, el robo de vehículos se ha incrementado, originando a los usuarios la inseguridad de visitar distintos lugares debido al riesgo a su bien privado.
+
+Actualmente, los métodos que se disponen para la recuperación del vehículo representan  un proceso complejo que puede tomar mucho tiempo y pudiera incluso no alcanzar su objetivo, implicando grandes costos en tiempo y dinero. De este modo, surge la necesidad de crear un sistema que permita monitorear y localizar vehículos de manera económica y eficiente. Aunque, existen distintas opciones de vigilancia o rastreo vehicular que funcionan para mejorar la seguridad estos representan grandes costos para su eficiencia.
+
+Los avances de la tecnología ha permitido simplificar tareas repetitivas o resolver tareas de gran complejidad. Entre los avances significativos destaca los sistemas de seguridad. Existen dispositivos como los GPS que permiten localizar con exactitud los vehículos desaparecidos, a pesar de esto, sus costos de instalación y servicio suelen ser muy elevados y es necesario instalarlo en cada vehículo. Para cubrir las necesidades de control y vigilancia se diseñaron sistemas como el reconocimiento automático de matrícula, los cuales están compuestos por una cámara de video para capturar la matrícula del vehículo y un computador donde se encuentra el cerebro del sistema.
+
+Los sistemas de reconocimiento de matrícula vehicular, no solo eliminan la necesidad de tener más personal  de vigilancia en el área, sino su costo a largo plazo es mucho menor  comparado a otras alternativas y no requiere una intervención directa en los vehículos. Adicionalmente, es posible aumentar el área de vigilancia incorporando más cámaras de video a la red. Por otro lado, los ANPR pueden desempeñar también aplicaciones orientadas a la detección de infracciones, control de acceso, entre otros.
+
+Debido a lo anterior expuesto, existe la necesidad de diseñar un sistema que sea capaz de obtener la información de una matrícula vehicular de manera automática a partir de la captura de su imagen. \\
+
+
+
+
+
+\section{ OBJETIVOS}
+
+\vspace{0.5cm}
+
+\subsection{OBJETIVO GENERAL}
+
+Diseñar un sistema de reconocimiento de matrícula vehicular a través del procesamiento de imágenes y Machine learning.
+
+\subsection{OBJETIVOS ESPECÍFICOS}
+
+
+\begin{enumerate}
+	
+	
+	
+	\item Analizar las técnicas para el procesamiento de imágenes.
+	
+	\item Analizar las técnicas de aprendizaje supervisado para la  clasificación y/o reconocimiento de patrones, en particular, la Máquina de Soporte Vectorial.
+	
+	\item Diseñar un procedimiento para la adquisición y localización de la matrícula en la imagen procesada, a través de técnicas de procesamiento de imágenes.
+	
+	\item Aplicar la Máquina de Soporte Vectorial para el reconocimiento de los caracteres de la matrícula.
+	
+	\item Implementar en un lenguaje de programación de libre acceso, la propuesta de sistema que permita reconocer los caracteres que conforman la matrícula.
+	
+	\item Realizar experiencias computacionales dirigidas a la verificación del sistema de reconocimiento de matrícula diseñado, utilizando para ello imágenes de matrículas de prueba.
+	
+	
+\end{enumerate}
+
+	
+\section{ANTECEDENTES}
+
+
+\vspace{1cm}
+
+
+Los ANPR es una tecnología de procesamiento de imágenes que permite obtener el número de la matrícula vehicular de una captura de imagen de cámara digital.  A continuación se presentan algunos trabajos de referencias:
+
+
+
+El Ing. Reyders Morales en su trabajo de grado ``Diseño de un sistema de reconocimiento de embarcaciones en medio marítimo mediante el procesamiento de imágenes'' \cite{Reyders2018}  pretendía satisfacer la necesidad en el ámbito civil y militar de detectar embarcaciones en el medio marítimo. En su propuesta solo se probó el concepto de un programa prototipo de este sistema y sus pruebas fueron realizadas  sobre imágenes tomadas en ambientes controlados. Su metodología se basó en un descriptor morfológico denominado Histograma de Gradientes Orientados. Con dicho descriptor, se opera una Máquina de Soporte Vectorial que permite realizar la clasificación del objeto de interés. Entre sus pruebas destacó que la similitud y los solapamientos entre los objetos de interés presentan problemas de detección, la mejor región de ajuste de la Máquina de Soporte Vectorial (SVM) no es lineal y la base de datos de entrenamiento  no se ajustó a los requerimientos. Por lo tanto, su principales recomendaciones fueron realizar una base de datos con tratamientos estadísticos que permita entrenar la SVM exitosamente y profundizar los conocimientos de las SVM para mejorar los ajustes.
+
+El Ing. José Bracho en su trabajo de grado ``Diseño e implementación de un sistema de reconocimiento de matrícula vehículares'' \cite{Bracho2016}) tenía como objeto desarrollar una solución para el robo de vehículos que se desenvuelve en Venezuela mediante un ANPR. Su solución se basó en las herramientas OpenSource OpenCV, para la adquisición de la imagen y la localización de la matrícula, y TesseracORC para la detección y reconocimiento de caracteres. Llevó a cabo su implementación en un módulo de Raspberry Pi. Entre sus principales resultados se obtuvo que su tasa de éxito para la detección se encontraba alrededor de $50 \%$, así mismo, para el reconocimiento de los caracteres; aunque presentaba una especial dificultad para los caracteres numéricos. Según lo anterior, entre sus recomendaciones se encuentran evaluar los diferentes algoritmos de OpenCV para la detección de objetos, aumentar el entrenamiento de la clasificadora para obtener mejores resultados, implementar el sistema en un computador o dispositivo de mayor capacidad, entre otros.
+
+
+
+Dhiraj y Pramod \cite{ARevew2014} describen los ANPR como un proceso que se pueden separar en las siguientes etapas: la detección del vehículo y la captura del mismo en la parte frontal o trasera, la localización y la extracción del número de matrícula de la imagen. El último paso lo denominan como técnica de segmentación, la cual se puede realizar a través de diferentes métodos como en una red neuronal, morfología matemáticas, análisis de colores o análisis de histograma. Explican en sus resultados que el rendimiento fue mejor en estático y su sistema funcionó para diferentes condiciones y placas. Así mismo, resaltan la importancia de la cámara, la cual influye en la velocidad de respuesta y sus sensibilidades ante las vibraciones. Además, el sistema desarrollado con Reconocimiento Óptico de Caracteres fue sensible antes las desaliniaciones y los diferentes tamaños de placas.
+
+El Ing. Arcadio Fernández en su trabajo de grado ``Desarrollo de un modelo computacional para un sistema de reconocimiento de matrículas a través de una imagen proveniente de una cámara de tráfico'' \cite{Fernandez2011} realizó el estudio de diferentes algoritmos y técnicas para el desarrollo de las etapas que componen el reconocimiento de caracteres, con énfasis en el procesamiento de imágenes; para su posterior selección y programación. Se basó en la red neuronal Perceptrón multicapa para el reconocimiento de los caracteres y su implementación  la llevó a cabo en Scilab. Alcanzó realizar el modelo computacional deseado satisfactoriamente, pudiendo reconocer matrículas antiguas y actuales. Sin embargo, señala la importancia de un buen entrenamiento para la clasificación de caracteres. Entre sus recomendaciones más importantes se encuentra mejorar el entrenamiento de las redes y recibir dimensiones de las placas lo más estable posibles.
+

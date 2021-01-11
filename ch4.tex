@@ -1,0 +1,260 @@
+% !TeX spellcheck = es_ES
+% !TeX encoding = ISO-8859-1
+
+
+En el presente capítulo se describe el proceso de desarrollo del proyecto, donde se detallan los procedimientos llevados a cabo a fin de cumplir los objetivos planteados.
+
+
+\section{Arquitectura de software}
+
+El software se basó en una arquitectura estructural. Para cumplir la condición anterior, dado el problema que se desea resolver a través de un algoritmo, se divide dicho algoritmo en módulos siguiendo los principio de diseño de descomposición por refinamiento sucesivo, creación de jerarquía modular y elaboración de módulos independientes.
+
+Los procesos descritos fueron diseñados para trabajar de forma modular e independientes, cada uno con una funcionalidad específica. Este proyecto se dividió en tres grandes módulos: detección de texto, procesamiento de imágenes y reconocimiento de caracteres. 
+
+Se seleccionó esta arquitectura ya que la solución propuesta para la problemática planteada se puede describir en tres diferentes etapas, cuyas  funcionalidades son independientes entre sí, pudiéndose  definir las interacciones entre las entradas y salidas. En la figura se puede observar un esquema general del proyecto expresada en módulos.
+
+\begin{figure}[H]
+	\centering
+	\includegraphics[width=0.7\linewidth]{Imagenes/segmentacion}
+	\caption{ACA VA OTRA IMAGEN}
+	\label{fig:segmentacion}
+\end{figure}
+
+
+
+
+\section{Componentes del sistema}
+
+Se busca recrear de manera computarizada el proceso de observar una placa y leer su información. Por ello, se cuenta con una serie de herramientas y técnicas desarrolladas en Machine Learning y Visión Computarizada. La detección de texto basado en el aprendizaje profundo de máquinas, el procesamiento de imágenes con OpenCV el filtrado de la información y por último la Máquina de Soporte Vectorial imitará el reconocimiento de caracteres, cumpliendo así con los objetivos planteados. 
+
+Dado lo anterior, se necesitará: un computador dónde se ejecutará el algoritmo del proyecto y una base de datos compuesta por un conjunto de imágenes de caracteres que conformarán el set de entrenamiento. Dado que el presente proyecto consiste en el diseño de software, no contempla la captura de escenas.   Las pruebas se realizarán con tomas previamente capturadas en condiciones controladas tanto en iluminación como en la posición del objeto. Con lo anterior expuesto, el único componente físico que se requiere es un  computador. 
+
+
+\section{Computador.}
+
+Este proyecto, al tratarse de un diseño de software, requiere únicamente de un computador con las capacidades de computo suficientes para manejar los procedimientos lógicos y matemáticos que componen al algoritmo. Por lo tanto, no es necesario el uso de equipos especializados para su desarrollo.
+
+El computador es una máquina Toshiba Satellite C55 Series. El sistema operativo es Microsoft Windows 10. Las principales características del computador se describen en la tabla \ref{Tab:computo}:
+
+
+
+\begin{table}[H]
+	\centering
+	\caption{Especificaciones del computador Toshiba Satellite C55 Series}\label{Tab:computo}
+	\begin{tabular}{llr}
+		\toprule
+		Alimentación &  19V \\
+
+		Procesador & AMD QUAD-CORE A6 \\ 
+
+		Memoria RAM & 16GB \\ 
+		
+		Tipo de sistema operativo & 64 bits \\ 
+		\bottomrule
+	\end{tabular}
+\end{table}
+
+
+\section{Base de datos}
+
+En general, existen númerosas bases de datos de matrículas vehículares de diferentes países del mundo y estas incluyen fotos de la placa completa. Es por ello que no es posible emplearlas para el entrenamiento de la Máquinas de Soporte Vectorial tomando en cuenta los objetivos del presente proyecto. 
+
+Para cumplir con los requerimientos planteados, es fundamental contar con una base de datos compuesta por imágenes de todas las letras y números del abecedario español individualmente. Es decir, cada imagen debe contener solo un tipo de carácter. Por lo tanto, para entrenar la SVM fue necesario construir dicha base de datos.
+
+Se construyó una base de datos que cuenta con 1496 imágenes de caracteres de letras y números. Para su construcción se recopiló al menos 250 fotos de placas vehículares de origen Venezolano y se procesaron utilizando herramientas provistas por la librería OpenCV, a fin de obtener la información de interés. 
+
+Las técnicas empleadas para su construcción se basan en la detección de contornos a partir de la umbralización de la imagen. Empleando diferentes funciones del procesamiento de imágenes y lógica condicional en la programación, se detectaron los caracteres de interés y se extrajeron recortando la foto. Las medidas adecuadas para su extracción se obtuvieron a partir de la medición del aspect ratio y el área ocupada por el carácter en la foto, conservando una distancia prudencial entre los bordes y el carácter . El resultado de la construcción resultó en imágenes de 25 x 45 px, en blanco y negro.
+
+El almacenamiento de cada uno de los ejemplos de entrenamiento se realizó en un archivo .csv, el cual permitió registrar en forma de matriz todos los ejemplos de entrenamiento. Para generar dicha matriz se redujo aún más el tamaño de la imagen que contiene cada muestra, resultado en una imagen de 27 x 15 px, lo cual se traduce en 405 pixeles por muestra. De esta forma, cada fila de la matriz contenida en el archivo .csv corresponde a un ejemplo de entrenamiento individual. La última columna de una fila corresponde a la etiqueta que identifica el carácter de esa imagen. Para la escritura de este archivo se empleó la librería csv provista por Python.
+
+En el diseño, una de las mayores dificultades fue la construcción de la base de datos, ya que fue necesario  ajustar diferentes parámetros en el proceso de extracción de las muestras. Por otro lado, la adquisición de tantas placas Venezolanas representó una gran dificultad, dado que fue debió tomar todas las fotos y no se disponía el acceso a tantas placas de manera inmediata o en la red. Es por esto, que se cuenta con un número limitado de ejemplos de entrenamiento en comparación a los números comunes, que por lo general superan el millón de muestras.
+
+\begin{figure}[H]
+	\centering
+	\includegraphics[width=0.7\linewidth]{Imagenes/data_base}
+	\caption{Muestras de imágenes del set e entrenamientos creada.}
+	\label{fig:database}
+\end{figure}
+
+La cantidad de muestras  extraídas por cada clasificación se muestra en la Tabla \ref{Tab:tags}:
+
+
+\begin{table}[H]
+	\centering
+	\caption{Clasificación y etiquetas de cada carácter.}\label{Tab:tags}
+	\begin{adjustbox}{center, width=\columnwidth-10pt}  
+		
+	\begin{tabular}{llr}
+		\toprule
+		Clasificación & Etiqueta & Cantidad extraída \\ 
+		\midrule
+			0&0&46 \\
+			
+			1&1&43 \\
+			
+			2&2&71 \\
+			
+			3&3&54 \\
+			
+			4&4&66 \\
+			
+			5&5&50 \\
+			
+			6&6&72 \\
+			
+			7&7&65	\\
+			
+			8&8&58	\\
+			
+			9&9&70	\\
+			
+			A&10&297 \\
+			
+			B&11&65 \\
+			
+			C&12&38	\\
+			
+			D&13&51	\\
+			
+			E&14&37	\\
+			
+			F&15&43	\\
+			
+			G&16&52	\\
+			
+			H&17&26	\\
+			
+			I&18&18	\\
+			
+			J&19&10	\\
+			
+			K&20&28	\\
+			
+			L&21&13	\\
+			
+			M&22&46	\\
+			
+			N&23&16	\\
+			
+			Ñ&-&-	\\
+			
+			O&24&28	\\
+			
+			P&25&12	\\
+			
+			Q&26&0	\\
+			
+			R&27&18	\\
+			
+			S&28&8	\\
+			
+			T&29&5	\\
+			
+			U&30&13	\\
+			
+			V&31&23	\\
+			
+			W&32&13	\\
+			
+			X&33&18	\\
+			
+			Y&34&12	\\
+			
+			Z&35&7	\\
+		\bottomrule
+	\end{tabular}
+\end{adjustbox}
+\end{table}
+
+
+\section{Software}
+
+El proyecto tiene como objeto diseñar un sistema que permita el reconocimiento de la matrícula de un vehículo en una imagen estática, por lo tanto los videos no están contemplados en este diseño.
+
+Dado que el objetivo es reconocer la información contenida en la matrícula de un vehículo, el software debe tener la capacidad de extraer los caracteres de interés contenidos en la placa mediante el procesamiento de imágenes y luego clasificar cada uno de ellos. 
+
+\begin{figure}[H]
+	\centering
+	\includegraphics[width=0.7\linewidth]{Imagenes/segmentacion}
+	\caption{Proceso de segmentación de caracteres.}
+	\label{fig:segmentacion}
+\end{figure}
+
+
+Para lograr lo anterior, se empleó  Python3, la librería OpenCV de Intel.
+
+
+Así, es posible las etapas del software en los siguientes módulos:
+
+\begin{itemize}
+	
+	\item Detección de la placa través de técnicas de procesamiento de imágenes. 
+	
+	\item Segmentación de los caracteres mediante el procesamiento de imágenes.
+	
+	\item Clasificación de los caracteres empleando machine learning.
+	
+\end{itemize} 
+
+
+
+\subsection{Detección de la placa}
+
+El módulo de detección de la placa se define como un sistema dónde se ingresa una imagen frontal o posterior  de un vehículo y se obtiene la placa contenida. Se puede describir este proceso en las siguientes etapas:
+
+\begin{itemize}
+	
+	\item Localización.
+	
+	\item Extracción.
+	
+\end{itemize}
+
+De esta forma, es necesario emplear técnicas o herramientas que permitan detectar la localización de la placa. Considerando que la placa contiene texto, es posible utilizar técnicas avanzadas como los detectores de texto, como por ejemplo máquinas de aprendizaje basadas en aprendizaje profundo. Estas herramientas creadas a partir de Machine Learning, permiten detectar el texto en una imagen según las características de su entrenamiento.
+
+El modelo EAST es un detector de texto basado en el aprendizaje profundo y OpenCV. Dado que el objeto del presente proyecto es reconocer los caracteres de la placa, es posible emplear módulos de detección de texto ya desarrollados. Se empleó el modelo EAST  para detectar la localización de la placa en la fotografía y, tomando en consideración el área de la placa, se extrae el contenido de interés. 
+
+\subsection{Segmentación de los caracteres.}
+
+
+El módulo de segmentación se encarga de detectar y extraer los caracteres de interés dentro de la placa. Esto se realizó mediante técnicas de procesamiento de imágenes mediante la librería la librería OpenCV. Se describe  dicho proceso en el siguiente diagrama de flujo:
+
+\begin{figure}[H]
+	\centering
+	\includegraphics[width=1\linewidth]{Imagenes/Segmentacion_caracter_diagrama}
+	\caption{Proceso de segmentación de los caracteres de una matrícula.}
+	\label{fig:segmentacioncaracterdiagrama}
+\end{figure}
+
+
+\begin{enumerate}
+	
+	
+	\item \textbf{Suavizado de ruido:} En primer lugar, es necesario suavizar el ruido de la imagen que contiene la placa limpiándola de características no deseadas. Una característica no deseada puede aparecer debido a que la placa físicamente posee desperfectos que intervienen significativamente en la detección de contornos o, por otro lado, si la fotografía es tomada fuera de las condiciones ideales. Para realizar esto se suavizó el ruido con un kernel gaussiano mediante la función \verb|cv2.GaussianBlur()|.
+	
+	\item \textbf{Redimensionamiento de la imagen:} La imagen que contiene la placa es redimensionada hasta obtener 150px de altura, posteriormente permitirá que el algoritmo pueda detectar y extraer los caracteres en segmentos  de 25 x 45 px. En general, los ejemplos de entrenamiento son contenidos en imágenes de dimensiones pequeñas considerando que cada pixel que la compone es una característica de entrada para el algoritmo, lo cual significa un importante costo computacional. Para lograr el redimensionamiento se empleó fundamentalmente la función \verb|cv2.rezise()|. 
+	
+	\item \textbf{Umbralización de la imagen:} La umbralización se realiza con el fin de binarizar la imagen. Para la detección de contornos es imprescindible que la binarización sea inversa. De esta forma, los contornos detectados son colocados en blanco y el fondo en negro. En este proyecto se utilizó umbralización adaptativa \verb|cv2.adaptativetresholding()|. La umbralización adaptativa es una función que a partir de los parámetros ingresados binariza considerando pequeñas regiones de la imagen, a diferencia de una umbralización estandar. Por lo tanto, la umbralización adaptativa cálcula el valor umbral adecuado para cada región, mediante un kernel gaussiano. Es importante que la umbralización sea adaptable por región ya que factores externos como la iluminación pueden afectar significativamente el proceso de binarización.
+	
+	\item \textbf{Detección de contorno:} La detección de contornos se aplica sobre la imagen umbralizada, dónde ya la mayoría del ruido ha sido filtrado. En este paso, se utilizó la función \verb|cv2.findcontours()| la cuál retorna una variable que contiene los contornos detectados. La detección de los contornos de la imagen depende de los parámetros ingresados en la función. En este caso, se detectan los contornos cerrados en la imagen.
+	
+	\item \textbf{Filtración de contornos:} La filtración de contorno consiste en seleccionar los contornos de interés. Se empleó lógica condicional a fin de verificar si el contorno clasifica o no. Para ello, se estimó el área y el aspect ratio que ocupa un caracter dentro de la placa. Se ponderaron los valores de ancho y alto de varias muestras para obtener un valor umbral. Así, se definió una relación porcentual del área del carácter respecto al área de la placa y un bias que permita cubrir la mayoría de las variaciones. De esta forma se estableció el filtro de contornos dónde se detectan los caracteres de la matrícula. Para obtener las coordenadas de los caracteres se utilizó la función \verb|cv2.boundingrectangle()|, la cual permite encerrar en rectángulos los contornos detectados y devuelve los valores que permiten definir su posición en la imagen.
+	
+	\item \textbf{Recorte de los caracteres:} Con las coordenadas de los caracteres, se extrajeron recortando la imagen con un margen de provisión adecuado. Así, se aseguró contener completamente cada caracter en un segmento. Para la recortar la imagen se usaron las funciones básicas de Python, que consiste en extraer un segmento de la imagen a partir de unas coordenadas dadas.
+	
+	\item \textbf{Escritura en computador de los caracteres:} Una vez obtenido todos los segmentos se escriben en el computador utilizando \verb|cv2.imwrite()|, con formato .jpg.
+	
+	
+	
+\end{enumerate}
+
+
+\subsection{Clasificación de caracteres.}
+
+
+
+
+
+
+\newpage
+
