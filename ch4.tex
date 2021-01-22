@@ -250,10 +250,33 @@ El módulo de segmentación se encarga de detectar y extraer los caracteres de int
 
 
 \subsection{Clasificación de caracteres.}
+ 
+ La etapa de clasificación de caracteres se lleva a cabo mediante el algoritmo de aprendizaje automático entrenado SVM.  En la ecuacion \ref{condiciones} se describió como se puede obtener una etiqueta a partir de los parámetros entrenados y la nueva observación. Esta etiqueta es la predicción de clase para la imagen de entrada que se está clasificando. En conclusión, este módulo se encarga de predecir la clasificación de cada nuevo caracter en base al modelo obtenido del \textit{Módulo de entrenamiento} del algoritmo. 
+ 
+ El clasificador es un método para determinar la clase más probable de una entrada desconocida con respecto a un número de ejemplos de entrenamientos para dichas clases. Este conjunto de ejemplos se denomina conjunto de entrenamiento. 
+ 
+ El primer paso en el proceso de clasificación es la extracción de características de una entrada, esto se traduce en expresar cada instancia u objeto como un vector de medidas. Cuando las imágenes están siendo clasificadas, usualmente el vector es extraído a partir de las intensidades de los píxeles. Usualmente se lleva a cabo un paso de reducción de características, ya que disminuye los costos computacionales. Es importante considerar que la reducción no debe provocar una pérdida significativa de la información. Las medidas obtenidas son denominadas características y pueden ser reales, enteras o categóricas. 
+ 
+ Una vez extraídas las características se introducen al algoritmo clasificador el cuál trabaja en dos naturalezas distintas: supervisado o no supervisado. En este proyecto se utilizará la clasificación supervisado, ya que se conoce la relación entre la entrada y la salida, es decir, conocemos la entrada y cuál debería ser su clasificación. En la clasificación no supervisada no se conoce la relación entre la entrada y la salida. 
+ 
+ Para la extracción de características se  emplearon las diferentes herramientas de procesamientos de imágenes que ofrece OpenCV para convertir esa entrada en un vector plano que pudiera leer el algoritmo de clasificación. En el  diagrama \ref{fig:procesodeclasificaicon} se puede observar  el proceso de clasificación:
+ 
+ \begin{figure}[H]
+ 	\centering
+ 	\includegraphics[width=0.7\linewidth]{Imagenes/procesodeclasificaicon}
+ 	\caption{Diagrama de proceso de clasificación }
+ 	\label{fig:procesodeclasificaicon}
+ \end{figure}
+ 
 
 
+\section{Modulo de entrenamiento}
 
+Dado un conjunto de muestras se puede etiquetar cada una de ella de forma tal que el modelo tenga la capacidad de predecir la clasificación de una nueva entrada desconocida. En este caso, este modelo debe tener la capacidad de distinguir entre 36 clases diferentes, entre los cuales se encuentran las letras del abecedario español (excluyendo la Ñ) y los números del 0 al 1. En la Tabla \ref{Tab:tags} se puede observar cada etiqueta asignada para cada carácter. 
 
+De esta forma se lleva a cabo el entrenamiento de la SVM utilizando un Kernel Lineal utilizando las herramientas proporcionadas por la librería SKlearn SVM. El entrenamiento de una Máquina de Soporte Vectorial consiste en encontrar los parámetros que generan el híperplano que cumplen con el máximo margen de separación entre las clases. Para la multiclasifidora se empleó la función de decisión 'ovr' el cuál consiste en que cada clase se enfrenta hacia el resto de las otras para encontrar el híperplano que las separa. 
+
+El modelo obtenido es el resultado de ajustar los parámetros para todos los ejemplos de entrenamiento que conforman al base de datos. Cada ejemplo de entrenamiento representa una fila de la matriz que describe la base de datos. Así, cada fila está compuesta por las características de la imagen  y su etiqueta. Este modelo es el que es utilizado para la clasificación de caracteres, el módulo final del proyecto. El desempeño de este modelo es evaluado en la etapa de validación. 
 
 
 \newpage
