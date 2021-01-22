@@ -64,8 +64,9 @@ Una vez diseñados e implementados los módulos de detección de placa, detección d
 	\label{fig:placaext243edb}
 \end{figure}
 
-En la Tabla \ref{Tab:pruebas} se puede observar las analíticas obtenidas de un número total de 50 muestras que participaron en el entrenamiento de la base de datos. 
- 
+
+
+
 \begin{table}[H]
 	\centering
 	\caption{Desempeño con caracteres incluídos en la base de datos.}\label{Tab:pruebas}
@@ -112,6 +113,8 @@ En la Tabla \ref{Tab:pruebas} se puede observar las analíticas obtenidas de un n
 		\bottomrule
 	\end{tabular}
 \end{table}
+
+En la Tabla \ref{Tab:pruebas} se puede observar las analíticas obtenidas de un número total de 50 muestras que participaron en el entrenamiento de la base de datos. En este experimento se obtuvo una tasa de éxito de 0.844 en la detección de caracteres. Mientras que en el rendimiento de reconocimiento de caracteres obtuvo una tasa de éxito 0.989. Por el contrario, el sistema falló en la detección de caracteres de 7 placas de 50. Este fallo ocurrió debido que el Módulo de detección de caracteres no logró encontrar al menos 6 caracteres dentro de la matricula. En las placas Venezolanas se pueden hallar de 6 a 7 caracteres dependiendo del año en que fueron fabricadas. En consecuencia, si el módulo de detección de caracteres no detecta al menos 6 contornos arroja fallo en la detección general. 
 
 \subsection{Reconocimiento de caracteres que no participaron en la base de datos}
 
@@ -262,4 +265,4 @@ De esta forma, el sistema continúa hasta la detección de caracteres. De las 9 pl
  	\end{tabular}
  \end{table}
  
-  En la Tabla \ref{Tab:producion} se puede observar las analíticas obtenidas de las 10 capturas. 
+  En la Tabla \ref{Tab:producion} se puede observar las analíticas obtenidas de las 10 capturas. El tasa de éxito obtenida en la detección de carácter fue de 1.0. Por otro lado, la tasa de éxito en el reconocimiento de caracteres es de  0.934 en reconocimiento de caracteres. En esta prueba el error ocurrió en la placa que se muestra en al Figura \ref{fig:extraccar6}. Las irregularidades físicas que se aprecian matricula indicen significativamente en el procesamiento de imagen para la detección de contornos en el área de la placa. En consecuencia, la detección del contorno que encierra primer carácter se ve influenciado por las manchas alrededor y provoca una errónea extracción del mismo.  

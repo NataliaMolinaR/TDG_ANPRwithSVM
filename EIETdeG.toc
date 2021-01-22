@@ -43,9 +43,9 @@
 \contentsline {section}{\numberline {5.1}Desempeño del sistema}{40}{section.5.1}
 \contentsline {subsection}{\numberline {5.1.1}Reconocimiento de caracteres que participaron en la base de datos}{41}{subsection.5.1.1}
 \contentsline {subsection}{\numberline {5.1.2}Reconocimiento de caracteres que no participaron en la base de datos}{45}{subsection.5.1.2}
-\contentsline {chapter}{CONCLUSIONES}{49}{chapter.6}
-\contentsline {chapter}{RECOMENDACIONES}{50}{chapter.7}
-\contentsline {chapter}{TÍTULO DEL ANEXO}{51}{appendix.Alph1}
-\contentsline {chapter}{TÍTULO DEL ANEXO}{52}{appendix.Alph2}
-\contentsline {chapter}{TÍTULO DEL ANEXO}{53}{appendix.Alph3}
-\contentsline {chapter}{REFERENCIAS}{54}{appendix*.7}
+\contentsline {chapter}{CONCLUSIONES}{50}{chapter.6}
+\contentsline {chapter}{RECOMENDACIONES}{51}{chapter.7}
+\contentsline {chapter}{TÍTULO DEL ANEXO}{52}{appendix.Alph1}
+\contentsline {chapter}{TÍTULO DEL ANEXO}{53}{appendix.Alph2}
+\contentsline {chapter}{TÍTULO DEL ANEXO}{54}{appendix.Alph3}
+\contentsline {chapter}{REFERENCIAS}{55}{appendix*.7}
