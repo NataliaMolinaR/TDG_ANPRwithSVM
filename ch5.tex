@@ -1,0 +1,265 @@
+% !TeX spellcheck = es_ES
+% !TeX encoding = ISO-8859-1
+
+Una vez diseñados e implementados los módulos de detección de placa, detección de caracteres y clasificación de caracteres se realizaron diferentes pruebas que permiten evaluar su desempeño del sistema  y validar su funcionamiento, así como definir las condiciones bajo los cuales se obtiene los óptimos resultados en cuánto a detección y clasificación. 
+
+ \section{Desempeño del sistema}
+ 
+ Para medir el desempeño del sistema en cada uno de sus módulos así como en su funcionamiento global se probaron 2 escenarios: clasificación de caracteres que participaron en la base de datos y clasificación de caracteres que no participaron en la base de datos. 
+ 
+ En un sistema real la entrada al sistema es capturado por un dispositivo instalado en posición y espacio fijo, por lo que todas las entradas se encuentran sometidas a las mismas condiciones controlables. Por lo que una vez ajustada la resolución de la cámara se cuenta con entradas que tienen la misma resolución. Para la realización de dichas pruebas  la entrada al sistema fue con imágenes a diferentes resoluciones, ángulo de captura y distancia dado que no se dispone de un sistema físico real uniforme. Esto sucede especialmente en los ejemplos de entrenamiento que componen la base de datos. Es importante recalcar que el cambio de resolución en una captura podría implicar perder información importante que incide directamente en la correcta clasificación del caracter, ya que su vector de característica es directamente afectado. Por otro lado, la variación de ángulo de captura genera distorsión en las imágenes por lo que también incide directamente en la clasificación de caracteres, producto de la variación en el vector de medida. 
+ 
+ \subsection{Reconocimiento de caracteres que participaron en la base de datos}
+ 
+ En esta prueba no fue posible evaluar el módulo de detección de placa ya que las entradas disponibles son directamente una foto de la placa sin considerar el resto del automóvil. Por lo que se evaluará el desempeño de la detección de carácter y clasificación de la misma. 
+ 
+ Se tomaron aleatoriamente 50 de las 250 placas que se dispusieron para la construcción de la base de datos, a fin de evaluar el rendimiento de detección y clasificación de caracteres ya conocidos por el algoritmo. 
+ 
+ \begin{figure}[H]
+ 	\centering
+ 	\includegraphics[width=0.7\linewidth]{Imagenes/Prueba1_DB}
+ 	\caption{Placas que participaron en la construcción de la base de datos.}
+ 	\label{fig:prueba1db}
+ \end{figure}
+
+\begin{figure}[H]
+	\centering
+	\includegraphics[width=0.7\linewidth]{Imagenes/placaext_82DB}
+	\caption{Procesamiento de la placa 82 de la base de datos.}
+	\label{fig:placaext82db}
+\end{figure}
+
+\begin{figure}[H]
+	\centering
+	\includegraphics[width=0.7\linewidth]{Imagenes/placaext_161DB}
+	\caption{Procesamiento de la placa 161 de la base de datos.}
+	\label{fig:placaext161db}
+\end{figure}
+
+\begin{figure}[H]
+	\centering
+	\includegraphics[width=0.7\linewidth]{Imagenes/placaext_229DB}
+	\caption{Procesamiento de la placa 229 de la base de datos.}
+	\label{fig:placaext229db}
+\end{figure}
+
+\begin{figure}[H]
+	\centering
+	\includegraphics[width=0.7\linewidth]{Imagenes/placaext_84EDB}
+	\caption{Procesamiento de la placa 82 de la base de datos}
+	\label{fig:placaext84edb}
+\end{figure}
+
+\begin{figure}[H]
+	\centering
+	\includegraphics[width=0.7\linewidth]{Imagenes/placaext_179EDB}
+	\caption{Procesamiento de la placa 179 de la base de datos}
+	\label{fig:placaext179edb}
+\end{figure}
+
+\begin{figure}[H]
+	\centering
+	\includegraphics[width=0.7\linewidth]{Imagenes/placaext_243EDB}
+	\caption{Procesamiento de la placa 243 de la base de datos}
+	\label{fig:placaext243edb}
+\end{figure}
+
+En la Tabla \ref{Tab:pruebas} se puede observar las analíticas obtenidas de un número total de 50 muestras que participaron en el entrenamiento de la base de datos. 
+ 
+\begin{table}[H]
+	\centering
+	\caption{Desempeño con caracteres incluídos en la base de datos.}\label{Tab:pruebas}
+	\begin{tabular}{lccc}
+		\toprule
+		Character & Success  & Detected & Recognized \\
+		\midrule
+		0 & 1.0 & 12 & 12 \\
+		1 & 1.0 & 7 & 7 \\
+		2 & 1.0 & 14 & 14 \\
+		3 & 1.0 & 11 & 11 \\
+		4 & 1.0 & 11 & 11 \\
+		5 & 1.0 & 10 & 10 \\
+		6 & 1.0 & 14 & 14 \\
+		7 & 1.0 & 12 & 12 \\
+		8 & 1.0 & 12 & 12 \\
+		9 & 1.0 & 15 & 15 \\
+		A & 1.0 & 49 & 49 \\
+		B & 1.0 & 18 & 18 \\
+		C & 1.0 & 6 & 6 \\
+		D & 1.0 & 13 & 13 \\
+		E & 0.857 & 7 & 6 \\
+		F & 1.0 & 10 & 10 \\
+		G & 1.0 & 12 & 12 \\
+		H & 1.0 & 6 & 6 \\
+		I & 1.0 & 4 & 4 \\
+		J & 1.0 & 4 & 4 \\
+		K & 0.8 & 5 & 4 \\
+		L & 1.0 & 2 & 2 \\
+		M & 0.933 & 15 & 14 \\
+		N & 1.0 & 3 & 3 \\
+		O & 1.0 & 1 & 1 \\
+		P & 1.0 & 3 & 3 \\
+		Q & 0 & 0 & 0 \\
+		R & 1.0 & 1 & 1 \\
+		S & 1.0 & 1 & 1 \\
+		T & 1.0 & 1 & 1 \\
+		U & 1.0 & 4 & 4 \\
+		V & 1.0 & 3 & 3 \\
+		W & 1.0 & 2 & 2 \\
+		X & 1.0 & 4 & 4 \\
+		Y & 1.0 & 2 & 2 \\
+		Z & 0 & 0 & 0 \\
+		\bottomrule
+	\end{tabular}
+\end{table}
+
+\subsection{Reconocimiento de caracteres que no participaron en la base de datos}
+
+Para esta prueba se consideraron las siguientes condiciones: 2 metros de distancia respecto al automóvil y un metro de altura con respecto al suelo. Las condiciones de iluminación eran tenues ya que se los vehículos se encontraban en un estacionamiento. Por lo tanto, teniendo en cuenta estas variables controladas se obtuvo la captura de 10 automóviles diferentes para evaluar el desempeño de detección de placa, detección de caracteres y reconocimiento de caracteres. 
+
+
+\begin{figure}[H]
+	\centering
+	\includegraphics[width=0.7\linewidth]{Imagenes/Prueba2_CN}
+	\caption{Placas que no participaron en la base de datos}
+	\label{fig:prueba2cn}
+\end{figure}
+
+
+El primer módulo por evaluar es el módulo de detección de placa. Como se explicó en capítulos anteriores, el sistema buscará dentro de la imagen un contorno que cumpla con la relación de ancho y altura de una placa a la distancia de 2 metros. De los 10 vehículos considerados en la Figura \ref{fig:prueba2cn} el módulo logró detectar 9. Las placas detectadas se observan en la Figura \ref{fig:placascn}. 
+
+\begin{figure}[H]
+	\centering
+	\includegraphics[width=0.7\linewidth]{Imagenes/placas_CN}
+	\caption{Resultado del \textit{Módulo de detección de placa} procesando entradas que no participaron en la base de datos.}
+	\label{fig:placascn}
+\end{figure}
+
+
+\begin{table}[H]
+	\centering
+	\caption{Desempeño con caracteres incluidos en la base de datos.}\label{Tab:pruebas}
+	\begin{tabular}{cccc}
+		\toprule
+		Placas detectadas & Placas no detectadas  & Número total de placas & Error \\
+		\midrule
+		9 & 1 & 10 & 0.9\\
+		\bottomrule
+	\end{tabular}
+\end{table}
+
+De esta forma, el sistema continúa hasta la detección de caracteres. De las 9 placas ingresadas al sistema se detectaron todos los caracteres. Los resultados de detección se presentan a continuación:
+ 
+ \begin{figure}[H]
+ 	\centering
+ 	\includegraphics[width=0.7\linewidth]{Imagenes/extraccar1}
+ 	\caption{Extracción de caracteres de la placa 1}
+ 	\label{fig:extraccar1}
+ \end{figure}
+ 
+ \begin{figure}[H]
+ 	\centering
+ 	\includegraphics[width=0.7\linewidth]{Imagenes/extraccar2}
+ 	\caption{Extracción de caracteres de la placa 2}
+ 	\label{fig:extraccar2}
+ \end{figure}
+ 
+ \begin{figure}[H]
+ 	\centering
+ 	\includegraphics[width=0.7\linewidth]{Imagenes/extraccar3}
+ 	\caption{Extracción de caracteres de la placa 3}
+ 	\label{fig:extraccar3}
+ \end{figure}
+ 
+ \begin{figure}[H]
+ 	\centering
+ 	\includegraphics[width=0.7\linewidth]{Imagenes/extraccar4}
+ 	\caption{Extracción de caracteres de la placa 4}
+ 	\label{fig:extraccar4}
+ \end{figure}
+ \begin{figure}[H]
+ 	\centering
+ 	\includegraphics[width=0.7\linewidth]{Imagenes/extraccar5}
+ 	\caption{Extracción de caracteres de la placa 5}
+ 	\label{fig:extraccar5}
+ \end{figure}
+ 
+ \begin{figure}[H]
+ 	\centering
+ 	\includegraphics[width=0.7\linewidth]{Imagenes/extraccar6}
+ 	\caption{Extracción de caracteres de la placa 6}
+ 	\label{fig:extraccar6}
+ \end{figure}
+
+ \begin{figure}[H]
+ 	\centering
+ 	\includegraphics[width=0.7\linewidth]{Imagenes/extraccar7}
+ 	\caption{Extracción de caracteres de la placa 7}
+ 	\label{fig:extraccar7}
+ \end{figure}
+ 
+ \begin{figure}[H]
+ 	\centering
+ 	\includegraphics[width=0.7\linewidth]{Imagenes/extraccar9}
+ 	\caption{Extracción de caracteres de la placa 9}
+ 	\label{fig:extraccar9}
+ \end{figure}
+ 
+ \begin{figure}[H]
+ 	\centering
+ 	\includegraphics[width=0.7\linewidth]{Imagenes/extraccar10}
+ 	\caption{Extracción de caracteres de la placa 10}
+ 	\label{fig:extraccar10}
+ \end{figure}
+ 
+ 
+
+ 
+ \begin{table}
+ 	\centering
+ 	\caption{Desempeño con nuevas entradas }\label{Tab:producion}
+ 	\begin{tabular}{lrrr}
+ 		\toprule
+ 		Character & Success & Detected & Recognized \\
+ 		\midrule
+ 		0 & 0.8 & 5 & 4 \\
+ 		1 & 1.0 & 3 & 3 \\
+ 		2 & 1.0 & 3 & 3 \\
+ 		3 & 1.0 & 4 & 4 \\
+ 		4 & 0 & 0 & 0 \\
+ 		5 & 1.0 & 4 & 4 \\
+ 		6 & 1.0 & 1 & 1 \\
+ 		7 & 1.0 & 2 & 2 \\
+ 		8 & 1.0 & 1 & 1 \\
+ 		9 & 1.0 & 2 & 2 \\
+ 		A & 0.933 & 15 & 14 \\
+ 		B & 0.8 & 5 & 4 \\
+ 		C & 0 & 0 & 0 \\
+ 		D & 1.0 & 2 & 2 \\
+ 		E & 1.0 & 1 & 1 \\
+ 		F & 1.0 & 1 & 1 \\
+ 		G & 0 & 0 & 0 \\
+ 		H & 1.0 & 4 & 4 \\
+ 		I & 0 & 0 & 0 \\
+ 		J & 0 & 0 & 0 \\
+ 		K & 0 & 0 & 0 \\
+ 		L & 0 & 0 & 0 \\
+ 		M & 0 & 0 & 0 \\
+ 		N & 0 & 0 & 0 \\
+ 		O & 1.0 & 1 & 1 \\
+ 		P & 0 & 0 & 0 \\
+ 		Q & 0 & 0 & 0 \\
+ 		R & 1.0 & 2 & 2 \\
+ 		S & 0 & 0 & 0 \\
+ 		T & 0.0 & 1 & 0 \\
+ 		U & 1.0 & 2 & 2 \\
+ 		V & 0 & 0 & 0 \\
+ 		W & 1.0 & 1 & 1 \\
+ 		X & 1.0 & 1 & 1 \\
+ 		Y & 0 & 0 & 0 \\
+ 		Z & 0 & 0 & 0 \\
+ 		\bottomrule
+ 	\end{tabular}
+ \end{table}
+ 
+  En la Tabla \ref{Tab:producion} se puede observar las analíticas obtenidas de las 10 capturas. 
