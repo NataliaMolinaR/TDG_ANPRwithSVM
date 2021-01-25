@@ -1,19 +1,21 @@
 % !TeX spellcheck = es_ES
 % !TeX encoding = ISO-8859-1
 
-Una vez diseñados e implementados los módulos de detección de placa, detección de caracteres y clasificación de caracteres se realizaron diferentes pruebas que permiten evaluar su desempeño del sistema  y validar su funcionamiento, así como definir las condiciones bajo los cuales se obtiene los óptimos resultados en cuánto a detección y clasificación. 
+Una vez diseñados e implementados los módulos de detección de placa, detección de caracteres y reconocimiento de caracteres se realizaron diferentes pruebas que permiten evaluar el desempeño del sistema  y validar su funcionamiento, así como definir las condiciones bajo los cuales se obtiene los óptimos resultados en cuánto a detección y clasificación. 
 
  \section{Desempeño del sistema}
  
- Para medir el desempeño del sistema en cada uno de sus módulos así como en su funcionamiento global se probaron 2 escenarios: clasificación de caracteres que participaron en la base de datos y clasificación de caracteres que no participaron en la base de datos. 
+ Para medir el desempeño del sistema en cada uno de sus módulos así como en su funcionamiento global se probaron 2 escenarios: reconocimiento de caracteres que participaron en la base de datos y reconocimiento de caracteres que no participaron en la base de datos. 
  
- En un sistema real la entrada al sistema es capturado por un dispositivo instalado en posición y espacio fijo, por lo que todas las entradas se encuentran sometidas a las mismas condiciones controlables. Por lo que una vez ajustada la resolución de la cámara se cuenta con entradas que tienen la misma resolución. Para la realización de dichas pruebas  la entrada al sistema fue con imágenes a diferentes resoluciones, ángulo de captura y distancia dado que no se dispone de un sistema físico real uniforme. Esto sucede especialmente en los ejemplos de entrenamiento que componen la base de datos. Es importante recalcar que el cambio de resolución en una captura podría implicar perder información importante que incide directamente en la correcta clasificación del caracter, ya que su vector de característica es directamente afectado. Por otro lado, la variación de ángulo de captura genera distorsión en las imágenes por lo que también incide directamente en la clasificación de caracteres, producto de la variación en el vector de medida. 
+ En un sistema real la entrada al sistema es capturado por un dispositivo instalado en posición y espacio fijo, por lo que todas las entradas se encuentran sometidas a las mismas condiciones controlables. Por lo que una vez ajustada la resolución de la cámara se cuenta con entradas que tienen características muy similares. Para la realización de dichas pruebas la entrada al sistema fue con imágenes a diferentes resoluciones, ángulo de captura y distancia dado que no se dispone de un sistema físico real que obtenga entradas uniformes. Esto sucede especialmente en los ejemplos de entrenamiento que componen la base de datos. Es importante recalcar que el cambio de resolución en una captura podría significar una pérdida de información importante que incide directamente en el correcto reconocimiento del carácter, ya que su vector de característica es directamente afectado. Por otro lado, la variación del ángulo de captura genera distorsión en las imágenes por lo que también incide directamente en la clasificación de caracteres, producto de la variación en el vector de medida. 
  
- \subsection{Reconocimiento de caracteres que participaron en la base de datos}
+ \subsection{Reconocimiento de caracteres que forman parte de la base de datos}
  
- En esta prueba no fue posible evaluar el módulo de detección de placa ya que las entradas disponibles son directamente una foto de la placa sin considerar el resto del automóvil. Por lo que se evaluará el desempeño de la detección de carácter y clasificación de la misma. 
+ En esta prueba no fue posible evaluar el módulo de detección de placa ya que las muestras disponibles son directamente una foto de la placa sin considerar el resto del automóvil. Por lo que se evaluará el desempeño de la detección de carácter y clasificación de la misma. 
  
- Se tomaron aleatoriamente 50 de las 250 placas que se dispusieron para la construcción de la base de datos, a fin de evaluar el rendimiento de detección y clasificación de caracteres ya conocidos por el algoritmo. 
+ Se tomaron aleatoriamente 50 de las 250 placas que se obtuvieron para la construcción de la base de datos, a fin de evaluar el rendimiento de detección y reconocimiento de caracteres ya conocidos por el algoritmo.
+ 
+
  
  \begin{figure}[H]
  	\centering
@@ -21,6 +23,8 @@ Una vez diseñados e implementados los módulos de detección de placa, detección d
  	\caption{Placas que participaron en la construcción de la base de datos.}
  	\label{fig:prueba1db}
  \end{figure}
+
+ 
 
 \begin{figure}[H]
 	\centering
@@ -43,10 +47,12 @@ Una vez diseñados e implementados los módulos de detección de placa, detección d
 	\label{fig:placaext229db}
 \end{figure}
 
+El módulo reconoció en su mayoría  los caracteres de las placas realizando correctamente las extracciones como se puede observar en las Figuras \ref{fig:placaext82db}, \ref{fig:placaext161db} y \ref{fig:placaext229db}. Se observa en la parte superior de las  figuras la placa a la cuál corresponde la extracción.
+
 \begin{figure}[H]
 	\centering
 	\includegraphics[width=0.7\linewidth]{Imagenes/placaext_84EDB}
-	\caption{Procesamiento de la placa 82 de la base de datos}
+	\caption{Procesamiento de la placa 84 de la base de datos}
 	\label{fig:placaext84edb}
 \end{figure}
 
@@ -64,15 +70,80 @@ Una vez diseñados e implementados los módulos de detección de placa, detección d
 	\label{fig:placaext243edb}
 \end{figure}
 
+Por otro lado, en las Figuras \ref{fig:placaext84edb}, \ref{fig:placaext179edb} y \ref{fig:placaext243edb} son algunos de los casos dónde el Módulo de detección de caracteres detectó erróneamente y por lo tanto se considera un fallo. El resultado de estas muestras son clasificado cómo errores debido a que fallaron en detectar algunas de las letras de la placa.En las placas Venezolanas se pueden hallar de 6 a 7 caracteres dependiendo del año en que fueron fabricadas. En consecuencia, si el módulo de detección de caracteres no detecta al menos 6 contornos que cumplan con las características arroja fallo en la detección general. Experimentalmente se encontró que este tipo de errores se originan en la detección de contornos del sistema y usualmente se debe  a una combinación de factores externos e internos. 
 
+Los factores externos que indicen significativamente en la detección de contornos frecuentemente es la iluminación, ángulo de captura y condiciones de preservación del cuerpo físico matrícula. Los factores internos hacen referencia a los parámetros o procedimientos del procesamiento de imagenes. Una solución para reducir al mínimo los factores externos es implementar un sistema físico que permita tomar capturas a una misma resolución, con un ángulo de captura fijo y condiciones de iluminación similares.
 
+En la Figura \ref{fig:placaext179edb} es un caso que a simple vista se puede descartar a los factores externos como origen al problema. Aún así, se obtuvo un fallo en la detección general. El sistema realmente no es capaz de ver propiamente la matrícula, este compara matemáticamente dos valores y toma una decisión en base a eso. Entonces esta detección se origina debido a un factor interno. Para realizar la detección de contornos el sistema recorre la imagen mediante un Kernel en el proceso de umbralización. A pesar que la Umbralización es adaptable por zonas, el tamaño del Kernel con el que recorre la imágen no lo es. En este proyecto el tamaño del kernel se estableció en 15 pixeles. Una posible solución podría ser considerar diferentes tamaños para obtener mejores resultados. Adicionalmente, en el reconocimiento de caracteres el algoritmo clasificó la K como una A. Este error puede deberse a que en la base de datos exista un ejemplo que matemáticamente los valores introducidos al modelo por medio de la extracción  de características coincidan con los de la letra K de esta placa. Este último se soluciona depurando la Base de Datos de los ejemplos que puedan ocasionar este tipo de errores.
+
+En la Figura \ref{fig:placaext243edb} los inconvenientes se presentan en forma similar al anterior, pero es importante destacar que en la extracción se puede observar que los contornos superan las medidas límites de los cuadros como es el caso particular de la letra D y E. A pesar de lo anterior, el sistema de reconocimiento fue capaz de reconocer la letra D, sin embargo, la letra E la clasificó con una F. Este problema de reconocimiento no se origina en el modelo del algoritmo SVM sino en la extracción de caracteres. Su solución recae en mejorar el rendimiento de extracción de caracteres.
+
+A continuación se presenta la Tabla \ref{Tab:prueba1} dónde se registró la placa, caracteres detectados y reconocidos a fin de evaluar su desempeño:
 
 \begin{table}[H]
 	\centering
-	\caption{Desempeño con caracteres incluídos en la base de datos.}\label{Tab:pruebas}
+	\caption{Lista de placas que participaron en la prueba.}\label{Tab:prueba1}
 	\begin{tabular}{lccc}
 		\toprule
-		Character & Success  & Detected & Recognized \\
+		Placa ID & Número de Placa  & Detectados & Reconocidos \\
+		\midrule
+		82&MEX99P&MEX99P&MEX99P \\
+		45&AF689NV&AF689NV&AF689NV \\
+		244&AJ294OA&AJ294OA&AJ294OA \\
+		162&DCN07P&DCN07P&DCN07P \\
+		121&A86DC6G&A86DC6G&A86DC6G \\
+		248&AB275UN&AB275UN&AB275UN \\
+		161&AA192SU&AA192SU&AA192SU \\
+		192&A05DJ4G&A05DJ4G&A05DJ4G \\
+		175&DCE96B&DCE96B&DCE96B \\
+		88&AFD06Y&AFD06Y&AFD06Y \\
+		62&AGH56W&AGH56W&AGH56W \\
+		204&AA251MD&AA25MD&AA25HD \\
+		241&AB076DF&AB076DF&AB076DF \\
+		133&AG366GG&AG366GG&AG366GG \\
+		197&DBM43M&DBM43M&DBM43M \\
+		90&AH534HM&AH534HM&AH534HM \\
+		79&BBM29K&BBM29K&BBM29K \\
+		84&AD591RM&AD59RM&AD59RM \\
+		238&A00CG8V&A00CG8V&A00CG8V \\
+		160&MBF06L&MBF06L&MBF06L \\
+		104&AB747BM&AB747BM&AB747BM \\
+		217&AF283VG&AF283VG&AF283VG \\
+		74&MFJ88M&MFJ88M&MFJ88M \\
+		108&AI397IG&AI397IG&AI397IG \\
+		249&AK179GA&AK179GA&AK179GA \\
+		65&AH118WG&AH118WG&AH118WG \\
+		94&AB302DE&AB302DE&AB302DE \\
+		219&ABI37X&ABI37X&ABI37X \\
+		242&MAC24A&MAC24A&MAC24A \\
+		87&AB789PA&AB789PA&AB789PA \\
+		92&A66CA7K&A66CA7K&A66CA7K \\
+		190&AA473BU&AA473BU&AA473BU \\
+		56&AF834EG&AF834EG&AF834EG \\
+		243&AD476EM&D476EM&D476FM \\
+		54&AFH23X&AFH23X&AFH23X \\
+		137&AB242AA&B242AA&B242AA \\
+		181&AA096TF&AA096TF&AA096TF \\
+		174&ABI50J&ABI50J&ABI50J \\
+		228&AL092BA&AL092BA&AL092BA \\
+		114&MEX15L&MEX15&MEX15L \\
+		251&AH850DM&AH850DM&AH850DM \\
+		126&AE192BA&AE192BA&AE192BA \\
+		179&AB218KN&AB218K&AB218A \\
+		229&AF839YK&AF839YK&AF839YK \\
+		234&AA453UD&AA45UD&AA45UD \\
+		\bottomrule
+	\end{tabular}
+\end{table}
+
+El sistema falló en la detección de caracteres de 7 placas de 50. Este fallo se origina debido a que el Módulo de detección de caracteres no logró encontrar al menos 6 caracteres dentro de la matricula.
+
+\begin{table}[H]
+	\centering
+	\caption{Desempeño con muestras de la base de datos.}\label{Tab:pruebas1e}
+	\begin{tabular}{lccc}
+		\toprule
+		Carácter & Tasa de éxito  & Detectados & Reconocidos \\
 		\midrule
 		0 & 1.0 & 12 & 12 \\
 		1 & 1.0 & 7 & 7 \\
@@ -114,11 +185,13 @@ Una vez diseñados e implementados los módulos de detección de placa, detección d
 	\end{tabular}
 \end{table}
 
-En la Tabla \ref{Tab:pruebas} se puede observar las analíticas obtenidas de un número total de 50 muestras que participaron en el entrenamiento de la base de datos. En este experimento se obtuvo una tasa de éxito de 0.844 en la detección de caracteres. Mientras que en el rendimiento de reconocimiento de caracteres obtuvo una tasa de éxito 0.989. Por el contrario, el sistema falló en la detección de caracteres de 7 placas de 50. Este fallo ocurrió debido que el Módulo de detección de caracteres no logró encontrar al menos 6 caracteres dentro de la matricula. En las placas Venezolanas se pueden hallar de 6 a 7 caracteres dependiendo del año en que fueron fabricadas. En consecuencia, si el módulo de detección de caracteres no detecta al menos 6 contornos arroja fallo en la detección general. 
+En la Tabla \ref{Tab:pruebas1e} se puede observar las analíticas obtenidas de un número total de 50 muestras que participaron en el entrenamiento de la base de datos. En este experimento se obtuvo una tasa de éxito de 0.844 en la detección de caracteres. Mientras que en el rendimiento de reconocimiento de caracteres obtuvo una tasa de éxito 0.989. 
 
-\subsection{Reconocimiento de caracteres que no participaron en la base de datos}
+ 
 
-Para esta prueba se consideraron las siguientes condiciones: 2 metros de distancia respecto al automóvil y un metro de altura con respecto al suelo. Las condiciones de iluminación eran tenues ya que se los vehículos se encontraban en un estacionamiento. Por lo tanto, teniendo en cuenta estas variables controladas se obtuvo la captura de 10 automóviles diferentes para evaluar el desempeño de detección de placa, detección de caracteres y reconocimiento de caracteres. 
+\subsection{Reconocimiento de caracteres que no forman parte de la base de datos}
+
+Para esta prueba se consideraron las siguientes condiciones: 2 metros de distancia respecto a la placa del automóvil y un metro de altura respecto al suelo. Las condiciones de iluminación eran tenues ya que los vehículos se encontraban en un estacionamiento. Por lo tanto, teniendo en cuenta estas variables controladas se obtuvo la captura de 10 automóviles diferentes para evaluar el desempeño de detección de placa, detección de caracteres y reconocimiento de caracteres. 
 
 
 \begin{figure}[H]
@@ -129,7 +202,7 @@ Para esta prueba se consideraron las siguientes condiciones: 2 metros de distanc
 \end{figure}
 
 
-El primer módulo por evaluar es el módulo de detección de placa. Como se explicó en capítulos anteriores, el sistema buscará dentro de la imagen un contorno que cumpla con la relación de ancho y altura de una placa a la distancia de 2 metros. De los 10 vehículos considerados en la Figura \ref{fig:prueba2cn} el módulo logró detectar 9. Las placas detectadas se observan en la Figura \ref{fig:placascn}. 
+El primer módulo por evaluar es el \textit{Módulo de detección de placa}. Como se explicó en capítulos anteriores, el sistema buscará dentro de la imagen un contorno que cumpla con la relación de ancho y altura de una placa a la distancia de 2 metros. De los 10 vehículos considerados en la Figura \ref{fig:prueba2cn} el módulo logró detectar 9. Las placas detectadas se observan en la Figura \ref{fig:placascn}. 
 
 \begin{figure}[H]
 	\centering
@@ -141,17 +214,17 @@ El primer módulo por evaluar es el módulo de detección de placa. Como se explicó
 
 \begin{table}[H]
 	\centering
-	\caption{Desempeño con caracteres incluidos en la base de datos.}\label{Tab:pruebas}
+	\caption{Desempeño en la detección de placas.}\label{Tab:pruebas}
 	\begin{tabular}{cccc}
 		\toprule
-		Placas detectadas & Placas no detectadas  & Número total de placas & Error \\
+		Placas detectadas & Placas no detectadas  & Número total de placas & Tasa de éxito \\
 		\midrule
 		9 & 1 & 10 & 0.9\\
 		\bottomrule
 	\end{tabular}
 \end{table}
 
-De esta forma, el sistema continúa hasta la detección de caracteres. De las 9 placas ingresadas al sistema se detectaron todos los caracteres. Los resultados de detección se presentan a continuación:
+De esta forma, el sistema continúa hasta la detección de caracteres. De las 9 placas ingresadas al siguiente módulo se detectaron todos los caracteres. Los resultados de detección se presentan a continuación:
  
  \begin{figure}[H]
  	\centering
@@ -215,54 +288,75 @@ De esta forma, el sistema continúa hasta la detección de caracteres. De las 9 pl
  	\label{fig:extraccar10}
  \end{figure}
  
+ A continuación se presenta la Tabla \ref{Tab:prueba2} dónde se registró la placa, caracteres detectados y reconocidos a fin de evaluar su desempeño:
  
-
- 
- \begin{table}
+  \begin{table}[H]
  	\centering
- 	\caption{Desempeño con nuevas entradas }\label{Tab:producion}
- 	\begin{tabular}{lrrr}
+ 	\caption{Desempeño con nuevas entradas }\label{Tab:prueba2}
+ 	\begin{tabular}{lccc}
  		\toprule
- 		Character & Success & Detected & Recognized \\
+ 		Placa ID & Número de Placa& Detectados & Reconocidos \\
  		\midrule
- 		0 & 0.8 & 5 & 4 \\
- 		1 & 1.0 & 3 & 3 \\
- 		2 & 1.0 & 3 & 3 \\
- 		3 & 1.0 & 4 & 4 \\
- 		4 & 0 & 0 & 0 \\
- 		5 & 1.0 & 4 & 4 \\
- 		6 & 1.0 & 1 & 1 \\
- 		7 & 1.0 & 2 & 2 \\
- 		8 & 1.0 & 1 & 1 \\
- 		9 & 1.0 & 2 & 2 \\
- 		A & 0.933 & 15 & 14 \\
- 		B & 0.8 & 5 & 4 \\
- 		C & 0 & 0 & 0 \\
- 		D & 1.0 & 2 & 2 \\
- 		E & 1.0 & 1 & 1 \\
- 		F & 1.0 & 1 & 1 \\
- 		G & 0 & 0 & 0 \\
- 		H & 1.0 & 4 & 4 \\
- 		I & 0 & 0 & 0 \\
- 		J & 0 & 0 & 0 \\
- 		K & 0 & 0 & 0 \\
- 		L & 0 & 0 & 0 \\
- 		M & 0 & 0 & 0 \\
- 		N & 0 & 0 & 0 \\
- 		O & 1.0 & 1 & 1 \\
- 		P & 0 & 0 & 0 \\
- 		Q & 0 & 0 & 0 \\
- 		R & 1.0 & 2 & 2 \\
- 		S & 0 & 0 & 0 \\
- 		T & 0.0 & 1 & 0 \\
- 		U & 1.0 & 2 & 2 \\
- 		V & 0 & 0 & 0 \\
- 		W & 1.0 & 1 & 1 \\
- 		X & 1.0 & 1 & 1 \\
- 		Y & 0 & 0 & 0 \\
- 		Z & 0 & 0 & 0 \\
+		1&AA230OU&AA230OU&AA230OU \\
+		2&ABW19H&ABW19H&ABW19H \\
+		3&AB769RR&AB769RR&AB769RR \\
+		4&AB257XA&AB257XA&AB257XA \\
+		5&AH503HA&AH503HA&AH503HA \\
+		6&AF230DA&AF230DA&XF23ODA \\
+		7&AB158UA&AB158UA&AB158UA \\
+		9&AE351DA&AE351DA&AE351DA \\
+		10&AHB00T&AHB00T&AH8007 \\
  		\bottomrule
  	\end{tabular}
  \end{table}
  
-  En la Tabla \ref{Tab:producion} se puede observar las analíticas obtenidas de las 10 capturas. El tasa de éxito obtenida en la detección de carácter fue de 1.0. Por otro lado, la tasa de éxito en el reconocimiento de caracteres es de  0.934 en reconocimiento de caracteres. En esta prueba el error ocurrió en la placa que se muestra en al Figura \ref{fig:extraccar6}. Las irregularidades físicas que se aprecian matricula indicen significativamente en el procesamiento de imagen para la detección de contornos en el área de la placa. En consecuencia, la detección del contorno que encierra primer carácter se ve influenciado por las manchas alrededor y provoca una errónea extracción del mismo.  
+ Se observa que la placa de la figura \ref{fig:extraccar6} el algoritmo no reconoció correctamente el número 0 clasificándolo como una O. Este error ocurrió debido a los factores externos que afectan las características físicas de la placa. Como se puede notar esta placa se encuentra bastante deteriorada por lo que las manchas agregan bastante ruido para el algoritmo de reconocimiento. Las irregularidades físicas que se aprecian matricula indicen significativamente en el procesamiento de imagen para la detección de contornos en el área de la placa. En consecuencia, la detección del contorno como en el primer carácter se ve influenciado por las manchas alrededor y provoca una incorrecta extracción.
+ 
+ \begin{table}[H]
+	\centering
+	\caption{Desempeño con nuevas entradas }\label{Tab:producion}
+	\begin{tabular}{lccc}
+		\toprule
+		Carácter & Tasa de exito & Detectados & Reconocidos \\
+		\midrule
+		0 & 0.8 & 5 & 4 \\
+		1 & 1.0 & 3 & 3 \\
+		2 & 1.0 & 3 & 3 \\
+		3 & 1.0 & 4 & 4 \\
+		4 & 0 & 0 & 0 \\
+		5 & 1.0 & 4 & 4 \\
+		6 & 1.0 & 1 & 1 \\
+		7 & 1.0 & 2 & 2 \\
+		8 & 1.0 & 1 & 1 \\
+		9 & 1.0 & 2 & 2 \\
+		A & 0.933 & 15 & 14 \\
+		B & 0.8 & 5 & 4 \\
+		C & 0 & 0 & 0 \\
+		D & 1.0 & 2 & 2 \\
+		E & 1.0 & 1 & 1 \\
+		F & 1.0 & 1 & 1 \\
+		G & 0 & 0 & 0 \\
+		H & 1.0 & 4 & 4 \\
+		I & 0 & 0 & 0 \\
+		J & 0 & 0 & 0 \\
+		K & 0 & 0 & 0 \\
+		L & 0 & 0 & 0 \\
+		M & 0 & 0 & 0 \\
+		N & 0 & 0 & 0 \\
+		O & 1.0 & 1 & 1 \\
+		P & 0 & 0 & 0 \\
+		Q & 0 & 0 & 0 \\
+		R & 1.0 & 2 & 2 \\
+		S & 0 & 0 & 0 \\
+		T & 0.0 & 1 & 0 \\
+		U & 1.0 & 2 & 2 \\
+		V & 0 & 0 & 0 \\
+		W & 1.0 & 1 & 1 \\
+		X & 1.0 & 1 & 1 \\
+		Y & 0 & 0 & 0 \\
+		Z & 0 & 0 & 0 \\
+		\bottomrule
+	\end{tabular}
+\end{table}
+
+  En la Tabla \ref{Tab:producion} se puede observar las analíticas obtenidas de las 10 capturas. La tasa de éxito obtenida en la detección de carácter fue de 1.0. Por otro lado, la tasa de éxito en el reconocimiento de caracteres es de  0.934 en reconocimiento de caracteres.
