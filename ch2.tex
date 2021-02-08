@@ -4,26 +4,26 @@
 
 
 
-Para el desarrollo de este trabajo, es necesario manejar conceptos básicos de procesamiento de imagen y aprendizaje de maquina. 
+Para el desarrollo de este trabajo, es necesario manejar conceptos básicos de procesamiento de imagen y aprendizaje de máquina. 
 
 \section{Imagen digital}
 
-Una imagen se define, en este contexto, como la representación visual de un objeto real a través de técnicas como la fotografía, la pintura, el video, entre otras técnicas. Entonces, una imagen digital puede ser definida como una función bidimensional $f(x,y)$, dónde $(x,y)$  son coordenadas espaciales y f es la intensidad de la imagen en ese punto. Las imágenes digitales están compuestas por un número finitos de elementos llamados pixel. Las imágenes digitales  dependiendo de si es dinámica o estática se pueden clasificar en dos tipos: imagen matricial o gráfico vectorial. 
+Una imagen se define, en este contexto, como la representación visual de un objeto real a través de técnicas como la fotografía, la pintura, el video, entre otras técnicas. Entonces, una imagen digital puede ser definida como una función bidimensional $f(x,y)$, dónde $(x,y)$  son coordenadas espaciales y f es la intensidad de la imagen en ese punto. Las imágenes digitales están compuestas por un número finito de elementos llamados pixel. Las imágenes digitales  dependiendo de si es dinámica o estática se pueden clasificar en dos tipos: imagen matricial o gráfico vectorial. 
 
 
 El gráfico vectorial o la imagen vectorial, es una imagen digital formada por entidades geométricas independientes (segmentos, polígonos, arcos, entre otros), cada uno de ellos definidos por fórmulas matemáticas. Se construyen a partir de vectores y no se dividen en unidades mínimas de información como los pixeles, sino en manchas de color y lineas \cite{Alonso2018} . 
 
-Por otro lado, la imagen matricial o mapa de bits es una estructura  que representa una rejilla rectangular  compuesta de pixeles o puntos de color. Estos, se suelen definir por su altura y grosor (en pixeles) por su profundidad de color. Esto determina el número de colores distintos que se pueden almacenar en cada punto individual. La calidad de las imagenes rasterizadas está definida por el total de pixeles que posee (Resolución) y cantidad de información por pixel (Profunidad de color, bits por pixel). \cite{Alegsa2010}
+Por otro lado, la imagen matricial o mapa de bits es una estructura  que representa una rejilla rectangular  compuesta de pixeles o puntos de color. Estos, se suelen definir por su altura y grosor (en pixeles) por su profundidad de color. Esto determina el número de colores distintos que se pueden almacenar en cada punto individual. La calidad de las imagenes rasterizadas está definida por el total de pixeles que posee (Resolución) y la cantidad de información por pixel (Profunidad de color, bits por pixel). \cite{Alegsa2010}
 
-Los pixeles guardan información de color en un determinado punto, es decir, una representación numérica de color y esta se ve limitado por la cantidad de bits utilizados para representarla, esto se conoce como profunidad de color. Normalmente, cada pixel es representado por tres valores numéricos. 
+Los pixeles guardan información de color en un determinado punto, es decir, una representación numérica de color y esta se ve limitada por la cantidad de bits utilizados para representarla, esto se conoce como profunidad de color. Normalmente, cada pixel es representado por tres valores numéricos. 
 
 \section{Espacios de color}
 
-El espacio de color define un modelo de composición de color. Por lo general, un espacio de color se compone de N vectores cuya combinación lineal puede generar todo el espacio de color.  Generalmente, lo espacios de color intentan representar todos los colores que el ojo humano puede percibir, mientras que, otros aislan un subconjunto específicos de colores. Los espacios de color pueden ser: una dimensión (Escala de grieses), dos dimensiones (RGB, CIEXYZ, CIELAB, YIQ) o  cuatro dimensiones (CMYK). Los espacios de color de tres dimensiones son, normalmente, los más usados. Es decir, un color se especifica usando tres coordenadas; la cual determina su ubicación en este espacio. 
+El espacio de color define un modelo de composición de color. Por lo general, un espacio de color se compone de N vectores cuya combinación lineal puede generar todo el espacio de color.  Generalmente, lo espacios de color intentan representar todos los colores que el ojo humano puede percibir, mientras que otros aislan un subconjunto específico de colores. Los espacios de color pueden ser: una dimensión (Escala de grieses), dos dimensiones (RGB, CIEXYZ, CIELAB, YIQ) o  cuatro dimensiones (CMYK). Los espacios de color de tres dimensiones son, normalmente, los más usados. Es decir, un color se especifica usando tres coordenadas; la cual determina su ubicación en este espacio. 
 
 
 
-\section{Procesamiento de imágenes digital}
+\section{Procesamiento de imágenes digitales}
 
 
 
@@ -37,14 +37,14 @@ Se define así al conjunto de técnicas y métodos desarrollados para manipular la 
 	
 	\item Compresión de la imagen: consiste en representar la imagen con la menor cantidad de bits posible, sin  afectar críticamente la calidad de la imagen, como lo es la reducción de dimensión, la binarización, entre otros.
 	
-	\item Extracción de objetos: resaltar explícitamente algunas características en la imagen que puedan permitirla detección de objetos, tales como la la utilización de algoritmos para detección  y reconocimiento de contornos.
+	\item Extracción de objetos: resaltar explícitamente algunas características en la imagen que permitan la detección de objetos, tales como la  utilización de algoritmos para detección  y reconocimiento de contornos.
 	
 	
 \end{itemize}
 
 \section{Mascaras derivativas discretas}
 
-El proceso de filtrado de una imagen se realiza mediante la convolución entre los distintos pixeles que componen la imagen y una matriz de convolución. Esta matriz es denominada "kernel" del filtro. Dependiendo de los valores que componen al kernel y su distribución se obtienen diferentes resultados de filtrado en la imagen. Las mascaras derivativas discretas no son más que Kernels que cuyos elementos representan una aproximación de la derivada \cite{MaskDev}. En la figura \ref{fig:convolucionsobreunaimagen} se puede apreciar el proceso de convolución sobre un pixel.
+El proceso de filtrado de una imagen se realiza mediante la convolución entre los distintos pixeles que componen la imagen y una matriz de convolución. Esta matriz es denominada "kernel" del filtro. Dependiendo de los valores que componen al kernel y su distribución se obtienen diferentes resultados de filtrado en la imagen. Las mascaras derivativas discretas no son más que Kernels cuyos elementos representan una aproximación de la derivada \cite{MaskDev}. En la figura \ref{fig:convolucionsobreunaimagen} se puede apreciar el proceso de convolución sobre un pixel.
 
 \begin{figure}[H]
 	\centering
@@ -62,7 +62,7 @@ Las mascaras derivativas son utilizadas para calcular el gradiente de una imagen
 	\label{fig:derivadassobel}
 \end{figure}
 
-Bibliotecas de software libre orientadas hacia la visión computarizada como OpenCv ofrecen funciones que utilizan estos operadores determinar el gradiente de la imagen y así detectar los contornos mediante la umbralización:
+Bibliotecas de software libre orientadas hacia la visión computarizada como OpenCv, ofrecen funciones que utilizan estos operadores para determinar el gradiente de la imagen y así detectar los contornos mediante la umbralización:
 
 \begin{figure}[H]
 	\centering
@@ -139,7 +139,7 @@ En base a las particularidades entre algoritmos categorizan los métodos de umbra
 
 \section{Lenguaje de programación Python 3}
 
-Python es un lenguaje de programación multiparadigma, multiplataforma, dinámico e interpretado, es decir se ejecuta directamente mediante un intérprete dejando a un lado la compilación. Actualmente, Python es  administrado por Python Software Foundation. El software posee una licencia de código abierto denominada Python Software Fondation License.
+Python es un lenguaje de programación multiparadigma, multiplataforma, dinámico e interpretado, es decir, se ejecuta directamente mediante un intérprete dejando a un lado la compilación. Actualmente, Python es  administrado por Python Software Foundation. El software posee una licencia de código abierto denominada Python Software Fondation License.
 
 
 Python 3 se caracteriza por su amplia aplicabilidad en diferentes campos del desarrollo de nuevas tecnologías como lo es el Machine Learning, Data Science, Vision por Computador, entre otros. Python soporta diferentes librerías como  OpenCV  y Scikit-Learn, las cuales cuentan con extensa documentación acerca de sus aplicaciones e implementaciones. 
@@ -167,19 +167,19 @@ Entre las funciones que ofrece:
 	
 	\item \verb|cv2.adaptiveThreshold()|: el método adaptativetreshold binariza una imagen de acuerdo a un valor de umbral que cálcula para pequeñas regiones de la imagen digital. Así, el filtro gaussiano realiza una convolución con cada punto de la matriz generando una matriz de salida. El valor de umbral es calculado como la suma ponderada de los valores del vecindario donde los pesos son una ventana gaussiana. Las dimesiones del kernel representa el tamaño del vecindario de pixeles usados para calcular el valor umbral. \cite{AdaptTresh}
 	
-	\item \verb|cv2.dilate()|: Dilate es un método de transformación morfológica. Las operaciones morfológicas aplican un elemento estructurante a la imagen de entrada y generan una de salida con características morfológicas diferentes. Dilate utiliza un kernel \textit{B} el cual se escanea sobre la imagen, calcula el valor máximo de pixeles superpuestos por \textit{B}  y reemplazamos el píxel de la imagen en la posición del punto de anclaje con ese valor máximo. Como puede deducir, esta operación de maximización hace que las regiones brillantes dentro de una imagen "crezcan". \cite{Dilate}
+	\item \verb|cv2.dilate()|: Dilate es un método de transformación morfológica. Las operaciones morfológicas aplican un elemento estructurante a la imagen de entrada y generan una de salida con características morfológicas diferentes. Dilate utiliza un kernel \textit{B} el cual se escanea sobre la imagen, calcula el valor máximo de pixeles superpuestos por \textit{B}  y reemplazamos el píxel de la imagen en la posición del punto de anclaje con ese valor máximo. Como se puede deducir, esta operación de maximización hace que las regiones brillantes dentro de una imagen "crezcan". \cite{Dilate}
 	
 	\item \verb|cv2.findcontours()|: definiendo contorno como una curva todos los puntos continuos que tienen el mismo color o intensidad, este método encuentra los contornos definidos en una imagen, preferiblemente binarizada. Este método requiere diferentes parámetros de entrada que definen su modo de funcionamiento como le modo de recuperación de contorno y método de aproximación de contorno. Ambos parámetros son explicados en las fuentes de documentación. \cite{findContours}
 	
 	\item \verb|cv2.boundingRect()|: esta función calcula y devuelve el rectángulo delimitador de un contorno o un conjunto de píxeles de la misma intensidad y distintos de cero. Esta función cálcula un rectangulo recto, es decir, no considera ángulo de rotación por lo tanto el área del rectángulo no será mínima. Esta función devuelve las coordenadas de la esquina superior izquierda del rectángulo, su ancho y alto. \cite{boundRectangle}
 	
-	\item \verb|cv2.rectangle()|: esta función es una de las funciones de dibujo de la librería \textit{OpenCV} y dibuja un rectángulo en la imagen dadas unas coordenadas específicas, con color y ancho de línea específico. La función devuelve la imagen con dicho polígono dibujado. \cite{rectangle}
+	\item \verb|cv2.rectangle()|: esta función es una de las funciones de dibujo de la librería \textit{OpenCV} y dibuja un rectángulo en la imagen, dadas unas coordenadas específicas, con color y ancho de línea específico. La función devuelve la imagen con dicho polígono dibujado. \cite{rectangle}
 	
 \end{itemize} 	
 
 \section{Scikit-Learn}
 
-Scikit-Learn por su parte, es una biblioteca con basto desarrollo en los aprendizajes automático de máquina de software libre para el lenguaje de programación Python. Cuenta varios algoritmos de regresión, clasificación y análisis de grupos como Máquina de Soporte Vectoriales, bosques aleatorios, K-means, entre otros. Esta biblioteca inicio como un proyecto de Google Summer of code por David Cournapeau en el 2007. Para mayor información y detalles acerca de la biblioteca dirigirse a http://scikit-learn.org/stable/.  
+Scikit-Learn por su parte, es una biblioteca con basto desarrollo en los aprendizajes automático de máquina de software libre para el lenguaje de programación Python. Cuenta con varios algoritmos de regresión, clasificación y análisis de grupos como SVMs, bosques aleatorios, K-means, entre otros. Esta biblioteca inició como un proyecto de Google Summer of code por David Cournapeau en el 2007. Para mayor información y detalles acerca de la biblioteca dirigirse a http://scikit-learn.org/stable/.  
 
 
 \section{Máquina de Soporte Vectorial}
@@ -206,20 +206,20 @@ Construir el modelo o hipótesis del algoritmo SVM supone encontrar los parámetro
 
 
 
-El problema anterior es resuelto por el Óptimo hiperplano de clases separables. El óptimo híperplano es definido por la función de decisión lineal con máximo margen entre los vectores de dos clases. 
+El problema anterior es resuelto por el hiperplano óptimo de clases separables. El hiperplano óptimo es definido por la función de decisión lineal con máximo margen entre los vectores de dos clases. 
 La propiedad fundamental del híperplano  de separación óptimo es que este equidista  del ejemplo más cerca de cada clase \cite{SVN}. Esta propiedad se refleja en la siguiente figura:
 
 \begin{figure}[H]
 	\centering
 	\includegraphics[width=0.50\linewidth]{Imagenes/maximomargen}
-	\caption{Óptimo hiperplano: máximo margen de separación entre dos clases.}
+	\caption{Hiperplano óptimo: máximo margen de separación entre dos clases.}
 	\label{fig:maximomargen}
 \end{figure}
 
 
 Dado un set de entrenamiento clasificado: $$ (x_1,y_1),(x_2,y_2),...,(x_m,y_m),  \hspace{0.7cm} y_m \hspace{0.1cm}  \in \hspace{0.1cm} \left\lbrace  1,-1\right\rbrace$$
 
-Se dice que son linealmente separables si existe un vector $w$ y un escalar $w_0$ que satisfaga la siguientes inecuaciones para todo el todo el set de entrenamiento:
+Se dice que son linealmente separables si existe un vector $w$ y un escalar $w_0$ que satisfaga la siguientes inecuaciones para todo el set de entrenamiento:
 
 \begin{equation}	
 \begin{split}
@@ -233,7 +233,7 @@ w^t \cdot x_i + w_0 -1, \hspace{0.5cm} 	Si \hspace{0.2cm}  y_i = -1
 
 Dónde $w$ es el vector de pesos que ajusta el modelo, $w_0$ es un escalar también conocido como sesgo y x es el vector de datos de entrada a clasificar.
 
-De esta forma, ajustar el modelo para el algoritmo se traduce en encontrar el óptimo hiperplano mediante el vector de pesos. El óptimo híperplano se puede escribir entonces cómo:
+De esta forma, ajustar el modelo para el algoritmo se traduce en encontrar el hiperplano óptimo mediante el vector de pesos. El hiperplano óptimo se puede escribir entonces cómo:
 
 \begin{equation}	
 w^t \cdot x_i + w_0 = 0
@@ -248,13 +248,13 @@ Es el único que separa el conjunto de entrenamiento con el máximo margen, el cua
 
 
 
-Entonces el problema se traduce en máximar $\gamma$ para encontrar dicho híperplano de separación óptimo tomando en cuenta las condiciones de las ecuaciones \ref{condiciones}.
+Entonces el problema se traduce en máximar $\gamma$ para encontrar dicho híperplano de separación óptimo tomando en cuenta las condiciones de las ecuaciones (\ref{condiciones}).
 
 %%Las funciones de kernel permiten el uso eficiente de los espacios de características de grandes dimensiones.  La elección de utilizar una sesgo de aprendizaje convexo  resulta en la ausencia de mínimos locales, por lo tanto, las soluciones siempre pueden ser encontradas eficientemente incluso para conjuntos  de entrenamiento con  cientos de miles de ejemplos. Mientras que, la compacta representación de la hipótesis se traduce en evaluaciones rápidas de nuevas entradas. En consecuencia, los problemas de eficiencia del entrenamiento, eficiencia de prueba y comprobación, sobreajuste y ajuste de parámetros en el algoritmo son evitados por la SVM. 
 
 El objetivo de la SVM es idear un método de aprendizaje computacionalmente eficiente. Los hiperplanos optimizan el límite de generalización, por lo tanto el algoritmo es capaz de manejar grandes dimensiones.\cite{SVM2014}
 
-Algunas de las ventajas de la Maquina de Soporte Vectorial frente otros algoritmos son \cite{Sklearn}:
+Algunas de las ventajas de las SVMs frente otros algoritmos son \cite{Sklearn}:
 
 \begin{itemize}
 	

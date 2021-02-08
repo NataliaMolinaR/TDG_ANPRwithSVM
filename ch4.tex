@@ -7,17 +7,17 @@ En el presente capítulo se describe el proceso de desarrollo del proyecto, donde
 
 \section{Arquitectura de software}
 
-El software se basó en una arquitectura estructural. Para cumplir la condición anterior, dado el problema que se desea resolver a través de un algoritmo, se divide dicho algoritmo en módulos siguiendo los principio de diseño de descomposición por refinamiento sucesivo, creación de jerarquía modular y elaboración de módulos independientes.
+El software se basó en una arquitectura estructural. Para cumplir la condición anterior, dado el problema que se desea resolver a través de un algoritmo, se divide dicho algoritmo en módulos siguiendo los principios de diseño de descomposición por refinamiento sucesivo, creación de jerarquía modular y elaboración de módulos independientes.
 
 Los procesos descritos fueron diseñados para trabajar de forma modular e independientes, cada uno con una funcionalidad específica. Este proyecto se dividió en tres grandes módulos: detección de texto, procesamiento de imágenes y reconocimiento de caracteres. 
 
-Se seleccionó esta arquitectura ya que la solución propuesta para la problemática planteada se puede describir en tres diferentes etapas, cuyas  funcionalidades son independientes entre sí, pudiéndose  definir las interacciones entre las entradas y salidas. En la figura se puede observar un esquema general del proyecto expresada en módulos.
+Se seleccionó esta arquitectura ya que la solución propuesta para la problemática planteada se puede describir en tres diferentes etapas, cuyas  funcionalidades son independientes entre sí, pudiéndose  definir las interacciones entre las entradas y salidas. En la figura \ref{fig:segmentacion1} se puede observar un esquema general del proyecto expresada en módulos.
 
 \begin{figure}[H]
 	\centering
-	\includegraphics[width=0.7\linewidth]{Imagenes/segmentacion}
-	\caption{ACA VA OTRA IMAGEN}
-	\label{fig:segmentacion}
+	\includegraphics[width=0.9\linewidth]{Imagenes/TDG_modulos}
+	\caption{Módulos del sistema}
+	\label{fig:tdgmodulos}
 \end{figure}
 
 
@@ -63,7 +63,7 @@ Para cumplir con los requerimientos planteados, es fundamental contar con una ba
 
 Se construyó una base de datos que cuenta con 1496 imágenes de caracteres de letras y números. Para su construcción se recopiló al menos 250 fotos de placas vehículares de origen Venezolano y se procesaron utilizando herramientas provistas por la librería OpenCV, a fin de obtener la información de interés. 
 
-Las técnicas empleadas para su construcción se basan en la detección de contornos a partir de la umbralización de la imagen. Empleando diferentes funciones del procesamiento de imágenes y lógica condicional en la programación, se detectaron los caracteres de interés y se extrajeron recortando la foto. Las medidas adecuadas para su extracción se obtuvieron a partir de la medición del aspect ratio y el área ocupada por el carácter en la foto, conservando una distancia prudencial entre los bordes y el carácter . El resultado de la construcción resultó en imágenes de 25 x 45 px, en blanco y negro.
+Las técnicas empleadas para su construcción se basan en la detección de contornos a partir de la umbralización de la imagen. Empleando diferentes funciones del procesamiento de imágenes y lógica condicional en la programación, se detectaron los caracteres de interés y se extrajeron recortando la foto. Las medidas adecuadas para su extracción se obtuvieron a partir de la medición del aspect ratio y el área ocupada por el carácter en la foto, conservando una distancia prudencial entre los bordes y el carácter . El resultado de la construcción resultó en imágenes de 25 x 45 px, en blanco y negro. 
 
 El almacenamiento de cada uno de los ejemplos de entrenamiento se realizó en un archivo .csv, el cual permitió registrar en forma de matriz todos los ejemplos de entrenamiento. Para generar dicha matriz se redujo aún más el tamaño de la imagen que contiene cada muestra, resultado en una imagen de 27 x 15 px, lo cual se traduce en 405 pixeles por muestra. De esta forma, cada fila de la matriz contenida en el archivo .csv corresponde a un ejemplo de entrenamiento individual. La última columna de una fila corresponde a la etiqueta que identifica el carácter de esa imagen. Para la escritura de este archivo se empleó la librería csv provista por Python.
 
@@ -175,7 +175,7 @@ Dado que el objetivo es reconocer la información contenida en la matrícula de un
 
 \begin{figure}[H]
 	\centering
-	\includegraphics[width=0.7\linewidth]{Imagenes/segmentacion}
+	\includegraphics[width=0.9\linewidth]{Imagenes/segmentacion}
 	\caption{Proceso de segmentación de caracteres.}
 	\label{fig:segmentacion}
 \end{figure}
@@ -200,7 +200,7 @@ Así, es posible las etapas del software en los siguientes módulos:
 
 \subsection{Detección de la placa}
 
-El módulo de detección de la placa se define como un sistema dónde se ingresa una imagen frontal o posterior  de un vehículo y se obtiene la placa contenida. Se puede describir este proceso en las siguientes etapas:
+El módulo de detección (Ver listado xxx en el Anexo) de la placa se define como un sistema dónde se ingresa una imagen frontal o posterior  de un vehículo y se obtiene la placa contenida. Se puede describir este proceso en las siguientes etapas:
 
 \begin{itemize}
 	
@@ -217,7 +217,7 @@ El modelo EAST es un detector de texto basado en el aprendizaje profundo y OpenC
 \subsection{Segmentación de los caracteres.}
 
 
-El módulo de segmentación se encarga de detectar y extraer los caracteres de interés dentro de la placa. Esto se realizó mediante técnicas de procesamiento de imágenes mediante la librería la librería OpenCV. Se describe  dicho proceso en el siguiente diagrama de flujo:
+El módulo de segmentación (Ver listado xxx en el Anexo) se encarga de detectar y extraer los caracteres de interés dentro de la placa. Esto se realizó mediante técnicas de procesamiento de imágenes mediante la librería la librería OpenCV. Se describe  dicho proceso en el siguiente diagrama de flujo:
 
 \begin{figure}[H]
 	\centering
@@ -251,7 +251,7 @@ El módulo de segmentación se encarga de detectar y extraer los caracteres de int
 
 \subsection{Clasificación de caracteres.}
  
- La etapa de clasificación de caracteres se lleva a cabo mediante el modelo entrenado.  En las ecuaciones \ref{condiciones} se describió como se puede obtener una etiqueta a partir de los parámetros obtenidos y la nueva observación. Esta etiqueta es la predicción de clase para la imagen de entrada que se está clasificando. En conclusión, este módulo se encarga de predecir la clasificación de cada nuevo carácter en base al modelo obtenido del \textit{Módulo de entrenamiento} del algoritmo. 
+ La etapa de clasificación de caracteres se lleva a cabo mediante el modelo entrenado.  En las ecuaciones (\ref{condiciones}) se describió como se puede obtener una etiqueta a partir de los parámetros obtenidos y la nueva observación. Esta etiqueta es la predicción de clase para la imagen de entrada que se está clasificando. En conclusión, este módulo se encarga de predecir la clasificación de cada nuevo carácter en base al modelo obtenido del \textit{Módulo de entrenamiento} (Ver listado xxx en el Anexo) del algoritmo. 
  
  El clasificador es un método para determinar la clase más probable de una entrada desconocida con respecto a un número de ejemplos de dichas clases. Este conjunto de ejemplos se denomina conjunto de entrenamiento. 
  
@@ -270,13 +270,15 @@ El módulo de segmentación se encarga de detectar y extraer los caracteres de int
  
 
 
-\section{Modulo de entrenamiento}
+\section{Módulo de entrenamiento}
 
 Dado un conjunto de muestras se etiquetan las clases a manera de construir un modelo con la capacidad de predecir una nueva entrada desconocida. En este caso, el modelo debe tener la capacidad de distinguir entre 36 clases diferentes, entre los cuales se encuentran las letras del abecedario español (excluyendo la Ñ) y los números del 0 al 1. En la Tabla \ref{Tab:tags} se puede observar cada etiqueta o clase asignada para cada carácter. 
 
 De esta forma, se lleva a cabo el entrenamiento de la SVM utilizando un Kernel Lineal empleando las herramientas proporcionadas por la librería SKlearn SVM. El entrenamiento de una Máquina de Soporte Vectorial consiste en encontrar los parámetros que generan el híperplano que cumplen con el máximo margen de separación entre las clases. Para la multiclasifidora se empleó la función de decisión 'ovr' el cuál consiste en que cada clase se enfrenta hacia el resto de las clases para encontrar el híperplano que mejor las separa. 
 
-El modelo obtenido es el resultado de ajustar los parámetros para todos los ejemplos de entrenamiento que conforman la base de datos. Cada ejemplo de entrenamiento representa una fila de la matriz que conforma la base de datos. Así, cada fila está compuesta por las características de la imagen  y su etiqueta. Este modelo es el que es utilizado para la clasificación de caracteres, el módulo final del proyecto. El desempeño de este modelo es evaluado en la etapa de validación. 
+El modelo obtenido es el resultado de ajustar los parámetros para todos los ejemplos de entrenamiento que conforman la base de datos. Cada ejemplo de entrenamiento representa una fila de la matriz que conforma la base de datos. Así, cada fila está compuesta por las características de la imagen  y su etiqueta. Este modelo es el utilizado para la clasificación de caracteres, el módulo final del proyecto. 
+
+De esta forma, en el módulo de entrenamiento se encarga de encontrar el modelo que mejor se ajusta a la base de datos proporcionada (Ver listado xxx en el Anexo) .El desempeño de este modelo es evaluado en la etapa de validación. 
 
 
 \newpage
