@@ -206,6 +206,78 @@
   }%
 
 
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%            Anexo de codigo y pseudocodigo				         %
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\usepackage{amsthm,amssymb,latexsym,amsmath,amsthm}
+\usepackage{setspace}
+\usepackage[table,dvipsnames,x11names,svgnames]{xcolor}
+\usepackage[skins,theorems,listings,breakable]{tcolorbox}
+\usepackage{listings}
+\usepackage{geometry}
+\geometry{top=1.5cm,bottom=1.5cm,left=2.5cm,right=2.5cm}
+\usepackage{graphicx}
+
+\pagestyle{empty}
+
+\def\lstlistingname{Programa}%  Aquí puedes cambiar el nombre del título del listado
+%Listing
+
+\definecolor{comentario}{rgb}{0.68,0.68,0.68}%\textcolor[rgb]{0.68,0.68,0.68}{}
+\definecolor{cadena}{rgb}{0.00,0.67,0.00}%\textcolor[rgb]{0.00,0.67,0.00}{}
+\definecolor{keywords}{rgb}{0.00,0.00,1.00}%\textcolor[rgb]{0.00,0.00,1.00}{}
+\definecolor{Decorators}{rgb}{0.5,0.5,0.5}%
+\definecolor{objeto_integrado}{rgb}{0.56,0.00,0.56}%\textcolor[rgb]{0.56,0.00,0.56}{}
+
+\lstdefinelanguage{Python}{
+	showspaces=false,
+	showtabs=false,
+	showstringspaces=false,
+	tabsize=4,
+	% Basic
+	basicstyle=\footnotesize\setstretch{1},
+	% Comments
+	commentstyle=\color{comentario},
+	% Strings
+	stringstyle=\color{cadena},
+	morestring=[b]',
+	morecomment=[s][\color{cadena}]{"""}{"""},
+	morecomment=[s][\color{cadena}]{'''}{'''},
+	morecomment=[l]\#,
+	% keywords
+	morekeywords={import,from,class,def,for,while,if,is,in,elif,else,not,and,or,break,continue,return,access,as,del,except,finally,global,import,lambda,pass,raise,try,assert},
+	keywordstyle={\color{keywords}},
+	%additional keywords
+	morekeywords={[2]@invariant,print,True,False,None,exec,len},
+	keywordstyle={[2]\color{objeto_integrado}},
+	otherkeywords={>>>},
+	morekeywords=[3]{>>>},
+	keywordstyle={[3]\footnotesize\ttfamily\color{DarkOrange}}
+}
+
+\tcbset{
+	program/.style={
+		width=.95\textwidth,
+		enlarge left by=.05\textwidth,
+		enlarge right by=-.05\textwidth,
+		colframe=Black,
+		colback=white,
+		fonttitle=\small\sffamily\bfseries,
+		fontupper=\small,
+		fontlower=\small,
+		breakable,
+		listing only,
+		size=small,
+		enhanced,
+		attach boxed title to top center,
+		fonttitle=\rm,coltitle=black,
+		boxed title style={size=small,colback=white,colframe=white},
+		beforeafter skip=9pt,
+		listing options={language=Python}},
+	listado/.style 2 args={program, title={{\bf Programa~\thetcbcounter.} #1},label={#2}}
+}
+\newtcblisting{program}[1]{modulo,#1}
+\newtcblisting[auto counter]{programa}[3][]{listado={#2}{#3},#1}
 
 %==================================================================
 
@@ -387,9 +459,9 @@ xvii, 144 pp.}
 
 \renewcommand \thechapter{\Roman{chapter}}
 %==================================================================
-\chapter{TÍTULO DEL ANEXO}\label{CAP:anexo0}
+\chapter{Código del programa}\label{CAP:anexo0}
 %\markboth{Tu anexo}{Tu anexo}%
-%\input{apendice0.tex}%
+\input{apendice0.tex}%
 
 %==================================================================
 \chapter{TÍTULO DEL ANEXO}\label{CAP:anexo1}

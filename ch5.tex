@@ -1,3 +1,4 @@
+
 % !TeX spellcheck = es_ES
 % !TeX encoding = ISO-8859-1
 
@@ -360,3 +361,33 @@ De esta forma, el sistema continúa hasta la detección de caracteres. De las 9 pl
 \end{table}
 
   En la Tabla \ref{Tab:producion} se puede observar las analíticas obtenidas de las 10 capturas. La tasa de éxito obtenida en la detección de carácter fue de 1.0. Por otro lado, la tasa de éxito en el reconocimiento de caracteres es de  0.934 en reconocimiento de caracteres.
+  
+  \subsection{Tiempos de ejecución}
+  
+  Otro aspecto crucial en la investigación es el tiempo de entrenamiento de la SVM el cual fue de 1.29 para la base de datos construída y las carcterísticas descritas del computador. 
+  
+  Por otro lado, en la Tabla \ref{Tab:prueba3}se puede observar los tiempos de procesamiento de imagenes y reconocimiento de caracteres obtenidos en la prueba de  \textit{Reconocimiento de caracteres que no forman parte de la base de datos}. 
+  
+  
+    \begin{table}[H]
+  	\centering
+  	\caption{Tiempos de procesamiento y reconocimiento }\label{Tab:prueba3}
+  	\begin{tabular}{lccc}
+  		\toprule
+  		Placa ID & Número de Placa& Procesamiento de imagen [s] & Reconocimiento de caracteres [s] \\
+  		\midrule
+  		1&AA230OU&0.839&0.338 \\
+  		2&ABW19H&0.55&0.268 \\
+  		3&AB769RR&0.577&0.252 \\
+  		4&AB257XA&0.7&0.282 \\
+  		5&AH503HA&0.954&0.365 \\
+  		6&AF230DA&0.644&0.349 \\
+  		7&AB158UA&0.665&0.396\\
+  		9&AE351DA&0.655&0.214 \\
+  		10&AHB00T&0.656&0.195 \\
+  		\bottomrule
+  	\end{tabular}
+  \end{table}
+  
+  
+  En promedio se obtiene que el tiempo de procesamiento de imagen es 0.624s y tiempo de reconocimiento de caracteres 0.266s. 
