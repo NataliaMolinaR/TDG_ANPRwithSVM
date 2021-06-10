@@ -1,8 +1,15 @@
-This is BibTeX, Version 0.99dThe top-level auxiliary file: EIETdeG.aux
+This is BibTeX, Version 0.99d
+Capacity: max_strings=200000, hash_size=200000, hash_prime=170003
+The top-level auxiliary file: EIETdeG.aux
+Reallocating 'name_of_file' (item size: 1) to 9 items.
 The style file: IEEEtran.bst
+Reallocating 'name_of_file' (item size: 1) to 5 items.
+Reallocating 'singl_function' (item size: 4) to 100 items.
+Reallocating 'singl_function' (item size: 4) to 100 items.
+Reallocating 'singl_function' (item size: 4) to 100 items.
+Reallocating 'wiz_functions' (item size: 4) to 6000 items.
+Reallocating 'singl_function' (item size: 4) to 100 items.
 Database file #1: NMTG.bib
-Warning--I didn't find a database entry for "brea5"
-Warning--I didn't find a database entry for "brigham1"
 -- IEEEtran.bst version 1.14 (2015/08/26) by Michael Shell.
 -- http://www.michaelshell.org/tex/ieeetran/bibtex/
 -- See the "IEEEtran_bst_HOWTO.pdf" manual for usage information.
@@ -11,4 +18,45 @@ Warning--missing publisher in MaskDev
 Warning--missing publisher in Operadores
 
 Done.
-(There were 5 warnings)
+You've used 24 entries,
+            4087 wiz_defined-function locations,
+            948 strings with 11237 characters,
+and the built_in function-call counts, 10478 in all, are:
+= -- 883
+> -- 139
+< -- 36
++ -- 64
+- -- 27
+* -- 332
+:= -- 1855
+add.period$ -- 71
+call.type$ -- 24
+change.case$ -- 37
+chr.to.int$ -- 84
+cite$ -- 27
+duplicate$ -- 842
+empty$ -- 966
+format.name$ -- 30
+if$ -- 2388
+int.to.chr$ -- 0
+int.to.str$ -- 24
+missing$ -- 176
+newline$ -- 95
+num.names$ -- 24
+pop$ -- 443
+preamble$ -- 1
+purify$ -- 0
+quote$ -- 2
+skip$ -- 852
+stack$ -- 0
+substring$ -- 163
+swap$ -- 558
+text.length$ -- 8
+text.prefix$ -- 0
+top$ -- 5
+type$ -- 24
+warning$ -- 3
+while$ -- 36
+width$ -- 26
+write$ -- 233
+(There were 3 warnings)

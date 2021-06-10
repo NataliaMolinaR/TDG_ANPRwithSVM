@@ -12,7 +12,7 @@ Una vez diseñados e implementados los módulos de detección de placa, detección d
  
  \subsection{Reconocimiento de caracteres que forman parte de la base de datos}
  
- En esta prueba no fue posible evaluar el módulo de detección de placa ya que las muestras disponibles son directamente una foto de la placa sin considerar el resto del automóvil. Por lo que se evaluará el desempeño de la detección de carácter y clasificación de la misma. 
+ En esta prueba no fue posible evaluar el módulo de detección de placa ya que las muestras disponibles son directamente una foto de la placa sin considerar el resto del automóvil. Por lo que se evaluará el desempeño de la detección de carácter y clasificación de los mismos. 
  
  Se tomaron aleatoriamente 50 de las 250 placas que se obtuvieron para la construcción de la base de datos, a fin de evaluar el rendimiento de detección y reconocimiento de caracteres ya conocidos por el algoritmo.
  
@@ -71,11 +71,11 @@ El módulo reconoció en su mayoría  los caracteres de las placas realizando corre
 	\label{fig:placaext243edb}
 \end{figure}
 
-Por otro lado, en las Figuras \ref{fig:placaext84edb}, \ref{fig:placaext179edb} y \ref{fig:placaext243edb} son algunos de los casos dónde el Módulo de detección de caracteres detectó erróneamente y por lo tanto se considera un fallo. El resultado de estas muestras son clasificado cómo errores debido a que fallaron en detectar algunas de las letras de la placa.En las placas Venezolanas se pueden hallar de 6 a 7 caracteres dependiendo del año en que fueron fabricadas. En consecuencia, si el módulo de detección de caracteres no detecta al menos 6 contornos que cumplan con las características arroja fallo en la detección general. Experimentalmente se encontró que este tipo de errores se originan en la detección de contornos del sistema y usualmente se debe  a una combinación de factores externos e internos. 
+Por otro lado, en las Figuras \ref{fig:placaext84edb}, \ref{fig:placaext179edb} y \ref{fig:placaext243edb} son algunos de los casos dónde el Módulo de detección de caracteres no correctamente y  clasifica como  fallo.En las placas Venezolanas se pueden hallar de 6 a 7 caracteres dependiendo del año en que fueron fabricadas. En consecuencia, si el módulo de detección de caracteres no detecta al menos 6 contornos que cumplan con las características arroja fallo en la detección general. Experimentalmente se encontró que este tipo de errores se originan en la detección de contornos del sistema y usualmente se debe  a una combinación de factores externos e internos. 
 
 Los factores externos que indicen significativamente en la detección de contornos frecuentemente es la iluminación, ángulo de captura y condiciones de preservación del cuerpo físico matrícula. Los factores internos hacen referencia a los parámetros o procedimientos del procesamiento de imagenes. Una solución para reducir al mínimo los factores externos es implementar un sistema físico que permita tomar capturas a una misma resolución, con un ángulo de captura fijo y condiciones de iluminación similares.
 
-En la Figura \ref{fig:placaext179edb} es un caso que a simple vista se puede descartar a los factores externos como origen al problema. Aún así, se obtuvo un fallo en la detección general. El sistema realmente no es capaz de ver propiamente la matrícula, este compara matemáticamente dos valores y toma una decisión en base a eso. Entonces esta detección se origina debido a un factor interno. Para realizar la detección de contornos el sistema recorre la imagen mediante un Kernel en el proceso de umbralización. A pesar que la Umbralización es adaptable por zonas, el tamaño del Kernel con el que recorre la imágen no lo es. En este proyecto el tamaño del kernel se estableció en 15 pixeles. Una posible solución podría ser considerar diferentes tamaños para obtener mejores resultados. Adicionalmente, en el reconocimiento de caracteres el algoritmo clasificó la K como una A. Este error puede deberse a que en la base de datos exista un ejemplo que matemáticamente los valores introducidos al modelo por medio de la extracción  de características coincidan con los de la letra K de esta placa. Este último se soluciona depurando la Base de Datos de los ejemplos que puedan ocasionar este tipo de errores.
+En la Figura \ref{fig:placaext179edb} es un caso que a simple vista se puede descartar a los factores externos como origen al problema. Aún así, se obtuvo un fallo en la detección general. El sistema realmente no es capaz de ver propiamente la matrícula, este compara matemáticamente dos valores y toma una decisión en base a eso. Entonces esta detección se origina debido a un factor interno. Para realizar la detección de contornos el sistema recorre la imagen mediante un Kernel en el proceso de umbralización. A pesar que la Umbralización es adaptable por zonas, el tamaño del Kernel con el que recorre la imágen no lo es. En este proyecto el tamaño del kernel se estableció en 15 pixeles. Una posible solución podría ser considerar diferentes tamaños para obtener mejores resultados. Adicionalmente, en el reconocimiento de caracteres el algoritmo clasificó la K como una A. Este error puede deberse a que en la base de datos exista un ejemplo que  los valores introducidos al modelo por medio de la extracción  de características coincidan matemáticamente con los de la letra K de esta placa. Este último se soluciona depurando la Base de Datos de los ejemplos que puedan ocasionar este tipo de errores.
 
 En la Figura \ref{fig:placaext243edb} los inconvenientes se presentan en forma similar al anterior, pero es importante destacar que en la extracción se puede observar que los contornos superan las medidas límites de los cuadros como es el caso particular de la letra D y E. A pesar de lo anterior, el sistema de reconocimiento fue capaz de reconocer la letra D, sin embargo, la letra E la clasificó con una F. Este problema de reconocimiento no se origina en el modelo del algoritmo SVM sino en la extracción de caracteres. Su solución recae en mejorar el rendimiento de extracción de caracteres.
 
@@ -99,7 +99,7 @@ A continuación se presenta la Tabla \ref{Tab:prueba1} dónde se registró la placa
 		175&DCE96B&DCE96B&DCE96B \\
 		88&AFD06Y&AFD06Y&AFD06Y \\
 		62&AGH56W&AGH56W&AGH56W \\
-		204&AA251MD&AA25MD&AA25HD \\
+		204&\textbf{AA251MD}&\textbf{AA25MD}&\textbf{AA25HD} \\
 		241&AB076DF&AB076DF&AB076DF \\
 		133&AG366GG&AG366GG&AG366GG \\
 		197&DBM43M&DBM43M&DBM43M \\
@@ -121,27 +121,27 @@ A continuación se presenta la Tabla \ref{Tab:prueba1} dónde se registró la placa
 		92&A66CA7K&A66CA7K&A66CA7K \\
 		190&AA473BU&AA473BU&AA473BU \\
 		56&AF834EG&AF834EG&AF834EG \\
-		243&AD476EM&D476EM&D476FM \\
+		243&\textbf{AD476EM}&\textbf{D476EM}&\textbf{D476FM} \\
 		54&AFH23X&AFH23X&AFH23X \\
 		137&AB242AA&B242AA&B242AA \\
 		181&AA096TF&AA096TF&AA096TF \\
 		174&ABI50J&ABI50J&ABI50J \\
 		228&AL092BA&AL092BA&AL092BA \\
-		114&MEX15L&MEX15&MEX15L \\
+		114&MEX15L&MEX15L&MEX15L \\
 		251&AH850DM&AH850DM&AH850DM \\
 		126&AE192BA&AE192BA&AE192BA \\
-		179&AB218KN&AB218K&AB218A \\
+		179&\textbf{AB218KN}&\textbf{AB218K}&\textbf{AB218A} \\
 		229&AF839YK&AF839YK&AF839YK \\
 		234&AA453UD&AA45UD&AA45UD \\
 		\bottomrule
 	\end{tabular}
 \end{table}
 
-El sistema falló en la detección de caracteres de 7 placas de 50. Este fallo se origina debido a que el Módulo de detección de caracteres no logró encontrar al menos 6 caracteres dentro de la matricula.
+El rendimiento por caracter se presenta en la Tabla \ref{Tab:pruebas1}:
 
 \begin{table}[H]
 	\centering
-	\caption{Desempeño con muestras de la base de datos.}\label{Tab:pruebas1e}
+	\caption{Desempeño con muestras de la base de datos.}\label{Tab:pruebas1}
 	\begin{tabular}{lccc}
 		\toprule
 		Carácter & Tasa de éxito  & Detectados & Reconocidos \\
@@ -186,7 +186,73 @@ El sistema falló en la detección de caracteres de 7 placas de 50. Este fallo se 
 	\end{tabular}
 \end{table}
 
-En la Tabla \ref{Tab:pruebas1e} se puede observar las analíticas obtenidas de un número total de 50 muestras que participaron en el entrenamiento de la base de datos. En este experimento se obtuvo una tasa de éxito de 0.844 en la detección de caracteres. Mientras que en el rendimiento de reconocimiento de caracteres obtuvo una tasa de éxito 0.989. 
+En la Tabla \ref{Tab:pruebas1} se puede observar los resultados obtenidos de 50 muestras que participaron en el entrenamiento de la base de datos. En este experimento se obtuvo una tasa de éxito de 84.4\% en la detección de caracteres para las muestras dónde el algoritmo fue capaz de detectar en su totalidad la placa. 
+
+El sistema falló en la detección de caracteres de 7 placas de 50 dado que el \textit{Módulo de detección de caracteres} no logró encontrar al menos 6 caracteres dentro de la matrícula o , por el contrario, reconoció más de 7 contornos. Cuando esto sucede el sistema clasifica esto como un error. Es posible que el algoritmo reconozca un contorno que matemáticamente se parezca al área y aspect ratio establecidos para los caracteres de una placa. Debido a lo anterior, 7 placas fueron clasificadas como error. Las mismas no están incluidas en la Tabla \ref{Tab:prueba1}.
+
+Sin embargo, aunque estas 7 fueron clasificadas como error el \textit{Módulo de detección de caracteres} si fue capaz de detectar algunos de los caracteres contenidas en estas. Tomando en cuenta el número total de caracteres detectado, incluso en las placas clasificadas como error el rendimiento del \textit{Módulo de detección de caracteres} es de 98.01\%. Mientras que en el rendimiento de reconocimiento de caracteres obtuvo una tasa de éxito 98.90\%. 
+
+A continuación se presentan las placas que fueron clasificadas como error: 
+
+\begin{table}[H]
+	\centering
+	\caption{Placas que fueron clasificadas como error.}\label{Tab:prueba1error}
+	\begin{tabular}{lcc}
+		\toprule
+		Placa ID & Número de Placa  & Detectados  \\
+		\midrule
+		97&FAG71U&FAG71 \\
+		96&RAG59S&RAG59S\\
+		154&AG722PA&AG7222PA\\
+		168&AE830GD&A830G\\
+		170&BCA770&CA770\\
+		61&MFC40N&FC40N\\
+		144&BBF29K&BBF29K\\
+		204&AA251MD&AA25D\\
+		\bottomrule
+	\end{tabular}
+\end{table}
+
+
+\begin{figure}[H]
+\centering
+\includegraphics[width=0.5\linewidth]{Imagenes/P1e_97}
+\caption{Error en la placa 97}
+\label{fig:p1e96}
+\end{figure}
+
+\begin{figure}[H]
+\centering
+\includegraphics[width=0.5\linewidth]{Imagenes/P1e_96}
+\caption{Error en la placa 96}
+\label{fig:p1e97}
+\end{figure}
+
+\begin{figure}[H]
+\centering
+\includegraphics[width=0.5\linewidth]{Imagenes/P1e_61}
+\caption{Error en la placa 61}
+\label{fig:p1e61}
+\end{figure}
+
+\begin{figure}[H]
+\centering
+\includegraphics[width=0.5\linewidth]{Imagenes/P1e_144}
+\caption{Error en la placa 144}
+\label{fig:p1e144}
+\end{figure}
+
+
+\begin{figure}[H]
+\centering
+\includegraphics[width=0.5\linewidth]{Imagenes/P1e_204}
+\caption{Error en la placa 204}
+\label{fig:p1e204}
+\end{figure}
+
+
+
+En la figura \ref{fig:p1e97} y \ref{fig:p1e144} se detectaron todos los caracteres de la placa y además otro contorno con características matemáticas similares a las de un caracter fue detectado, siendo un total de 8 contornos en estas placas. Dado que el sistema es diseñado para detectar un máximo de 7 caracteres, la detección y extracción del sistema ve este caso como un error. Por otro lado, tener un contorno que no contiene un caracter genera una incongruencia matemática en el procesamiento de reconocimiento lo cual concluye en un error. Es por eso que la placa 61 de la figura \ref{fig:p1e61} es clasificada como error a pesar de tener solo 7 contornos. Este tipo de errores se puede corregir estableciendo un margen dónde si las coordenadas del contornos se encuentran por fuera de este margen entonces no sea tomando en cuenta para la detección y extracción.
 
  
 
@@ -225,7 +291,7 @@ El primer módulo por evaluar es el \textit{Módulo de detección de placa}. Como s
 	\end{tabular}
 \end{table}
 
-De esta forma, el sistema continúa hasta la detección de caracteres. De las 9 placas ingresadas al siguiente módulo se detectaron todos los caracteres. Los resultados de detección se presentan a continuación:
+De esta forma, el sistema continúa hasta la detección de caracteres. Dado que las 9 placas ingresadas al siguiente módulo se detectaron todos los caracteres. Los resultados de detección se presentan a continuación:
  
  \begin{figure}[H]
  	\centering
@@ -302,23 +368,23 @@ De esta forma, el sistema continúa hasta la detección de caracteres. De las 9 pl
 		2&ABW19H&ABW19H&ABW19H \\
 		3&AB769RR&AB769RR&AB769RR \\
 		4&AB257XA&AB257XA&AB257XA \\
-		5&AH503HA&AH503HA&AH503HA \\
-		6&AF230DA&AF230DA&XF23ODA \\
+		5&AH503HA&AH503HA&AH503HA \\ 
+		6&\textbf{AF230DA}&\textbf{AF230DA}&\textbf{XF23ODA} \\
 		7&AB158UA&AB158UA&AB158UA \\
 		9&AE351DA&AE351DA&AE351DA \\
-		10&AHB00T&AHB00T&AH8007 \\
+		10&\textbf{AHB00T}&\textbf{AHB00T}&\textbf{AH8007} \\
  		\bottomrule
  	\end{tabular}
  \end{table}
  
- Se observa que la placa de la figura \ref{fig:extraccar6} el algoritmo no reconoció correctamente el número 0 clasificándolo como una O. Este error ocurrió debido a los factores externos que afectan las características físicas de la placa. Como se puede notar esta placa se encuentra bastante deteriorada por lo que las manchas agregan bastante ruido para el algoritmo de reconocimiento. Las irregularidades físicas que se aprecian matricula indicen significativamente en el procesamiento de imagen para la detección de contornos en el área de la placa. En consecuencia, la detección del contorno como en el primer carácter se ve influenciado por las manchas alrededor y provoca una incorrecta extracción.
+ Se observa que la placa de la figura \ref{fig:extraccar6} el algoritmo no reconoció correctamente el número 0 clasificándolo como una O. Este error ocurrió dado los factores externos que afectan las características físicas de la placa. Como se puede observar, esta placa se encuentra bastante deteriorada físicamente por lo que las manchas agregan bastante ruido para el algoritmo de reconocimiento. Las irregularidades físicas que se aprecian matricula indicen significativamente en el procesamiento de imagen para la detección de contornos en el área de la placa. En consecuencia, la detección del contorno, como en el primer carácter, se ve influenciado por las manchas alrededor y desemboca en una extracción inexacta.
  
  \begin{table}[H]
 	\centering
 	\caption{Desempeño con nuevas entradas }\label{Tab:producion}
 	\begin{tabular}{lccc}
 		\toprule
-		Carácter & Tasa de exito & Detectados & Reconocidos \\
+		Carácter & Tasa de éxito & Detectados & Reconocidos \\
 		\midrule
 		0 & 0.8 & 5 & 4 \\
 		1 & 1.0 & 3 & 3 \\
@@ -364,9 +430,9 @@ De esta forma, el sistema continúa hasta la detección de caracteres. De las 9 pl
   
   \subsection{Tiempos de ejecución}
   
-  Otro aspecto crucial en la investigación es el tiempo de entrenamiento de la SVM el cual fue de 1.29 para la base de datos construída y las carcterísticas descritas del computador. 
+  Otro aspecto crucial en la investigación fue el tiempo de entrenamiento de la SVM el cual fue de 1.29s, para la base de datos construída y las características descritas del computador. 
   
-  Por otro lado, en la Tabla \ref{Tab:prueba3}se puede observar los tiempos de procesamiento de imagenes y reconocimiento de caracteres obtenidos en la prueba de  \textit{Reconocimiento de caracteres que no forman parte de la base de datos}. 
+  En la Tabla \ref{Tab:prueba3} se puede observar los tiempos de procesamiento de imágenes y reconocimiento de caracteres obtenidos en la prueba de  \textit{Reconocimiento de caracteres que no forman parte de la base de datos}. 
   
   
     \begin{table}[H]
