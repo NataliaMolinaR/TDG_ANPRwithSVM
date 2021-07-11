@@ -1,25 +1,28 @@
 % !TeX spellcheck = es_ES
 % !TeX encoding = ISO-8859-1
 
-Los primeros indicios del uso de la energía eléctrica sucedieron en el cuarto final del siglo XIX. La sustitución del gas y aceite por la electricidad además de ser un proceso técnico fue un verdadero cambio social que implicó modificaciones extraordinarias en la vida cotidiana de las personas, cambios que comenzaron por la sustitución del alumbrado público y posteriormente por varias clases de procesos industriales como motores, metalurgia, refrigeración y de último llegaron a las comunicaciones con la radio y la telefonía.\\
+ Con el pasar de los años y los avances de la tecnología la automatización de procesos ha ganado importancia como la innovación que ha dado paso a la nueva sociedad tecnológica que hoy conocemos. En diferentes campos industriales, comerciales y militares la automatización de proceso ha reemplazado la labor del ser humano en tareas repetitivas en un principio. Conforme el desarrollo de la tecnología avanza las aplicaciones modernas han ganado complejidad exigiendo la utilización de sensórica más complejas y sistemas de control con capacidad de toma de decisiones. Así, la innovación ha evolucionado desde cámaras de vigilancia a sistemas de seguridad con reconocimiento de objetos y movimiento. Los sensores ópticos, en especial las cámaras de fotográfica, destacan como instrumentación eficiente para  generar sistemas modernos que desde la captura de imagen pueden extraer información de interés que permita la toma de decisiones, como lo son los sistemas de Reconocimiento Automático de Número de Placa (ANPR por sus siglas en inglés). No obstante,  emplear sensores como las cámaras fotográficas requieren el diseño de sistemas computacionales capaces de procesar y utilizar la información contenidas en tales imágenes  mediante diferentes procedimientos matemáticos, geométricos y estadísticos que en conjunto se conoce como Visión por Computador. 
+ 
+ 
+Con lo anterior expuesto, este trabajo plantea el diseño de un sistema de Reconocimiento Automático de Matrícula vehícular, cuyo propósito es automatizar el la identificación del vehículo que posteriormente se podrá integrar a un sistema de entrada y salida en estacionamiento o sistemas de vigilancia , sistemas de rastreo, entre otros.
+	
+Dentro de los alcances de este proyecto se encuentra solo el diseño y desarrollo de un sistema de reconocimiento de matrículas vehículares, empleando procesamiento de imágenes  machine learning. Este diseño posteriormente podrá ser llevado a un prototipo de implementación física. Las pruebas realizadas en este trabajo son sobre imágenes capturadas en ambientes con condiciones controladas en iluminación y posición. 
 
-El siguiente cambio de paradigma en el que se vio involucrado la electricidad tuvo lugar a lo largo del siglo XX y surge desde la necesidad de facilitar las tareas realizadas a diario en casa. En ello los investigadores de la época vieron una solución adaptando equipos con energía eléctrica para su uso en el hogar. Las industrias replicaron el crecimiento tecnológico que tuvieron en sus productos, lo que trajo como consecuencia el desarrollo los electrodomésticos. La primera producción de aparatos en masa como refrigeradores, lavadoras, televisores y radios sucedieron en esta época y tuvieron una alta receptividad por parte de los compradores. La invención del transistor solo aceleró el reemplazo de aparatos dada su capacidad de minimizar los equipos.\\
+Se presenta un desarrollo apoyado en bibliotecas de código abierto que ofrecen técnicas optimizadas en el procesamiento de imágenes los cuales se basan en técnicas matemáticas como \textit{Histogramas de Gradientes Orientados}. El desarrollo del módulo de procesamiento de imagen da salida a la entrada a la Máquina de Soporte Vectorial que se encargará mediante el modelo generado de reconocer la identificación de la matrícula. Las principales debilidades de esta estructura se encuentran en el procesamiento de imágenes dónde la posición de captura incide directamente en el desempeño general. Esta idea general busca formar parte del conjunto de aplicaciones del campo de investigación reconocimiento de texto utilizando algoritmos de aprendizaje automático basados en la detección y reconocimiento de patrones. 
 
-La integración de la electrónica a la industria fomentó la creación de sistemas automatizados de adquisición de datos, supervisión y control también llamados sistemas \textit{SCADA} por sus siglas en inglés. Estos sistemas manejan áreas críticas de las industrias y son parte de los procesos fundamentales de muchas de ellas por lo que necesitan ser diseñados con robustez, fiabilidad y seguridad. La aparición del Internet y las comunicaciones modernas en estos sistemas permite a los usuarios, de manera inálambrica incluso, monitorear y actuar sobre el sistema a distancia, sin presencia física en la planta.\\
 
-Además de poder monitorear y realizar acciones sobre los sistemas, los instrumentos de medida de última tecnología se fabrican de modo que puedan ser compatibles con medios de comunicación inalámbricas lo que posibilita la transmisión de datos adquiridos sin necesidad de cable a la central del sistema \textit{SCADA}. El presente trabajo de grado pretende realizar el diseño de un sistema de adquisición y transmisión de datos integrando microcontroladores ESP32 a medidores de energía eléctrica para formar una red mallada inalámbrica capaz de transmitir los datos recolectados a un punto central.
+En el Capítulo 1 se expone el planteamiento del problema, junto con los
+objetivos general y específicos del presente Trabajo Especial de Grado.
 
-En este archivo debe escribir su introducción.
+En el Capítulo 2 se muestra el marco teórico, en donde se explican los conceptos,
+herramientas y métodos utilizados en el presente proyecto.
 
-De acuerdo a Brea  la transformada de Laplace debe estudiarse como
-una función definida en el campo de los números complejos
-\cite{brea5}.
+En el Capítulo 3 se ofrece una descripción general del proyecto, donde se
+explica el funcionamiento del sistema propuesto y los diferentes módulos que lo conforman con una descripción específica, del software y bibliotecas utilizadas.
 
-Otro mode de referencial es \citep{brea5}
+En el Capítulo 4 se reportan las diferentes pruebas realizadas para validar el
+funcionamiento de la rutina, como también sus respectivos resultados. Por último,
+se presentan las conclusiones y algunas recomendaciones para futuros proyectos.
 
-El resto del reporte consta de: en el Capítulo \ref{CAP:hist} se
-describe...
-
-En el trabajo se emplea el enfoque de \cite{brigham1}
-
-De acuerdo a la ecuación
+	
+	
