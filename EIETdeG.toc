@@ -15,38 +15,39 @@
 \contentsline {section}{\numberline {2.1}Imagen digital}{7}{section.2.1}%
 \contentsline {section}{\numberline {2.2}Espacios de color}{8}{section.2.2}%
 \contentsline {section}{\numberline {2.3}Procesamiento de imágenes digitales}{8}{section.2.3}%
-\contentsline {section}{\numberline {2.4}Mascaras derivativas discretas}{9}{section.2.4}%
-\contentsline {section}{\numberline {2.5}Binarización}{11}{section.2.5}%
-\contentsline {section}{\numberline {2.6}Lenguaje de programación Python 3}{12}{section.2.6}%
-\contentsline {section}{\numberline {2.7}OpenCV 3.4}{12}{section.2.7}%
-\contentsline {section}{\numberline {2.8}Scikit-Learn}{14}{section.2.8}%
-\contentsline {section}{\numberline {2.9}Máquina de Soporte Vectorial}{14}{section.2.9}%
-\contentsline {chapter}{MARCO METODOLÓGICO}{19}{chapter.3}%
-\contentsline {section}{\numberline {3.1}Tipo de investigación}{19}{section.3.1}%
-\contentsline {section}{\numberline {3.2}Fases metodológicas}{19}{section.3.2}%
-\contentsline {subsection}{\numberline {3.2.1}Recopilación de información}{19}{subsection.3.2.1}%
-\contentsline {subsection}{\numberline {3.2.2}Selección}{20}{subsection.3.2.2}%
-\contentsline {subsection}{\numberline {3.2.3}Evaluación de aplicabilidad}{20}{subsection.3.2.3}%
-\contentsline {subsection}{\numberline {3.2.4}Programación y diseño}{21}{subsection.3.2.4}%
-\contentsline {subsection}{\numberline {3.2.5}Implementación y pruebas}{21}{subsection.3.2.5}%
-\contentsline {chapter}{DEFINICIÓN Y DESCRIPCIÓN DEL SOFTWARE}{22}{chapter.4}%
-\contentsline {section}{\numberline {4.1}Arquitectura de software}{22}{section.4.1}%
-\contentsline {section}{\numberline {4.2}Componentes del sistema}{23}{section.4.2}%
-\contentsline {section}{\numberline {4.3}Computador.}{23}{section.4.3}%
-\contentsline {section}{\numberline {4.4}Base de datos}{24}{section.4.4}%
-\contentsline {section}{\numberline {4.5}Software}{26}{section.4.5}%
-\contentsline {subsection}{\numberline {4.5.1}Detección de la placa}{27}{subsection.4.5.1}%
-\contentsline {subsection}{\numberline {4.5.2}Segmentación de los caracteres.}{28}{subsection.4.5.2}%
-\contentsline {subsection}{\numberline {4.5.3}Clasificación de caracteres.}{30}{subsection.4.5.3}%
-\contentsline {section}{\numberline {4.6}Módulo de entrenamiento}{31}{section.4.6}%
-\contentsline {chapter}{PRUEBAS Y RESULTADOS}{33}{chapter.5}%
-\contentsline {section}{\numberline {5.1}Desempeño del sistema}{33}{section.5.1}%
-\contentsline {subsection}{\numberline {5.1.1}Reconocimiento de caracteres que forman parte de la base de datos}{34}{subsection.5.1.1}%
-\contentsline {subsection}{\numberline {5.1.2}Reconocimiento de caracteres que no forman parte de la base de datos}{42}{subsection.5.1.2}%
-\contentsline {subsection}{\numberline {5.1.3}Tiempos de ejecución}{47}{subsection.5.1.3}%
-\contentsline {chapter}{CONCLUSIONES}{48}{chapter.6}%
-\contentsline {chapter}{RECOMENDACIONES}{51}{chapter.7}%
-\contentsline {chapter}{Código del programa ANPR}{52}{appendix.Alph1}%
-\contentsline {chapter}{Código del programa Detección de placa}{54}{appendix.Alph2}%
-\contentsline {chapter}{Código del programa Detección de caracteres}{58}{appendix.Alph3}%
-\contentsline {chapter}{REFERENCIAS}{64}{appendix*.7}%
+\contentsline {subsection}{\numberline {2.3.1}Mascaras derivativas discretas}{9}{subsection.2.3.1}%
+\contentsline {subsection}{\numberline {2.3.2}Binarización}{11}{subsection.2.3.2}%
+\contentsline {section}{\numberline {2.4}Máquina de Soporte Vectorial}{12}{section.2.4}%
+\contentsline {section}{\numberline {2.5}Lenguaje de programación Python }{15}{section.2.5}%
+\contentsline {section}{\numberline {2.6}OpenCV}{16}{section.2.6}%
+\contentsline {section}{\numberline {2.7}Scikit-Learn}{17}{section.2.7}%
+\contentsline {chapter}{MARCO METODOLÓGICO}{18}{chapter.3}%
+\contentsline {section}{\numberline {3.1}Tipo de investigación}{18}{section.3.1}%
+\contentsline {section}{\numberline {3.2}Fases metodológicas}{18}{section.3.2}%
+\contentsline {subsection}{\numberline {3.2.1}Recopilación de información}{18}{subsection.3.2.1}%
+\contentsline {subsection}{\numberline {3.2.2}Selección}{19}{subsection.3.2.2}%
+\contentsline {subsection}{\numberline {3.2.3}Evaluación de aplicabilidad}{19}{subsection.3.2.3}%
+\contentsline {subsection}{\numberline {3.2.4}Programación y diseño}{20}{subsection.3.2.4}%
+\contentsline {subsection}{\numberline {3.2.5}Implementación y pruebas}{20}{subsection.3.2.5}%
+\contentsline {chapter}{DEFINICIÓN Y DESCRIPCIÓN DEL SOFTWARE}{21}{chapter.4}%
+\contentsline {section}{\numberline {4.1}Arquitectura de software}{21}{section.4.1}%
+\contentsline {section}{\numberline {4.2}Componentes del sistema}{22}{section.4.2}%
+\contentsline {section}{\numberline {4.3}Computador.}{22}{section.4.3}%
+\contentsline {section}{\numberline {4.4}Base de datos}{23}{section.4.4}%
+\contentsline {section}{\numberline {4.5}Software}{25}{section.4.5}%
+\contentsline {subsection}{\numberline {4.5.1}Detección de la placa}{26}{subsection.4.5.1}%
+\contentsline {subsection}{\numberline {4.5.2}Segmentación de los caracteres.}{27}{subsection.4.5.2}%
+\contentsline {subsection}{\numberline {4.5.3}Clasificación de caracteres.}{29}{subsection.4.5.3}%
+\contentsline {section}{\numberline {4.6}Módulo de entrenamiento}{30}{section.4.6}%
+\contentsline {chapter}{PRUEBAS Y RESULTADOS}{32}{chapter.5}%
+\contentsline {section}{\numberline {5.1}Desempeño del sistema}{32}{section.5.1}%
+\contentsline {subsection}{\numberline {5.1.1}Reconocimiento de caracteres que forman parte de la base de datos}{33}{subsection.5.1.1}%
+\contentsline {subsection}{\numberline {5.1.2}Reconocimiento de caracteres que no forman parte de la base de datos}{41}{subsection.5.1.2}%
+\contentsline {subsection}{\numberline {5.1.3}Tiempos de ejecución}{46}{subsection.5.1.3}%
+\contentsline {chapter}{CONCLUSIONES}{47}{chapter.6}%
+\contentsline {chapter}{RECOMENDACIONES}{50}{chapter.7}%
+\contentsline {chapter}{Código del programa ANPR}{51}{appendix.Alph1}%
+\contentsline {chapter}{Código del programa Detección de placa}{53}{appendix.Alph2}%
+\contentsline {chapter}{Código del programa Detección de caracteres}{57}{appendix.Alph3}%
+\contentsline {chapter}{Pseudocódigo}{63}{appendix.Alph4}%
+\contentsline {chapter}{REFERENCIAS}{65}{appendix*.7}%

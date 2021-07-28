@@ -42,7 +42,7 @@ Se define así al conjunto de técnicas y métodos desarrollados para manipular la 
 	
 \end{itemize}
 
-\section{Mascaras derivativas discretas}
+\subsection{Mascaras derivativas discretas}
 
 El proceso de filtrado de una imagen se realiza mediante la convolución entre los distintos pixeles que componen la imagen y una matriz de convolución. Esta matriz es denominada "kernel" del filtro. Dependiendo de los valores que componen al kernel y su distribución se obtienen diferentes resultados de filtrado en la imagen. Las mascaras derivativas discretas no son más que Kernels cuyos elementos representan una aproximación de la derivada \cite{MaskDev}. En la figura \ref{fig:convolucionsobreunaimagen} se puede apreciar el proceso de convolución sobre un pixel.
 
@@ -90,7 +90,7 @@ Existen otras funciones especializadas en la detección de contornos como lo es C
 
 
 
-\section{Binarización}
+\subsection{Binarización}
 
 
 
@@ -133,53 +133,6 @@ En base a las particularidades entre algoritmos categorizan los métodos de umbra
 	manual o automática, a cada píxel dependiendo
 	
 \end{itemize}
-
-
-
-
-\section{Lenguaje de programación Python 3}
-
-Python es un lenguaje de programación multiparadigma, multiplataforma, dinámico e interpretado, es decir, se ejecuta directamente mediante un intérprete dejando a un lado la compilación. Actualmente, Python es  administrado por Python Software Foundation. El software posee una licencia de código abierto denominada Python Software Fondation License.
-
-
-Python 3 se caracteriza por su amplia aplicabilidad en diferentes campos del desarrollo de nuevas tecnologías como lo es el Machine Learning, Data Science, Vision por Computador, entre otros. Python soporta diferentes librerías como  OpenCV  y Scikit-Learn, las cuales cuentan con extensa documentación acerca de sus aplicaciones e implementaciones. 
-
-\section{OpenCV 3.4}
-
-Open Computer Vision (OpenCV por sus siglás en inglés) es una librería libre de visión artificial desarrollada originalmente por Intel. Especializada en la visión por computador y el procesamiento de imágenes cuenta con diferentes herramientas que permiten manipular la información dentro de una imagen. Para mayor información visitar  https://opencv.org/.
-
-
-Entre las funciones que ofrece:
-
-\begin{itemize}
-	
-	\item \verb|cv2.imread()|: permite llamar una imagen digital al ambiente de desarrollo empleado para así poder manipularla mediante todas las otras herramientas que ofrece la librería. \cite{imread}
-	
-	
-	\item \verb|img.shape[]|: lee y devuelve las dimensiones de una imagen digital en función del ancho y alto. \cite{imgshape}
-	
-	\item \verb|cv2.resize()|: redimensiona el ancho y alto de una imagen de acuerdo a los parámetros de entrada especificados.  \cite{resize}
-	
-	\item \verb|cv2.GaussianBlur()|: es un filtro que suaviza la definición de la imagen a través de un kernel Gaussiano. El filtrado gaussiano se realiza convolucionando cada punto de la matriz de entrada con un núcleo gaussiano y luego sumándolos a todos para producir la matriz de salida. \cite{GaussianBlur}
-	
-	\item \verb|cv2.cvtColor()|: cambia el espacio de color de una imagen digital 
-	a otro. \cite{cvTcolor}
-	
-	\item \verb|cv2.adaptiveThreshold()|: el método adaptativetreshold binariza una imagen de acuerdo a un valor de umbral que cálcula para pequeñas regiones de la imagen digital. Así, el filtro gaussiano realiza una convolución con cada punto de la matriz generando una matriz de salida. El valor de umbral es calculado como la suma ponderada de los valores del vecindario donde los pesos son una ventana gaussiana. Las dimesiones del kernel representa el tamaño del vecindario de pixeles usados para calcular el valor umbral. \cite{AdaptTresh}
-	
-	\item \verb|cv2.dilate()|: Dilate es un método de transformación morfológica. Las operaciones morfológicas aplican un elemento estructurante a la imagen de entrada y generan una de salida con características morfológicas diferentes. Dilate utiliza un kernel \textit{B} el cual se escanea sobre la imagen, calcula el valor máximo de pixeles superpuestos por \textit{B}  y reemplazamos el píxel de la imagen en la posición del punto de anclaje con ese valor máximo. Como se puede deducir, esta operación de maximización hace que las regiones brillantes dentro de una imagen "crezcan". \cite{Dilate}
-	
-	\item \verb|cv2.findcontours()|: definiendo contorno como una curva todos los puntos continuos que tienen el mismo color o intensidad, este método encuentra los contornos definidos en una imagen, preferiblemente binarizada. Este método requiere diferentes parámetros de entrada que definen su modo de funcionamiento como le modo de recuperación de contorno y método de aproximación de contorno. Ambos parámetros son explicados en las fuentes de documentación. \cite{findContours}
-	
-	\item \verb|cv2.boundingRect()|: esta función calcula y devuelve el rectángulo delimitador de un contorno o un conjunto de píxeles de la misma intensidad y distintos de cero. Esta función cálcula un rectangulo recto, es decir, no considera ángulo de rotación por lo tanto el área del rectángulo no será mínima. Esta función devuelve las coordenadas de la esquina superior izquierda del rectángulo, su ancho y alto. \cite{boundRectangle}
-	
-	\item \verb|cv2.rectangle()|: esta función es una de las funciones de dibujo de la librería \textit{OpenCV} y dibuja un rectángulo en la imagen, dadas unas coordenadas específicas, con color y ancho de línea específico. La función devuelve la imagen con dicho polígono dibujado. \cite{rectangle}
-	
-\end{itemize} 	
-
-\section{Scikit-Learn}
-
-Scikit-Learn por su parte, es una biblioteca con basto desarrollo en los aprendizajes automático de máquina de software libre para el lenguaje de programación Python. Cuenta con varios algoritmos de regresión, clasificación y análisis de grupos como SVMs, bosques aleatorios, K-means, entre otros. Esta biblioteca inició como un proyecto de Google Summer of code por David Cournapeau en el 2007. Para mayor información y detalles acerca de la biblioteca dirigirse a http://scikit-learn.org/stable/.  
 
 
 \section{Máquina de Soporte Vectorial}
@@ -267,5 +220,52 @@ Algunas de las ventajas de las SVMs frente otros algoritmos son \cite{Sklearn}:
 	\item Es versátil: diferentes funciones de Kernel pueden ser especificadas para la función de decisión. Kernels comunes son proveídos pero es posible personalizarlos. 
 	
 \end{itemize}
+
+
+
+\section{Lenguaje de programación Python }
+
+Python es un lenguaje de programación multiparadigma, multiplataforma, dinámico e interpretado, es decir, se ejecuta directamente mediante un intérprete dejando a un lado la compilación. Actualmente, Python es  administrado por Python Software Foundation. El software posee una licencia de código abierto denominada Python Software Fondation License.
+
+
+Python 3 se caracteriza por su amplia aplicabilidad en diferentes campos del desarrollo de nuevas tecnologías como lo es el Machine Learning, Data Science, Vision por Computador, entre otros. Python soporta diferentes librerías como  OpenCV  y Scikit-Learn, las cuales cuentan con extensa documentación acerca de sus aplicaciones e implementaciones. 
+
+\section{OpenCV}
+
+Open Computer Vision (OpenCV, por sus siglás en inglés) es una librería libre de visión artificial desarrollada originalmente por Intel. Especializada en la visión por computador y el procesamiento de imágenes cuenta con diferentes herramientas que permiten manipular la información dentro de una imagen. Para mayor información visitar  https://opencv.org/.
+
+
+Entre las funciones que ofrece:
+
+\begin{itemize}
+	
+	\item \verb|cv2.imread|: permite llamar una imagen digital al ambiente de desarrollo empleado para así poder manipularla mediante todas las otras herramientas que ofrece la librería. \cite{imread}
+	
+	
+	\item \verb|img.shape|: lee y devuelve las dimensiones de una imagen digital en función del ancho y alto. \cite{imgshape}
+	
+	\item \verb|cv2.resize|: redimensiona el ancho y alto de una imagen de acuerdo a los parámetros de entrada especificados.  \cite{resize}
+	
+	\item \verb|cv2.GaussianBlur|: es un filtro que suaviza la definición de la imagen a través de un kernel Gaussiano. El filtrado gaussiano se realiza convolucionando cada punto de la matriz de entrada con un núcleo gaussiano y luego sumándolos a todos para producir la matriz de salida. \cite{GaussianBlur}
+	
+	\item \verb|cv2.cvtColor|: cambia el espacio de color de una imagen digital 
+	a otro. \cite{cvTcolor}
+	
+	\item \verb|cv2.adaptiveThreshold|: el método adaptativetreshold binariza una imagen de acuerdo a un valor de umbral que cálcula para pequeñas regiones de la imagen digital. Así, el filtro gaussiano realiza una convolución con cada punto de la matriz generando una matriz de salida. El valor de umbral es calculado como la suma ponderada de los valores del vecindario donde los pesos son una ventana gaussiana. Las dimesiones del kernel representa el tamaño del vecindario de pixeles usados para calcular el valor umbral. \cite{AdaptTresh}
+	
+	\item \verb|cv2.dilate()|: Dilate es un método de transformación morfológica. Las operaciones morfológicas aplican un elemento estructurante a la imagen de entrada y generan una de salida con características morfológicas diferentes. Dilate utiliza un kernel \textit{B} el cual se escanea sobre la imagen, calcula el valor máximo de pixeles superpuestos por \textit{B}  y reemplazamos el píxel de la imagen en la posición del punto de anclaje con ese valor máximo. Como se puede deducir, esta operación de maximización hace que las regiones brillantes dentro de una imagen "crezcan". \cite{Dilate}
+	
+	\item \verb|cv2.findcontours|: definiendo contorno como una curva todos los puntos continuos que tienen el mismo color o intensidad, este método encuentra los contornos definidos en una imagen, preferiblemente binarizada. Este método requiere diferentes parámetros de entrada que definen su modo de funcionamiento como le modo de recuperación de contorno y método de aproximación de contorno. Ambos parámetros son explicados en las fuentes de documentación. \cite{findContours}
+	
+	\item \verb|cv2.boundingRect|: esta función calcula y devuelve el rectángulo delimitador de un contorno o un conjunto de píxeles de la misma intensidad y distintos de cero. Esta función cálcula un rectangulo recto, es decir, no considera ángulo de rotación por lo tanto el área del rectángulo no será mínima. Esta función devuelve las coordenadas de la esquina superior izquierda del rectángulo, su ancho y alto. \cite{boundRectangle}
+	
+	\item \verb|cv2.rectangle|: esta función es una de las funciones de dibujo de la librería \textit{OpenCV} y dibuja un rectángulo en la imagen, dadas unas coordenadas específicas, con color y ancho de línea específico. La función devuelve la imagen con dicho polígono dibujado. \cite{rectangle}
+	
+\end{itemize} 	
+
+\section{Scikit-Learn}
+
+Scikit-Learn por su parte, es una biblioteca con basto desarrollo en los aprendizajes automático de máquina de software libre para el lenguaje de programación Python. Cuenta con varios algoritmos de regresión, clasificación y análisis de grupos como SVMs, bosques aleatorios, K-means, entre otros. Esta biblioteca inició como un proyecto de Google Summer of code por David Cournapeau en el 2007. Para mayor información y detalles acerca de la biblioteca dirigirse a http://scikit-learn.org/stable/.  
+
 
 

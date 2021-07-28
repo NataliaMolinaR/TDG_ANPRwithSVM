@@ -362,10 +362,10 @@ A quien desees dedicar este trabajo
 \begin{spacing}{1}
 \begin{center}%
 
-\textbf{Autor del Trabajo de Grado}
+\textbf{Natalia Molina.}
 
 \begin{large}
-\textbf{Título del Trabajo de Grado}
+\textbf{DISEÑO DE UN SISTEMA DE RECONOCIMIENTO DE MATRÍCULAS VEHICULARES A TRAVÉS DEL PROCESAMIENTO DE IMÁGENES Y MACHINE LEARNING}
 \end{large}
 \end{center}
 
@@ -376,9 +376,12 @@ Escuela de Ingeniería Eléctrica. Mención Electrónica. Año 2021,
 xvii, 144 pp.}
 
 \noindent
-\textbf{Palabras Claves:} Procesamiento de imagenes, Máquina de soporte Vectorial, SVM, detección, reconocimiento. \\[1ex]
+\textbf{Palabras Claves:} Procesamiento de imágenes, Máquina de soporte Vectorial, Machine learning. \\[1ex]
 
-\noindent \textbf{Resumen.-} La presente investigación propone el diseño de un sistema de Reconocimiento Automático de Matrícula vehícular mediante un programa que integra dos módulos con la capacidad de localizar y reconocer la matrícula vehícular en un ambiente con condiciones controladas. El diseño se basó en el procesamiento de imágenes y la Máquina de Soporte Vectorial,  empleando herramientas optimizadas provistas por bibliotecas de código abierto como OpenCV  y Sklearn. Entre las principales técnicas de procesamiento de imágenes empleadas se tiene la Umbralización adaptativa de OpenCV que permitió al sistema detectar la matrícula y los caracteres en ella. El sistema es capaz de reconocer las matrículas con  tasa de éxito mayor al 90\% en las diferentes pruebas obtenidas, con un ajuste lineal del modelo generado por la SVM y una base de datos de apenas 1496. Los tiempos de reconocimiento en promedio se obtuvo 0.26s mientras que el sistema completo, por su parte, 0.88s. 
+\noindent \textbf{Resumen.-} La presente investigación propone el diseño de un sistema de Reconocimiento Automático de Matrícula vehícular mediante un programa que integra dos módulos con la capacidad de localizar y reconocer la matrícula vehícular en un ambiente con condiciones controladas. El diseño propuesto se basa en seguir la siguiente secuencia de pasos: detectar la placa, segmentar los caracteres y reconocer la matrícula mediante el algoritmo de aprendizaje automático\textit{Máquina de Soporte Vectorial}. Para lograr lo anterior se propone implementar de manera modular la lógica necesaria para cada etapa mencionada.  Considerando lo anterior, se llevó a cabo una investigación documental acerca de las técnicas de procesamiento de imágenes y la Máquina de Soporte Vectorial, así como lenguajes y bibliotecas de código abierto especializada en estos campos de investigación. Se seleccionaron las técnicas de procesamiento de imágenes más adecuadas para los requerimientos de la detección de placa y segmentación de caracteres, considerando herramientas optimizadas y ampliamente utilizados en la visión por computador. Mientras que, considerando su capacidad y efectividad para el reconocimiento de patrones, se seleccionó la Maquina de Soporte Vectorial con el fin de explorar su potencialidad en la clasificación de caracteres. Se realizaron experiencias computacionales orientadas a la verificación del sistema de reconocimiento dónde se obtuvo que fue capaz de reconocer efectiva y eficientemente las matrículas.
+
+
+% con un ajuste lineal del modelo generado por la SVM y una base de datos de apenas 1496. Los tiempos de reconocimiento en promedio se obtuvo 0.26s mientras que el sistema completo, por su parte, 0.88s. 
 
 \end{spacing}
 
@@ -458,6 +461,9 @@ xvii, 144 pp.}
 \appendix
 
 \renewcommand \thechapter{\Roman{chapter}}
+
+
+
 %==================================================================
 \chapter{Código del programa ANPR}\label{CAP:anexo0}
 %\markboth{Tu anexo}{Tu anexo}%
@@ -473,6 +479,11 @@ xvii, 144 pp.}
 \chapter{Código del programa Detección de caracteres}\label{CAP:anexo2}
 %\markboth{Tu anexo}{Tu anexo}%
 \input{apendice2.tex}%
+
+%==================================================================
+\chapter{Pseudocódigo}\label{CAP:anexo3}
+%\markboth{Tu anexo}{Tu anexo}%
+\input{apendice3.tex}%
 
 
 

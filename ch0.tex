@@ -1,26 +1,28 @@
 % !TeX spellcheck = es_ES
 % !TeX encoding = ISO-8859-1
 
- Con el pasar de los años y los avances de la tecnología la automatización de procesos ha ganado importancia como la innovación que ha dado paso a la nueva sociedad tecnológica que hoy conocemos. En diferentes campos industriales, comerciales y militares la automatización de proceso ha reemplazado la labor del ser humano en tareas repetitivas en un principio. Conforme el desarrollo de la tecnología avanza las aplicaciones modernas han ganado complejidad exigiendo la utilización de sensórica más complejas y sistemas de control con capacidad de toma de decisiones. Así, la innovación ha evolucionado desde cámaras de vigilancia a sistemas de seguridad con reconocimiento de objetos y movimiento. Los sensores ópticos, en especial las cámaras de fotográfica, destacan como instrumentación eficiente para  generar sistemas modernos que desde la captura de imagen pueden extraer información de interés que permita la toma de decisiones, como lo son los sistemas de Reconocimiento Automático de Número de Placa (ANPR por sus siglas en inglés). No obstante,  emplear sensores como las cámaras fotográficas requieren el diseño de sistemas computacionales capaces de procesar y utilizar la información contenidas en tales imágenes  mediante diferentes procedimientos matemáticos, geométricos y estadísticos que en conjunto se conoce como Visión por Computador. 
+ Con el pasar de los años y los avances de la tecnología la automatización de procesos ha ganado importancia como la innovación que ha dado paso a la nueva sociedad tecnológica que hoy conocemos. En diferentes campos industriales, comerciales y militares la automatización de procesos ha reemplazado la labor del ser humano en tareas repetitivas en un principio. Conforme el desarrollo de la tecnología avanza las aplicaciones modernas han ganado complejidad exigiendo la utilización de sensórica más complejas y sistemas de control con capacidad de toma de decisiones. Así, la innovación ha evolucionado desde cámaras de vigilancia a sistemas de seguridad con reconocimiento de objetos y movimiento. Los sensores ópticos, en especial las cámaras de fotográfica, destacan como instrumentación eficiente para  generar sistemas modernos que desde la captura de imagen pueden extraer información de interés que permita la toma de decisiones, como lo son los sistemas de Reconocimiento Automático de Número de Placa (ANPR, por sus siglas en inglés). No obstante,  emplear sensores como las cámaras fotográficas requieren el diseño de sistemas computacionales capaces de procesar y utilizar la información contenida en tales imágenes  mediante diferentes procedimientos matemáticos, geométricos y estadísticos, que en conjunto se conoce como Visión por Computador. 
  
  
-Con lo anterior expuesto, este trabajo plantea el diseño de un sistema de Reconocimiento Automático de Matrícula vehícular, cuyo propósito es automatizar el la identificación del vehículo que posteriormente se podrá integrar a un sistema de entrada y salida en estacionamiento o sistemas de vigilancia , sistemas de rastreo, entre otros.
+Con lo anterior expuesto, este trabajo plantea el diseño de un sistema de Reconocimiento Automático de Matrícula vehícular, cuyo propósito es automatizar la identificación del vehículo que posteriormente se podrá integrar a un sistema de entrada y salida en un estacionamiento o sistemas de vigilancia, sistemas de rastreo, entre otros.
 	
-Dentro de los alcances de este proyecto se encuentra solo el diseño y desarrollo de un sistema de reconocimiento de matrículas vehículares, empleando procesamiento de imágenes  machine learning. Este diseño posteriormente podrá ser llevado a un prototipo de implementación física. Las pruebas realizadas en este trabajo son sobre imágenes capturadas en ambientes con condiciones controladas en iluminación y posición. 
+Dentro de los alcances de este proyecto se encuentra solo el diseño y desarrollo de un sistema de reconocimiento de matrículas vehículares, empleando procesamiento de imágenes y machine learning. Este diseño posteriormente podrá ser llevado a un prototipo de implementación física. Las pruebas mostradas en este trabajo se realizaron sobre imágenes capturadas en ambientes con condiciones controladas en iluminación y posición. 
 
-Se presenta un desarrollo apoyado en bibliotecas de código abierto que ofrecen técnicas optimizadas en el procesamiento de imágenes los cuales se basan en técnicas matemáticas como \textit{Histogramas de Gradientes Orientados}. El desarrollo del módulo de procesamiento de imagen da salida a la entrada a la Máquina de Soporte Vectorial que se encargará mediante el modelo generado de reconocer la identificación de la matrícula. Las principales debilidades de esta estructura se encuentran en el procesamiento de imágenes dónde la posición de captura incide directamente en el desempeño general. Esta idea general busca formar parte del conjunto de aplicaciones del campo de investigación reconocimiento de texto utilizando algoritmos de aprendizaje automático basados en la detección y reconocimiento de patrones. 
+Para la implementación del sistema propuesto se utilizó el lenguaje de programación Python, que es libre y ofrece gran variedad de librerías de código abierto. En particular, Python cuenta con librerías optimizadas para el procesamiento de imágenes, los cuales se basan en técnicas matemáticas como \textit{Histogramas de Gradientes Orientados}. El desarrollo del módulo de procesamiento de imagen da salida a la entrada a la Máquina de Soporte Vectorial que se encargará mediante el modelo generado de reconocer la identificación de la matrícula. Las principales debilidades de esta estructura se encuentran en el procesamiento de imágenes dónde la posición de captura incide directamente en el desempeño general. Esta idea general busca formar parte del conjunto de aplicaciones del campo de investigación reconocimiento de texto utilizando algoritmos de aprendizaje automático basados en la detección y reconocimiento de patrones. 
 
 
-En el Capítulo 1 se expone el planteamiento del problema, junto con los
-objetivos general y específicos del presente Trabajo Especial de Grado.
+El resto del trabajo está organizado de la siguiente manera:
 
-En el Capítulo 2 se muestra el marco teórico, en donde se explican los conceptos,
-herramientas y métodos utilizados en el presente proyecto.
+En el Capítulo 1, se expone el planteamiento del problema, junto con los
+objetivos general y específicos del presente trabajo.
 
-En el Capítulo 3 se ofrece una descripción general del proyecto, donde se
-explica el funcionamiento del sistema propuesto y los diferentes módulos que lo conforman con una descripción específica, del software y bibliotecas utilizadas.
+En el Capítulo 2, se muestra el marco teórico, en donde se explican los conceptos,
+herramientas y métodos utilizado.
 
-En el Capítulo 4 se reportan las diferentes pruebas realizadas para validar el
+En el Capítulo 3, se ofrece una descripción general del proyecto, donde se
+explica el funcionamiento del sistema propuesto y los diferentes módulos que lo conforman, mostrando una descripción detallada del software y bibliotecas utilizadas.
+
+En el Capítulo 4, se reportan las diferentes pruebas realizadas para validar el
 funcionamiento de la rutina, como también sus respectivos resultados. Por último,
 se presentan las conclusiones y algunas recomendaciones para futuros proyectos.
 
