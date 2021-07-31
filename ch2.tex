@@ -4,22 +4,22 @@
 
 
 
-Para el desarrollo de este trabajo, es necesario manejar conceptos básicos de procesamiento de imagen y aprendizaje de máquina. 
+Para el desarrollo de este trabajo, es necesario manejar conceptos básicos del procesamiento de imagen y aprendizaje automático. 
 
 \section{Imagen digital}
 
-Una imagen se define, en este contexto, como la representación visual de un objeto real a través de técnicas como la fotografía, la pintura, el video, entre otras técnicas. Entonces, una imagen digital puede ser definida como una función bidimensional $f(x,y)$, dónde $(x,y)$  son coordenadas espaciales y f es la intensidad de la imagen en ese punto. Las imágenes digitales están compuestas por un número finito de elementos llamados pixel. Las imágenes digitales  dependiendo de si es dinámica o estática se pueden clasificar en dos tipos: imagen matricial o gráfico vectorial. 
+Una imagen se define, en este contexto, como la representación visual de un objeto real a través de técnicas como la fotografía, la pintura, el video, entre otras técnicas. Entonces, una imagen digital puede ser definida como una función bidimensional $f(x,y)$, dónde $(x,y)$  son coordenadas espaciales y $f(x,y)$ es la intensidad de la imagen en ese punto. Las imágenes digitales están compuestas por un número finito de elementos llamados \textit{pixel}. Las imágenes digitales  dependiendo de si es dinámica o estática se pueden clasificar en dos tipos: \textit{imagen matricial} o \textit{gráfico vectorial}. 
 
 
 El gráfico vectorial o la imagen vectorial, es una imagen digital formada por entidades geométricas independientes (segmentos, polígonos, arcos, entre otros), cada uno de ellos definidos por fórmulas matemáticas. Se construyen a partir de vectores y no se dividen en unidades mínimas de información como los pixeles, sino en manchas de color y lineas \cite{Alonso2018} . 
 
-Por otro lado, la imagen matricial o mapa de bits es una estructura  que representa una rejilla rectangular  compuesta de pixeles o puntos de color. Estos, se suelen definir por su altura y grosor (en pixeles) por su profundidad de color. Esto determina el número de colores distintos que se pueden almacenar en cada punto individual. La calidad de las imagenes rasterizadas está definida por el total de pixeles que posee (Resolución) y la cantidad de información por pixel (Profunidad de color, bits por pixel). \cite{Alegsa2010}
+Por otro lado, la imagen matricial o mapa de bits es una estructura  que representa una rejilla rectangular  compuesta de pixeles o puntos de color. Estos, se suelen definir por su altura y grosor (en pixeles) por su profundidad de color. Esto determina el número de colores distintos que se pueden almacenar en cada punto individual. La calidad de las imágenes rasterizadas está definida por el total de pixeles que posee (Resolución) y la cantidad de información por pixel (Profunidad de color, bits por pixel). \cite{Alegsa2010}
 
 Los pixeles guardan información de color en un determinado punto, es decir, una representación numérica de color y esta se ve limitada por la cantidad de bits utilizados para representarla, esto se conoce como profunidad de color. Normalmente, cada pixel es representado por tres valores numéricos. 
 
 \section{Espacios de color}
 
-El espacio de color define un modelo de composición de color. Por lo general, un espacio de color se compone de N vectores cuya combinación lineal puede generar todo el espacio de color.  Generalmente, lo espacios de color intentan representar todos los colores que el ojo humano puede percibir, mientras que otros aislan un subconjunto específico de colores. Los espacios de color pueden ser: una dimensión (Escala de grieses), dos dimensiones (RGB, CIEXYZ, CIELAB, YIQ) o  cuatro dimensiones (CMYK). Los espacios de color de tres dimensiones son, normalmente, los más usados. Es decir, un color se especifica usando tres coordenadas; la cual determina su ubicación en este espacio. 
+El espacio de color define un modelo de composición de color. Por lo general, un espacio de color se compone de N vectores cuya combinación lineal puede generar todo el espacio de color.  Generalmente, lo espacios de color intentan representar todos los colores que el ojo humano puede percibir, mientras que otros aislan un subconjunto específico de colores. Los espacios de color pueden ser: una dimensión (Escala de grieses), dos dimensiones (RGB, CIEXYZ, CIELAB, YIQ) o  cuatro dimensiones (CMYK). Los espacios de color de tres dimensiones son, normalmente, los más usados. Es decir, un color se especifica usando tres coordenadas, la cual determina su ubicación en este espacio. 
 
 
 
@@ -27,24 +27,24 @@ El espacio de color define un modelo de composición de color. Por lo general, un
 
 
 
-Se define así al conjunto de técnicas y métodos desarrollados para manipular la información contenida en una imagen digital. Estos consisten en aplicar diferentes operadores a la imagen con los siguientes objetivos \cite{ImageProcess}:
+El procesamiento digital de imágenes se define como el conjunto de técnicas y métodos desarrollados para manipular la información contenida en una imagen digital. Estas técnicas consisten en aplicar diferentes operadores a la imagen con los siguientes objetivos \cite{ImageProcess}:
 
 \begin{itemize}
 	
-	\item Restauración de la imagen: mejorar la calidad de la imagen de forma objetiva, como lo es reducir el ruido.
+	\item \textit{Restauración de la imagen}: mejorar la calidad de la imagen de forma objetiva, como lo es reducir el ruido.
 	
-	\item Mejoramiento de la imagen: mejorar la calidad de la imagen de forma subjetiva, como incrementar el contraste, crear distorsión, entre otros.
+	\item \textit{Mejoramiento de la imagen}: mejorar la calidad de la imagen de forma subjetiva, como incrementar el contraste, crear distorsión, entre otros.
 	
-	\item Compresión de la imagen: consiste en representar la imagen con la menor cantidad de bits posible, sin  afectar críticamente la calidad de la imagen, como lo es la reducción de dimensión, la binarización, entre otros.
+	\item \textit{Compresión de la imagen}: consiste en representar la imagen con la menor cantidad de bits posible, sin  afectar críticamente la calidad de la imagen, como lo es la reducción de dimensión, la binarización, entre otros.
 	
-	\item Extracción de objetos: resaltar explícitamente algunas características en la imagen que permitan la detección de objetos, tales como la  utilización de algoritmos para detección  y reconocimiento de contornos.
+	\item \textit{Extracción de objetos}: resaltar explícitamente algunas características en la imagen que permitan la detección de objetos, tales como la  utilización de algoritmos para detección  y reconocimiento de contornos.
 	
 	
 \end{itemize}
 
 \subsection{Mascaras derivativas discretas}
 
-El proceso de filtrado de una imagen se realiza mediante la convolución entre los distintos pixeles que componen la imagen y una matriz de convolución. Esta matriz es denominada "kernel" del filtro. Dependiendo de los valores que componen al kernel y su distribución se obtienen diferentes resultados de filtrado en la imagen. Las mascaras derivativas discretas no son más que Kernels cuyos elementos representan una aproximación de la derivada \cite{MaskDev}. En la figura \ref{fig:convolucionsobreunaimagen} se puede apreciar el proceso de convolución sobre un pixel.
+El proceso de filtrado de una imagen se realiza mediante la convolución entre los distintos pixeles que componen la imagen y una matriz de convolución. Esta matriz es denominada "núcleo" del filtro. Dependiendo de los valores que componen al núcleo y su distribución, se obtienen diferentes resultados de filtrado en la imagen. Las mascaras derivativas discretas no son más que núcleo cuyos elementos representan una aproximación de la derivada \cite{MaskDev}. En la figura \ref{fig:convolucionsobreunaimagen} se puede apreciar el proceso de convolución sobre un pixel.
 
 \begin{figure}[H]
 	\centering
@@ -53,7 +53,7 @@ El proceso de filtrado de una imagen se realiza mediante la convolución entre lo
 	\label{fig:convolucionsobreunaimagen}
 \end{figure}
 
-Las mascaras derivativas son utilizadas para calcular el gradiente de una imagen, normalmente con la intención de detectar los contornos. Entre los más utilizados se encuentran: Sobel, Prewitt, Roberts y Laplaciano  \cite{Operadores}. En la figura \ref{fig:derivadassobel} se muestra el efecto obtenido después de aplicar el operador de Sobel en una imagen. 
+Las mascaras derivativas son utilizadas para calcular el gradiente de una imagen, normalmente con la intención de detectar los contornos. Entre los más utilizados se encuentran: Sobel, Prewitt, Roberts y Laplaciano  \cite{Operadores}. En la Figura \ref{fig:derivadassobel} se muestra el efecto obtenido después de aplicar el operador de Sobel en una imagen. 
 
 \begin{figure}[H]
 	\centering
@@ -62,7 +62,7 @@ Las mascaras derivativas son utilizadas para calcular el gradiente de una imagen
 	\label{fig:derivadassobel}
 \end{figure}
 
-Bibliotecas de software libre orientadas hacia la visión computarizada como OpenCv, ofrecen funciones que utilizan estos operadores para determinar el gradiente de la imagen y así detectar los contornos mediante la umbralización:
+Bibliotecas de software libre orientadas hacia la visión computarizada como OpenCv, ofrecen funciones que utilizan estos operadores para determinar el gradiente de la imagen y así detectar los contornos mediante la umbralización como puede apreciarse en las Figuras \ref{fig:grisesvsadapt} y \ref{fig:sobelvsumbral}:
 
 \begin{figure}[H]
 	\centering
@@ -78,7 +78,7 @@ Bibliotecas de software libre orientadas hacia la visión computarizada como Open
 	\label{fig:sobelvsumbral}
 \end{figure}
 
-Existen otras funciones especializadas en la detección de contornos como lo es Canny de OpenCV:
+Existen otras funciones especializadas en la detección de contornos como lo es Canny de OpenCV (Ver el ejemplo de la Figura \ref{fig:cannyvsumbral}).
 
 \begin{figure}[H]
 	\centering
@@ -94,8 +94,7 @@ Existen otras funciones especializadas en la detección de contornos como lo es C
 
 
 
-Es una técnica que consiste en la realización de un barrido en la matriz de la imagen digital, por medio de
-bucles o recursividad, con el fin de que el proceso produzca la reducción de la escala de grises a dos únicos valores. Negro(= 0) y blanco (= 255), o lo que es lo mismo, un sistema binario de ausencia y presencia de color 0-1. La comparación de cada píxel de la imagen viene determinada por el umbral de
+La binarización es una técnica que consiste en la realización de un barrido en la matriz de la imagen digital, por medio de bucles o recursividad, con el fin de que el proceso produzca la reducción de la escala de grises a dos únicos valores. Negro(= 0) y blanco (= 255), o lo que es lo mismo, un sistema binario de ausencia y presencia de color 0-1. La comparación de cada píxel de la imagen viene determinada por el umbral de
 sensibilidad (valor T = Threshold). Por ejemplo, los valores que sean mayores que el umbral toman un valor 255 (blanco) y los menores 0 (negro). 
 
 \begin{figure}[H]
@@ -111,128 +110,265 @@ sensibilidad (valor T = Threshold). Por ejemplo, los valores que sean mayores qu
 En base a las particularidades entre algoritmos categorizan los métodos de umbralización en seis grupos. Aquí añadimos uno más, los métodos globales \cite{Binarizacion}:
 \begin{itemize}
 	
-	\item Histograma: métodos basados en el análisis de los picos
+	\item \textit{Histograma}: métodos basados en el análisis de los picos
 	máximos y mínimos de las curvas del histograma del suavizado de la imagen.
 	
-	\item Clustering: métodos basados en discernir como las muestras
+	\item \textit{Clustering}: métodos basados en discernir como las muestras
 	de los niveles de gris se agrupan o alternativamente se modelan como una mezcla de dos gaussianas.
 	
-	\item Entropía: métodos basados en el análisis de los resultados de
+	\item \textit{Entropía}: métodos basados en el análisis de los resultados de
 	la aplicación de algoritmos que utilizan la entropía de las
 	regiones frontal y de fondo, la entropía cruzada entre la imagen original y binarizada.
 	
-	\item Similitud: métodos basados en la búsqueda de una similitud
+	\item \textit{Similitud}: métodos basados en la búsqueda de una similitud
 	entre las escalas de grises, como la tonalidad difusa, los bordes de la imagen, etc.
 	
-	\item Espaciales: métodos analíticos que usan el orden de distribución, la probabilidad y/o la correlación entre los diferentes
+	\item \textit{Espaciales}: métodos analíticos que usan el orden de distribución, la probabilidad y/o la correlación entre los diferentes
 	píxeles.
 	
-	\item Globales: métodos cuyo valor del umbral es estático.
+	\item \textit{Globales}: métodos cuyo valor del umbral es estático.
 	
-	\item Locales: métodos que adaptan el valor del umbral, de forma
+	\item \textit{Locales}: métodos que adaptan el valor del umbral, de forma
 	manual o automática, a cada píxel dependiendo
 	
 \end{itemize}
 
 
-\section{Máquina de Soporte Vectorial}
+\section{Machine Learning y Máquina de Soporte Vectorial}
 
- Se define la Máquina de Soporte Vectorial (SVM por sus siglas en inglés) como  modelos  de aprendizaje supervisado que implementa la idea de mapear el vector de entrada en un espacio de características Z de gran dimensión mediante un mapeo no lineal. En este espacio una superficie lineal es construída con propiedades que aseguran una alta capacidad de generalización. Este tipo de algoritmo es usualmente utilizado en el reconocimiento de patrones, aunque también puede desempeñarse en regresión lineal.
+``\textit{Machine Learning}'' (ML) o aprendizaje automático (por su traducción al español) es una rama de la inteligencia artificial que está constituida por un conjunto de algoritmos que automatizan la construcción de modelos analíticos a partir del análisis de datos. La ML se fundamenta en la idea de que los sistemas pueden aprender de los datos, identificar patrones y tomar decisiones con una mínima intervención humana. La ML también se puede definir como el proceso de resolver un problema práctico mediante (\cite{SarkarBaliSharma:2018}): 1)~la recopilación de un conjunto de datos y 2) la construcción algorítmica de un modelo estadístico basado en ese conjunto de datos.
 
-Los problemas de clasificación en su forma más básica consiste en separar dos grupos o clases, estos son llamados problemas de clasificación binaria. Muchos problemas de clasificación pueden ser resueltos por las máquinas si los grupos son linealmente separables. Al ser linealmente separables es posible encontrar un hiperplano que divida las clases. De lo contrario, es necesario utilizar máquinas no lineales o llevar a cabo transformaciones que permitan separar los datos.
+Por lo general, los métodos de aprendizaje automático se pueden clasificar de múltiples maneras bajo múltiples paradigmas. En el presente trabajo utilizamos la clasificación basada en la cantidad de supervisión humana en el proceso de aprendizaje, a saber:
+\begin{enumerate}[\indent a.]
+   \item \textit{Aprendizaje supervisado}
+  \item \textit{Aprendizaje no supervisado}
+  \item \textit{Aprendizaje semi-supervisado}
+  \item \textit{Aprendizaje reforzado}
+\end{enumerate}
 
-Construir el modelo o hipótesis del algoritmo SVM supone encontrar los parámetros del hiperplano que mejor separe $x_i \in R^m$ para $i=1,2,...,n$ elementos en dos grupos o clases de datos. Existen infinitos hiperplanos que separan un conjunto de datos, sin embargo, esto no asegura una buena generalización. 
+\subsubsection{Aprendizaje Supervisado}
 
-\begin{figure}[H]
-	\centering
-	\includegraphics[width=0.49\linewidth]{Imagenes/hiperplano}
-	\caption{Un hiperplano que separa los datos en dos grupos.}
-	\label{fig:hiperplan}
+Los métodos o algoritmos de aprendizaje supervisado incluyen algoritmos de aprendizaje que toman muestras de datos (conocidas como datos de entrenamiento) y salidas asociadas (conocidas como etiquetas o respuestas) con cada muestra de datos durante el proceso de entrenamiento del modelo. El objetivo principal es aprender un mapeo o asociación entre las muestras de datos de entrada $x$ y sus correspondientes salidas $y$, basándose en múltiples instancias de datos de entrenamiento. Este conocimiento aprendido se puede utilizar en el futuro para predecir una salida $y'$ para cualquier nueva muestra de datos de entrada $x'$, que antes se desconocía o no se veía durante el proceso de entrenamiento del modelo. Estos métodos se denominan supervisados porque el modelo aprende sobre muestras de datos donde las respuestas/etiquetas de salida deseadas ya se conocen de antemano en la fase de entrenamiento (\cite{SarkarBaliSharma:2018}).
+
+Existen dos clases principales de métodos de aprendizaje supervisado, según el tipo de tareas de aprendizaje automático que pretenden resolver:
+\begin{itemize}
+  \item Regresión
+  \item Clasificación
+\end{itemize}
+
+El objetivo principal de los métodos de aprendizaje supervisado para regresión es la estimación de un valor. Los métodos para regresión se entrenan en muestras de datos de entrada que tienen respuestas de salida que son valores numéricos continuos. Los modelos de regresión hacen uso de atributos o características de los datos de entrada (también llamados variables explicativas o independientes) y sus correspondientes valores numéricos continuos de salida (también llamados respuesta, dependiente o variable de resultado) para aprender relaciones y asociaciones específicas entre las entradas y sus salidas correspondientes. Con este conocimiento, se puede predecir la respuesta de salida para instancias de datos nuevas y no vistas similares a la clasificación pero con salidas numéricas continuas.
+
+En cambio, el objetivo principal de los métodos de aprendizaje supervisado para clasificación es predecir etiquetas de salida o respuestas que son de naturaleza categórica para los datos de entrada en función de lo que el modelo ha aprendido en la fase de entrenamiento. Las etiquetas de salida aquí también se conocen como clases o etiquetas de clase, ya que son de naturaleza categórica, lo que significa que son valores discretos y desordenados. Por lo tanto, cada respuesta de salida pertenece a una categoría o clase discreta específica. Un método de aprendizaje supervisado para clasificación es la \textit{Máquina de Soporte Vectorial} (SVM, por sus siglas en inglés: Support Vector Machine) el cual describiremos más adelante.
+
+
+\subsubsection{Aprendizaje No Supervisado}
+
+Los métodos de aprendizaje no supervisado extraen conocimientos o información significativa de los datos en lugar de intentar predecir algún resultado basado en datos de entrenamiento supervisado previamente disponibles. Hay más incertidumbre en los resultados del aprendizaje no supervisado, pero también puede obtener mucha información de estos modelos que antes no estaba disponible para ver con solo mirar los datos sin procesar. A menudo, el aprendizaje sin supervisión podría ser una de las tareas involucradas en la construcción de un enorme sistema de inteligencia (\cite{SarkarBaliSharma:2018}). Los métodos de aprendizaje no supervisado se pueden clasificar en las siguientes áreas de la ML de mucha importancia para el aprendizaje no supervisado:
+\begin{itemize}
+  \item Agrupación
+  \item Reducción de dimensionalidad
+  \item Detección de anomalías
+  \item Asociación de minería de reglas
+\end{itemize}
+
+\subsubsection{Aprendizaje Semi-Supervisado}
+
+Los métodos de aprendizaje semi-supervisados generalmente se encuentran entre los métodos de aprendizaje supervisados y no supervisados. Estos métodos suelen utilizar una gran cantidad de datos de entrenamiento que no están etiquetados (que forman el componente de aprendizaje no supervisado) y una pequeña cantidad de datos previamente etiquetados y anotados (que forman el componente de aprendizaje supervisado). Hay múltiples técnicas disponibles en forma de métodos generativos, métodos basados en gráficos y métodos basados en heurística. (\cite{SarkarBaliSharma:2018})
+
+\subsubsection{Aprendizaje Reforzado}
+
+Los métodos de aprendizaje reforzado son un poco diferentes de los métodos convencionales supervisados o no supervisados. En este contexto, se cuenta con un agente que se desea capacitar durante un período de tiempo para interactuar con un entorno específico y mejorar su desempeño durante un período de tiempo, con respecto al tipo de acciones que realiza sobre el entorno. Normalmente, el agente comienza con un conjunto de estrategias o políticas para interactuar con el entorno. Al observar el medio ambiente, toma una acción particular basada en una regla o política y observando el estado actual del medio ambiente. Según la acción, el agente obtiene una recompensa, que podría ser beneficiosa o perjudicial en forma de penalización. Actualiza sus políticas y estrategias actuales si es necesario y este proceso iterativo continúa hasta que aprende lo suficiente sobre su entorno para obtener las recompensas deseadas. Los pasos principales de un método de aprendizaje por refuerzo se mencionan a continuación. (\cite{SarkarBaliSharma:2018})
+\begin{enumerate}[\indent 1.]
+  \item Prepare al agente con un conjunto de políticas y estrategias iniciales.
+  \item Observe el entorno y el estado actual.
+  \item Seleccione la política óptima y realice una acción.
+  \item Obtenga la recompensa (o penalización) correspondiente.
+  \item Actualice las políticas si es necesario.
+  \item Repita los pasos 2 a 5 de forma iterativa hasta que el agente aprenda las políticas más óptimas.
+\end{enumerate}
+
+
+
+\subsection{Máquina de Soporte Vectorial}
+
+La SVM es un algoritmo de aprendizaje supervisado normalmente empleado en problemas de clasificación y, recientemente, en problemas de regresión. Los fundamentos matemáticos de la SVM han sido desarrollados por Vapnik~\cite{Vapnik:1995} y están ganando popularidad debido a muchas características atractivas y un rendimiento empírico prometedor. 
+
+El problema de clasificación puede restringirse a la consideración del problema de dos clases sin pérdida de generalidad. Muchos problemas de clasificación pueden ser resueltos por la SVM si los grupos son linealmente separables. En este problema, el propósito es separar las dos clases mediante una función que se induce a partir de los datos disponibles. El objetivo principal es producir un clasificador que funcione bien en ejemplos invisibles, es decir, que generalice bien. Considere el ejemplo de la Figura~\ref{fig:hiperplano}. Aquí hay muchos clasificadores lineales posibles que pueden separar los datos, pero solo hay uno que maximiza la distancia entre él y el conjunto de datos más cercano de cada clase. Este clasificador lineal se denomina \textit{hiperplano de separación óptimo}. Intuitivamente, esperaríamos que este límite se generalizara bien en oposición a los otros límites posibles. 
+
+\begin{figure}[!h]
+\centering
+\includegraphics[width=0.32\linewidth]{Imagenes/varios_hiperplanos}
+\caption{Hiperplanos de separación.}
+\label{fig:hiperplano}
 \end{figure}
 
-\begin{figure}[H]
-	\centering
-	\includegraphics[width=0.49\linewidth]{Imagenes/varios_hiperplanos}
-	\caption{Otros ejemplos de hiperplano que separan los datos en dos grupos.}
-	\label{fig:hiperplano}
+En caso que los datos no sean linealmente separables, existen procedimientos que emplean funciones denominadas \textit{núcleos}, las cuales permiten usar la SVM para la separación de las clases. Pasemos a dar una breve descripción matemática de la SVM.
+
+\subsubsection{Datos Linealmente Separables}
+
+Asumamos que los datos a clasificar pueden ser separados linealmente en dos clases,
+\[
+(\x_{1},y_{1}),(\x_{2},y_{2}),\ldots,(\x_{m},y_{m}),\quad\x\in\R^{n},\quad y_{i}\in\{-1,+1\},
+\]
+donde el $(\x_{i},y_{i})$ es un dato de entrenamiento, con $\x_{i}$ el \textit{vector de atributos} e $y_{i}$ la \textit{etiqueta}. Se desea encontrar una función $f:\R^{n}\to\{-1,+1\}$, denominada \textit{función de clasificación}, que separe los dos clases de datos, es decir,
+\[
+f(\x_{i}) = y_{i},\quad i=1,2,\ldots,m.
+\]
+Ahora bien, como los datos son linealmente separables, existen $\w\in\R^{n}$ y $b\in\R$ tales que el hiperplano 
+\[
+\{\x\in\R^{n}:\w^{\top}\x+b = 0\}
+\]
+separa las dos clases, esto es, los datos de clases opuestas están en lados opuestos del
+hiperplano. 
+
+\begin{figure}[!h]
+\centering
+\includegraphics[width=0.32\linewidth]{Imagenes/hiperplano}
+\caption{Datos e hiperplano $\w^{\top}\x+b = 0$}
+\label{fig:hiperplan}
 \end{figure}
 
+El hiperplano de la Figura~\ref{fig:hiperplan} se construye a partir de los datos $\x_{i}$ y de sus etiquetas $y_{i}$. En este caso, la función $f(\x)$ puede ser expresada como:
+\[
+f(\x) = \sgn(\w^{\top}\x+b),
+\]
+donde $\sgn(\cdot)$ es la función signo. De esta forma, el problema se reduce a encontrar $\w\in\R^{n}$ (\textit{vector de pesos} que ajusta el modelo), y un escalar $b$ (conocido como sesgo) tales que
+\[
+y_{i}(\w^{\top}\x+b) > 0,\qquad \mbox{para }i=1,2,\ldots,p.
+\]
+Pero, existen infinitos hiperplanos que satisfacen esta condición (ver Figura~\ref{fig:hiperplano}). 
 
-
-El problema anterior es resuelto por el hiperplano óptimo de clases separables. El hiperplano óptimo es definido por la función de decisión lineal con máximo margen entre los vectores de dos clases. 
-La propiedad fundamental del híperplano  de separación óptimo es que este equidista  del ejemplo más cerca de cada clase \cite{SVN}. Esta propiedad se refleja en la siguiente figura:
-
-\begin{figure}[H]
-	\centering
-	\includegraphics[width=0.50\linewidth]{Imagenes/maximomargen}
-	\caption{Hiperplano óptimo: máximo margen de separación entre dos clases.}
-	\label{fig:maximomargen}
+\begin{figure}[!h]
+\centering
+\includegraphics[width=0.32\linewidth]{Imagenes/maximomargen}
+\caption{Hiperplano de separación óptimo. Máximo margen de separación.}
+\label{fig:maximomargen}
 \end{figure}
 
-
-Dado un set de entrenamiento clasificado: $$ (x_1,y_1),(x_2,y_2),...,(x_m,y_m),  \hspace{0.7cm} y_m \hspace{0.1cm}  \in \hspace{0.1cm} \left\lbrace  1,-1\right\rbrace$$
-
-Se dice que son linealmente separables si existe un vector $w$ y un escalar $w_0$ que satisfaga la siguientes inecuaciones para todo el set de entrenamiento:
-
-\begin{equation}	
+El problema anterior se resuelve determinando el hiperplano de separación óptimo. Este hiperplano es aquel cuyo margen de separación entre los vectores de dos clases es máximo. La propiedad fundamental del hiperplano de separación óptimo es que este equidista del dato más cercano de cada clase \cite{SVN} (ver Figura~\ref{fig:maximomargen}). En otras palabras, para determinar el hiperplano de separación óptimo se debe resolver el siguiente problema de optimización con restricciones:
+\begin{equation}\label{posvm1}
 \begin{split}
-w^t \cdot x_i + w_0  1, \hspace{0.5cm} 	Si \hspace{0.2cm} y_i = 1 \\
-w^t \cdot x_i + w_0 -1, \hspace{0.5cm} 	Si \hspace{0.2cm}  y_i = -1
-\end{split}	
-\label{condiciones}
+\max\limits_{\w,b,\|\w\|=1} & \quad M\\
+\mbox{sujeto a:} & \quad y_{i}(\w^{\top}\x_{i}+b) \geq M,\qquad\mbox{para }i=1,2,\ldots,p,
+\end{split}
 \end{equation}
-
-
-
-Dónde $w$ es el vector de pesos que ajusta el modelo, $w_0$ es un escalar también conocido como sesgo y x es el vector de datos de entrada a clasificar.
-
-De esta forma, ajustar el modelo para el algoritmo se traduce en encontrar el hiperplano óptimo mediante el vector de pesos. El hiperplano óptimo se puede escribir entonces cómo:
-
-\begin{equation}	
-w^t \cdot x_i + w_0 = 0
+donde $M$ es la distancia del hiperplano a cada lado. El margen máximo que se muestra en la Figura~\ref{fig:maximomargen} tiene $2M$ unidades de ancho. Sin  pérdida de generalidad, podemos suponer que $\|\w\|=1/M$. Por lo que el problema \eqref{posvm1} es equivalente a:
+\begin{equation}\label{posvm2}
+\begin{split}
+\min\limits_{\w,b} & \quad\frac{1}{2}\|\w\|^{2}\\
+\mbox{sujeto a:} & \quad y_{i}(\w^{\top}\x_{i}+b) \geq 1,\qquad\mbox{para }i=1,2,\ldots,p.
+\end{split}
 \end{equation}
-
-
-Es el único que separa el conjunto de entrenamiento con el máximo margen, el cual determina la dirección  $ w / |w|$ dónde la distancia entre las proyecciones de los vectores de entrenamiento  de dos clases es máxima.  Esta distancia es definida cómo:
-
-\begin{equation}
-\gamma = \frac{1}{\|  w^2 \|} 
+El problema \eqref{posvm2} se puede expresar en forma matricial como:
+\begin{equation}\label{posvm3}
+\begin{split}
+\min\limits_{\w,b} & \quad\frac{1}{2}\w^{\top}\w\\
+\mbox{sujeto a:} & \quad AX^{\top}\w + b\y \geq \uno,
+\end{split}
 \end{equation}
+donde $A=\mathrm{diag}(y_{1},y_{2},\ldots,y_{N})\in\R^{p\times p}$ es una matriz diagonal, $\y=(y_{1},y_{2},\ldots,y_{p})^{\top}\in\R^{p}$ es el \textit{vector de etiquetas}, $\uno\in\R^{p}$ es el vector de unos, y $X=\begin{pmatrix}\x_{1} & \x_{2} & \cdots & \x_{p}\end{pmatrix}\in\R^{n\times p}$ es la matriz de atributos, cuyas columnas son 
+los datos $\x_{i}$.
+
+Utilizando los multiplicadores de Lagrange, el problema \eqref{posvm3} puede expresarse en la siguiente forma, denominada \textit{problema dual de Wolfe},
+\begin{equation}\label{posvm4}
+\begin{split}
+\min\limits_{\vmu} & \quad\frac{1}{2}\vmu^{\top}Q\vmu - \vmu^{\top}\uno \\
+\mbox{sujeto a:} & \quad \vmu^{\top}\y = 0,\\
+& \quad\vmu \geq 0.
+\end{split}
+\end{equation}
+donde $Q=AX^{\top}XA$, $\vmu=(\mu_{1},\ldots,\mu_{p})^{\top}\in\R^{p}$, y $\mu_{i}$ son los multiplicadores de Lagrange. El problema dual de Wolfe puede resolverse eficientemente, ya que es un problema cuadrático y existen en la literatura algoritmos eficientes para la optimización cuadrática.
+
+De todo lo anterior, para obtener la función $f(\x) = \sgn(\x^{\top}\w^{*}+b^{*})$ que separe los $p$ pares $(\x_{1},y_{1}),(\x_{2},y_{2}),\ldots,(\x_{p},y_{p})$ de datos etiquetados, se debe realizar el siguiente procedimiento, que hemos denominados Procedimiento de Separación:
+
+\bigskip
+
+\textbf{Procedimiento de Separación}
+\begin{enumerate}[\indent\bf1.]
+  \item Resolver el problema \eqref{posvm4} para obtener los multiplicadores de Lagrange $\vmu^{*}$.
+
+  \item Calcular el vector $\w^{*}$ por:
+    \[
+    \w^{*} = XA\boldsymbol{\vmu}^{*} = \sum_{i=1}^{p}\mu_{i}^{*}y_{i}\x_{i}.
+    \]
+
+  \item Calcular $b$ utilizando la ecuación:
+    \[
+    b^{*} = y_{i_{max}}-\x_{i_{max}}^{\top}\w^{*},
+    \]
+    donde $i_{max}=\argmax\limits_{i=1,2,\ldots,p}\{\mu_{i}\}$.
+\end{enumerate}
+
+Los \textbf{vectores de soporte} son los datos $\x_{i}$ tales que sus multiplicadores de Lagrange $\mu_{i}^{*}$ son positivos. Generalmente los vectores de soporte representan una pequeña porción de todos los datos de entrenamiento y son aquellos datos que se encuentran más cercanos al hiperplano de separación óptimo. La mayoría de los algoritmos para resolver el problema \eqref{posvm4}, tienen como estrategia identificar los vectores de soporte para reducir el tamaño del problema durante el entrenamiento. Todo este procedimiento de cálculo está implementado de manera eficiente en algunas librerías de Python, en especial en la librería \textbf{Scikit-Learn}, de la cual hablaremos más adelante.
 
 
+\subsubsection{Datos No Linealmente Separables}
 
-Entonces el problema se traduce en máximar $\gamma$ para encontrar dicho híperplano de separación óptimo tomando en cuenta las condiciones de las ecuaciones (\ref{condiciones}).
+Cuando los datos $\x_{i}$ no son linealmente separables, existe una función no lineal
+$\phi:\R^{n}\to\R^{n}$ tal que los datos definidos como
+\[
+\z_{i} = \phi(\x_{i}),\quad i=1,2,\ldots,p
+\]
+son linealmente separables \cite{Cover:1965}. Usando este hecho se puede encontrar un separador no lineal para los datos $\x_{i}$ con SVM aplicando la misma técnica usada en el caso del separador lineal, pero con los datos $\z_{i}$. En este caso, la función de clasificación viene dada por:
+\[
+f(\x) = \sgn(\phi(\x)^{\top}\w^{*} + b^{*}),
+\]
+donde $\w^{*}$ y $b^{*}$ se obtienen resolviendo el problema \eqref{posvm4} y aplicando el Procedimiento de Separación, tomando $\z_{1},\z_{2},\ldots,\z_{p}$ como datos de entrenamiento. La función $\phi$, en general, no se conoce explícitamente, además, es poco práctico calcularla. En la práctica, se usan las funciones llamadas \textit{núcleo}, $\mathcal{K}:\R^{m}\times\R^{m}\to\R$, tales que
+\[
+\mathcal{K}(\x,\z) = \phi(\x)^{\top}\phi(\z),\qquad\mbox{para }\x,\z\in\R^{n}.
+\]
+Con un núcleo $\mathcal{K}$ dado, se construye la matriz $Q=(q_{ij})$ del problema \eqref{posvm4} como:
+\[
+q_{ij} = y_{i}y_{j}\mathcal{K}(\x_{i},\x_{j}),\qquad\mbox{para }i,j=1,2,\ldots,p.
+\]
+Por lo que, la función de clasificación en el caso no separable linealmente, es:
+\[
+f(\x) = \sgn(\sum_{i=1}^{p}y_{i}\mu_{i}^{*}\mathcal{K}(\x,\x_{i})+b^{*}),
+\]
+donde
+\[
+b^{*} = y_{j}-\sum_{i=1}^{p}y_{i}\mu_{i}^{*}\mathcal{K}(\x_{j},\x_{i}),\qquad
+\mbox{para algún $j$ tal que }\mu_{j}^{*}>0.
+\]
 
-%%Las funciones de kernel permiten el uso eficiente de los espacios de características de grandes dimensiones.  La elección de utilizar una sesgo de aprendizaje convexo  resulta en la ausencia de mínimos locales, por lo tanto, las soluciones siempre pueden ser encontradas eficientemente incluso para conjuntos  de entrenamiento con  cientos de miles de ejemplos. Mientras que, la compacta representación de la hipótesis se traduce en evaluaciones rápidas de nuevas entradas. En consecuencia, los problemas de eficiencia del entrenamiento, eficiencia de prueba y comprobación, sobreajuste y ajuste de parámetros en el algoritmo son evitados por la SVM. 
+No toda función $\mathcal{K}$ es un núcleo. La funciones núcleo deben ser simétricas, esto es $\mathcal{K}(\x,\z) = \mathcal{K}(\z,\y)$, además, la matriz $K=(k_{ij})$ definida como $k_{ij}=\mathcal{K}(\x_{i},\x_{j})$ debe ser simétrica semidefinida positiva\footnote{Una matriz $A\in\R^{n\times n}$ es simétrica semidefinida positiva si $A^{\top}=A$ y $\x^{\top}A\x \geq0$, para todo $\x\in\R^{n}$.}. A continuación se listan las funciones núcleos más usadas en las aplicaciones.
 
-El objetivo de la SVM es idear un método de aprendizaje computacionalmente eficiente. Los hiperplanos optimizan el límite de generalización, por lo tanto el algoritmo es capaz de manejar grandes dimensiones.\cite{SVM2014}
+\begin{enumerate}[\indent1.]
+  \item \textit{Lineal}: $\mathcal{K}(\x,\z) = \x^{\top}\z$
+  
+  \item \textit{Polinomio de grado $d$}: $\mathcal{K}(\x,\z) = (\gamma\x^{\top}\z + r)$, con parámetros $\gamma,r\in\R$.
+      
+  \item \textit{Base radial (RBF)}: $\mathcal{K}(\x,\z) = e^{-\gamma\|\x-\z\|^{2}}$, con parámetro $\gamma\R$.
+      
+  \item \textit{Red neuronal (Sigmoid)}: $\mathcal{K}(\x,\z) = \tanh(\gamma\x^{\top}\z + r)$, con parámetros $\gamma,r\in\R$.
+\end{enumerate}
 
-Algunas de las ventajas de las SVMs frente otros algoritmos son \cite{Sklearn}:
+El procedimiento de separación cuando los datos son no linealmente separables, además del caso cuando hay multiples clases, también está implementado en la librería \textbf{Scikit-Learn}.
+
+En resumen, el objetivo de la SVM es idear un método de aprendizaje computacionalmente eficiente. Los hiperplanos optimizan el límite de generalización, por lo tanto el algoritmo es capaz de manejar grandes dimensiones (\cite{SVM2014}). Algunas de las ventajas de las SVMs frente a otros algoritmos son las siguientes (\cite{Sklearn}):
 
 \begin{itemize}
+\item Efectividad en espacios de grandes dimensiones.
 	
-	\item Efectividad en espacios de grandes dimensiones.
+\item Sigue siendo efectivo incluso en casos donde el número de dimensiones es más grande que el número de ejemplos de entrenamiento.
 	
-	\item Sigue siendo efectivo incluso en casos donde el número de dimensiones es más grande que el número de ejemplos de entrenamiento. 
+\item Usa un subconjuto de los datos de entrenamiento en la función de decisión (los vectores de soporte), por lo tanto es eficiente computacionalmente, en especial en el uso de la memoria.
 	
-	\item Usa un subconjuto de los ejemplos de entrenamiento en la función de decisión (Llamados vectores de soporte) por lo tanto es eficiente computacionalmente, en especial en el uso de la memoria.
-	
-	\item Es versátil: diferentes funciones de Kernel pueden ser especificadas para la función de decisión. Kernels comunes son proveídos pero es posible personalizarlos. 
-	
+\item Es versátil: diferentes funciones núcleo pueden emplearse para definir función de clasificación. Los núcleos comunes son fáciles de personalizar.
 \end{itemize}
 
 
 
-\section{Lenguaje de programación Python }
+\section{Lenguaje de programación Python}
 
 Python es un lenguaje de programación multiparadigma, multiplataforma, dinámico e interpretado, es decir, se ejecuta directamente mediante un intérprete dejando a un lado la compilación. Actualmente, Python es  administrado por Python Software Foundation. El software posee una licencia de código abierto denominada Python Software Fondation License.
 
 
-Python 3 se caracteriza por su amplia aplicabilidad en diferentes campos del desarrollo de nuevas tecnologías como lo es el Machine Learning, Data Science, Vision por Computador, entre otros. Python soporta diferentes librerías como  OpenCV  y Scikit-Learn, las cuales cuentan con extensa documentación acerca de sus aplicaciones e implementaciones. 
+Python se caracteriza por su amplia aplicabilidad en diferentes campos del desarrollo de nuevas tecnologías como lo es el Machine Learning, Data Science, Vision por Computador, entre otros. Python soporta diferentes librerías como  OpenCV  y Scikit-Learn, las cuales cuentan con extensa documentación acerca de sus aplicaciones e implementaciones. La versión que se utilizó para la implementación de este trabajo fue Python 3.1.
 
 \section{OpenCV}
 
-Open Computer Vision (OpenCV, por sus siglás en inglés) es una librería libre de visión artificial desarrollada originalmente por Intel. Especializada en la visión por computador y el procesamiento de imágenes cuenta con diferentes herramientas que permiten manipular la información dentro de una imagen. Para mayor información visitar  https://opencv.org/.
+Open Computer Vision (OpenCV, por sus siglás en inglés) es una librería libre de visión artificial desarrollada originalmente por Intel. Especializada en la visión por computador y el procesamiento de imágenes cuenta con diferentes herramientas que permiten manipular la información dentro de una imagen. Para mayor información visitar  https://opencv.org/. La versión que se utilizó para la implementación de este trabajo fue OpenCV 3.4.
 
 
 Entre las funciones que ofrece:
@@ -253,7 +389,7 @@ Entre las funciones que ofrece:
 	
 	\item \verb|cv2.adaptiveThreshold|: el método adaptativetreshold binariza una imagen de acuerdo a un valor de umbral que cálcula para pequeñas regiones de la imagen digital. Así, el filtro gaussiano realiza una convolución con cada punto de la matriz generando una matriz de salida. El valor de umbral es calculado como la suma ponderada de los valores del vecindario donde los pesos son una ventana gaussiana. Las dimesiones del kernel representa el tamaño del vecindario de pixeles usados para calcular el valor umbral. \cite{AdaptTresh}
 	
-	\item \verb|cv2.dilate()|: Dilate es un método de transformación morfológica. Las operaciones morfológicas aplican un elemento estructurante a la imagen de entrada y generan una de salida con características morfológicas diferentes. Dilate utiliza un kernel \textit{B} el cual se escanea sobre la imagen, calcula el valor máximo de pixeles superpuestos por \textit{B}  y reemplazamos el píxel de la imagen en la posición del punto de anclaje con ese valor máximo. Como se puede deducir, esta operación de maximización hace que las regiones brillantes dentro de una imagen "crezcan". \cite{Dilate}
+	\item \verb|cv2.dilate|: Dilate es un método de transformación morfológica. Las operaciones morfológicas aplican un elemento estructurante a la imagen de entrada y generan una de salida con características morfológicas diferentes. Dilate utiliza un kernel \textit{B} el cual se escanea sobre la imagen, calcula el valor máximo de pixeles superpuestos por \textit{B}  y reemplazamos el píxel de la imagen en la posición del punto de anclaje con ese valor máximo. Como se puede deducir, esta operación de maximización hace que las regiones brillantes dentro de una imagen "crezcan". \cite{Dilate}
 	
 	\item \verb|cv2.findcontours|: definiendo contorno como una curva todos los puntos continuos que tienen el mismo color o intensidad, este método encuentra los contornos definidos en una imagen, preferiblemente binarizada. Este método requiere diferentes parámetros de entrada que definen su modo de funcionamiento como le modo de recuperación de contorno y método de aproximación de contorno. Ambos parámetros son explicados en las fuentes de documentación. \cite{findContours}
 	
@@ -265,7 +401,7 @@ Entre las funciones que ofrece:
 
 \section{Scikit-Learn}
 
-Scikit-Learn por su parte, es una biblioteca con basto desarrollo en los aprendizajes automático de máquina de software libre para el lenguaje de programación Python. Cuenta con varios algoritmos de regresión, clasificación y análisis de grupos como SVMs, bosques aleatorios, K-means, entre otros. Esta biblioteca inició como un proyecto de Google Summer of code por David Cournapeau en el 2007. Para mayor información y detalles acerca de la biblioteca dirigirse a http://scikit-learn.org/stable/.  
+Scikit-Learn por su parte, es una biblioteca con basto desarrollo en el aprendizaje automático, de software libre para el lenguaje de programación Python. Cuenta con varios algoritmos de regresión, clasificación y análisis de grupos como SVMs, Clustering, K-means, entre otros. Esta biblioteca inició como un proyecto de Google Summer of code por David Cournapeau en el 2007. Para mayor información y detalles acerca de la biblioteca dirigirse a http://scikit-learn.org/stable/.  
 
 
 

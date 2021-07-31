@@ -8,13 +8,15 @@
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \usepackage[spanish]{babel}
 %\usepackage[latin1]{inputenc}
-\usepackage[utf8]{inputenc} %Reconoce tildes y otros simbolos propios del espa?ol
+\usepackage[ansinew]{inputenc} %Reconoce tildes y otros simbolos propios del espa?ol
 \usepackage[T1]{fontenc}  %Estilo de fuente time new roman
 
 \usepackage{amssymb}
 \usepackage{amsfonts}
 \usepackage{amsmath}
+\usepackage{amsthm}
 \usepackage{latexsym}
+\usepackage{enumerate}
 \usepackage[letterpaper]{geometry}
 
 \usepackage{float}
@@ -120,7 +122,7 @@
 \newtheorem{remark}[theorem]{Remark}
 \newtheorem{solution}{Solution}
 \newtheorem{summary}[theorem]{Summary}
-\newenvironment{proof}[1][Proof]{\noindent\textbf{#1.} }{\ \rule{0.5em}{0.5em}}%
+%\newenvironment{proof}[1][Proof]{\noindent\textbf{#1.} }{\ \rule{0.5em}{0.5em}}%
 
 \numberwithin{equation}{chapter}%
 \numberwithin{figure}{chapter}%
@@ -289,8 +291,24 @@
 
 \makeindex
 
+%==================================================================
+
+\newcommand{\R}{\mathbb{R}}
+\newcommand{\x}{\mathbf{x}}
+\newcommand{\y}{\mathbf{y}}
+\newcommand{\z}{\mathbf{z}}
+\newcommand{\w}{\mathbf{w}}
+\newcommand{\vmu}{\boldsymbol{\mu}}
+\newcommand{\uno}{\mathbf{1}}
+\newcommand{\sgn}{\mathrm{sgn}}
+\def\argmax{\mathop{\mbox{\rm argmax}}}
+
+\def\refname{Bibliograf\'{\i}a}
+
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+
 
 \begin{document}
 %\frontmatter
@@ -378,7 +396,8 @@ xvii, 144 pp.}
 \noindent
 \textbf{Palabras Claves:} Procesamiento de imágenes, Máquina de soporte Vectorial, Machine learning. \\[1ex]
 
-\noindent \textbf{Resumen.-} La presente investigación propone el diseño de un sistema de Reconocimiento Automático de Matrícula vehícular mediante un programa que integra dos módulos con la capacidad de localizar y reconocer la matrícula vehícular en un ambiente con condiciones controladas. El diseño propuesto se basa en seguir la siguiente secuencia de pasos: detectar la placa, segmentar los caracteres y reconocer la matrícula mediante el algoritmo de aprendizaje automático\textit{Máquina de Soporte Vectorial}. Para lograr lo anterior se propone implementar de manera modular la lógica necesaria para cada etapa mencionada.  Considerando lo anterior, se llevó a cabo una investigación documental acerca de las técnicas de procesamiento de imágenes y la Máquina de Soporte Vectorial, así como lenguajes y bibliotecas de código abierto especializada en estos campos de investigación. Se seleccionaron las técnicas de procesamiento de imágenes más adecuadas para los requerimientos de la detección de placa y segmentación de caracteres, considerando herramientas optimizadas y ampliamente utilizados en la visión por computador. Mientras que, considerando su capacidad y efectividad para el reconocimiento de patrones, se seleccionó la Maquina de Soporte Vectorial con el fin de explorar su potencialidad en la clasificación de caracteres. Se realizaron experiencias computacionales orientadas a la verificación del sistema de reconocimiento dónde se obtuvo que fue capaz de reconocer efectiva y eficientemente las matrículas.
+\noindent \textbf{Resumen.-} La presente investigación propone el diseño de un sistema de Reconocimiento Automático de una matrícula vehicular mediante un programa que integra dos procedimientos, con la capacidad de localizar y reconocer la matrícula vehicular en un ambiente con condiciones controladas. El diseño propuesto se basa en seguir la siguiente secuencia de pasos: 1)~detectar la placa; 2)~segmentar los caracteres; y 3)~reconocer la matrícula mediante un algoritmo de Machine Learning o de aprendizaje automático. El algoritmo seleccionado para el reconocimiento de caracteres fue la Máquina de Soporte Vectorial, que es un algoritmo de aprendizaje supervisado que ha demostrado ser muy eficienciente en una gran variedad de aplicaciones en Ingeniería. La implementación del sistema propuesto se realizó de manera modular, en el que cada módulo representa cada uno de los pasos que conforman el sistema. Para lograr lo anterior, se realizó una investigación documental acerca de las técnicas de procesamiento de imágenes y de la Máquina de Soporte Vectorial, así como del lenguaje de programación Python y las librerías de código abierto especializadas en el procesamiento de imágenes y Machine Learning. Se seleccionó la Máquina de Soporte Vectorial por su capacidad de trabajar en dimensiones grandes y su efectividad para el reconocimiento de patrones. Se seleccionaron las técnicas de procesamiento de imágenes más adecuadas para los requerimientos de la detección de placa y la segmentación de caracteres, considerando herramientas optimizadas y ampliamente utilizadas en la visión por computador. En el trabajo se presenta un conjunto de pruebas numéricas con distintas placas para mostrar el comportamiento computacional del sistema propuesto. Los resultados obtenidos indican que el sistema de reconocimiento diseñado es efectivo y eficiente en el reconocimiento de las matrículas procesadas.
+
 
 
 % con un ajuste lineal del modelo generado por la SVM y una base de datos de apenas 1496. Los tiempos de reconocimiento en promedio se obtuvo 0.26s mientras que el sistema completo, por su parte, 0.88s. 
@@ -463,6 +482,10 @@ xvii, 144 pp.}
 \renewcommand \thechapter{\Roman{chapter}}
 
 
+\chapter{Pseudocódigo}\label{CAP:anexo3}
+%\markboth{Tu anexo}{Tu anexo}%
+\input{apendice3.tex}%
+
 
 %==================================================================
 \chapter{Código del programa ANPR}\label{CAP:anexo0}
@@ -476,14 +499,15 @@ xvii, 144 pp.}
 
 %\backmatter
 %==================================================================
-\chapter{Código del programa Detección de caracteres}\label{CAP:anexo2}
+\chapter{Código del programa Segmentación de caracteres}\label{CAP:anexo2}
 %\markboth{Tu anexo}{Tu anexo}%
 \input{apendice2.tex}%
 
 %==================================================================
-\chapter{Pseudocódigo}\label{CAP:anexo3}
+\chapter{Código del entrenamiento del modelo}\label{CAP:anexo4}
 %\markboth{Tu anexo}{Tu anexo}%
-\input{apendice3.tex}%
+\input{apendice4.tex}%
+
 
 
 

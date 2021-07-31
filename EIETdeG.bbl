@@ -68,6 +68,20 @@ R.~Magro, ``Binarizacion de imagenes digitales y su algoritmia como herramienta
   aplicada a la ilustriacion entomologica,'' \emph{Boletín de la Sociedad
   Entomológica Aragonesa (S.E.A.)}, vol.~53, p. 445, 2013.
 
+\bibitem{SVN}
+C.~Cortes and V.~Vapnik, ``Suport vector networks,'' \emph{Kluwer Academic
+  Publishers, Boston. Manufactured in The Netherlands.}, pp. 273--297, 1995.
+
+\bibitem{SVM2014}
+N.~Cristianini and J.~Shawer-Taylor, \emph{An introduction to Support Vector
+  machines and other Kernels-based learning methods}, 16th~ed.\hskip 1em plus
+  0.5em minus 0.4em\relax Cambridge University Press, 2014, ch. 1, 3, 6.
+
+\bibitem{Sklearn}
+scikit-learn developers. (2020) Support vector machines. Consultado en: \url{
+  https://scikit-learn.org/stable/modules/svm.html#svm-classification}. Fecha
+  de consulta: 12-12-2020.
+
 \bibitem{imread}
 Doxygen. (2019) Image file reading and writing, imread. Consultado en:
   \url{https://docs.opencv.org/3.4/d4/da8/group__imgcodecs.html#ga288b8b3da0892bd651fce07b3bbd3a56}.
@@ -121,20 +135,6 @@ Doxygen. (2019) Structural analysis and shape descriptors, boundingrect.
 T.~OpenCV. (2019) Drawing functions, rectangle. Consultado en:
   \url{https://docs.opencv.org/2.4/modules/core/doc/drawing_functions.html#rectangle}.
   Fecha de consulta: 30-06-2020.
-
-\bibitem{SVN}
-C.~Cortes and V.~Vapnik, ``Suport vector networks,'' \emph{Kluwer Academic
-  Publishers, Boston. Manufactured in The Netherlands.}, pp. 273--297, 1995.
-
-\bibitem{SVM2014}
-N.~Cristianini and J.~Shawer-Taylor, \emph{An introduction to Support Vector
-  machines and other Kernels-based learning methods}, 16th~ed.\hskip 1em plus
-  0.5em minus 0.4em\relax Cambridge University Press, 2014, ch. 1, 3, 6.
-
-\bibitem{Sklearn}
-scikit-learn developers. (2020) Support vector machines. Consultado en: \url{
-  https://scikit-learn.org/stable/modules/svm.html#svm-classification}. Fecha
-  de consulta: 12-12-2020.
 
 \bibitem{Manual}
 U.P.E.L., \emph{Manual de trabajos de grado, Especialización y Maestría y
