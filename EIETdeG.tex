@@ -7,8 +7,11 @@
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \usepackage[spanish]{babel}
+
+
 %\usepackage[latin1]{inputenc}
-\usepackage[ansinew]{inputenc} %Reconoce tildes y otros simbolos propios del espa?ol
+%\usepackage[ansinew]{inputenc} %Reconoce tildes y otros simbolos propios del espa?ol
+\usepackage[utf8]{inputenc}
 \usepackage[T1]{fontenc}  %Estilo de fuente time new roman
 
 \usepackage{amssymb}
@@ -156,7 +159,7 @@
 %\fancyhead[R]{}
 
 
-\rfoot[\fancyplain{}{\textit{M. Rodríguez}}] {\fancyplain{}{}}
+\rfoot[\fancyplain{}{\textit{N. Molina}}] {\fancyplain{}{}}
 \lfoot[\fancyplain{}{}] {\fancyplain{}{\textit{}}}    %%%%%%%%%%%%%%%%%%% OJO ACA %%%%%%%%%%
 \cfoot[\fancyplain{}{}] {\fancyplain{}{\bfseries\thepage}}
 %\setlength{\footrulewidth}{0.0pt}%
@@ -217,10 +220,10 @@
 \usepackage[skins,theorems,listings,breakable]{tcolorbox}
 \usepackage{listings}
 \usepackage{geometry}
-\geometry{top=1.5cm,bottom=1.5cm,left=2.5cm,right=2.5cm}
+%\geometry{top=1.5cm,bottom=1.5cm,left=2.5cm,right=2.5cm}
 \usepackage{graphicx}
 
-\pagestyle{empty}
+%\pagestyle{empty}
 
 \def\lstlistingname{Programa}%  Aquí puedes cambiar el nombre del título del listado
 %Listing
@@ -288,6 +291,8 @@
 %\addtocounter{page}{4}%
 
 \pagenumbering{roman}
+\setcounter{secnumdepth}{3}
+\setcounter{tocdepth}{3}
 
 \makeindex
 
@@ -363,7 +368,15 @@
 {\cleardoublepage \thispagestyle{empty} \vspace*{\stretch{1}}%
 \begin{center} \em} {\end{center} \vspace*{\stretch{3}} }%
 \begin{dedication}%
-A quien desees dedicar este trabajo
+
+\textbf{Dedico el éxito de este trabajo de grado principalmente a mí}. Este trabajo no solo me permitió contribuir al campo de investigación siendo un gran honor, sino que me dejó un invaluable crecimiento personal y profesional.
+
+A mi Padre \textbf{Jaime Molina}, cuyo sueño fue verme pisar la gran aula magna de la UCV, aunque no podré por fuerzas ajenas a nuestra voluntad, entrego todo el amor y éxito que este trabajo representó a tu sueño. Gracias infinitamente  por toda la sabiduría que  me entregaste.
+ 
+A mi hermano \textbf{Ricardo Molina}, quien siempre me motivó y creyó en mis capacidades para alcanzar grandes metas.
+
+ Todo está al alcance de nuestras manos si nos damos la oportunidad de aprender con dedicación, disciplina y paciencia; dándonos la oportunidad de fallar en el proceso.
+
 \end{dedication}%
 
 %==================================================================
@@ -371,7 +384,7 @@ A quien desees dedicar este trabajo
 %\markboth{Reconocimientos}{Reconocimientos}%
 \addcontentsline{toc}{chapter}{RECONOCIMIENTOS Y AGRADECIMIENTOS}%
 %\setlength{\parskip}{0.2cm}%
-%\input{agradecimientos.tex}%
+\input{agradecimientos.tex}%
 
 %======================= P?gina de Resumen ==========================
 \newpage
@@ -481,7 +494,7 @@ xvii, 144 pp.}
 
 \renewcommand \thechapter{\Roman{chapter}}
 
-
+\newgeometry{top=1.5cm,bottom=1.5cm,left=2.5cm,right=2.5cm}
 \chapter{Pseudocódigo}\label{CAP:anexo3}
 %\markboth{Tu anexo}{Tu anexo}%
 \input{apendice3.tex}%
@@ -520,7 +533,7 @@ xvii, 144 pp.}
 
 % References here (outcomment the appropriate case)
 % CASE 1: BiBTeX used to constantly update the references (while the paper is being written).
-\bibliographystyle{IEEEtran}%%% outcomment this and next line in Case 1 siam
+\bibliographystyle{acm}%%% outcomment this and next line in Case 1 siam
 %\bibliographystyle{apalike}%
 \renewcommand{\bibname}{REFERENCIAS}
 \let\oldbibsection\bibsection

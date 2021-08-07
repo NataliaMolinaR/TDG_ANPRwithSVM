@@ -2,13 +2,15 @@
 % !TeX spellcheck = es_ES
 % !TeX encoding = ISO-8859-1
 
-Una vez diseñados e implementados los módulos de detección de placa, detección de caracteres y reconocimiento de caracteres, se realizaron diferentes pruebas que permiten evaluar el desempeño del sistema  y validar su funcionamiento, así como definir las condiciones bajo los cuales se obtiene los mejores resultados en cuánto a detección y clasificación. 
+Una vez diseñados e implementados los módulos de detección de placa, detección de caracteres y reconocimiento de caracteres, se realizaron diferentes pruebas que permiten evaluar el desempeño del sistema  y validar su funcionamiento, así como definir las condiciones bajo los cuales se obtiene los mejores resultados en cuánto a detección y clasificación.  Todas las pruebas presentadas a continuación se realizaron con placas Venezolanas. 
 
  \section{Desempeño del sistema}
  
  Para medir el desempeño del sistema en cada uno de sus módulos así como en su funcionamiento global, se probaron 2 escenarios: reconocimiento de caracteres que participaron en la base de datos y reconocimiento de caracteres que no participaron en la base de datos. 
  
- En un sistema real la entrada al sistema es capturada por un dispositivo instalado en posición y espacio fijo, por lo que todas las entradas se encuentran sometidas a las mismas condiciones controlables. Por lo que una vez ajustada la resolución de la cámara se cuenta con entradas que tienen características muy similares. Para la realización de dichas pruebas la entrada al sistema fue con imágenes a diferentes resoluciones, ángulo de captura y distancia dado que no se dispone de un sistema físico real que obtenga entradas uniformes. Esto sucede especialmente en los ejemplos de entrenamiento que componen la base de datos. Es importante recalcar que el cambio de resolución en una captura podría significar una pérdida de información importante que incide directamente en el correcto reconocimiento del carácter, ya que su vector de característica es directamente afectado. Por otro lado, la variación del ángulo de captura genera distorsión en las imágenes por lo que también incide directamente en la clasificación de caracteres, producto de la variación en el vector de medida. 
+ En un sistema real, la entrada al sistema es capturada por un dispositivo instalado en posición y espacio fijo, por lo que todas las entradas se encuentran sometidas a las mismas condiciones controlables. Por lo que una vez ajustada la resolución de la cámara se cuenta con entradas que tienen características muy similares.
+ 
+  Para la realización de estas pruebas, las entrada al sistema fueron imágenes de diferentes resoluciones, ángulos de captura y distancias, dado que no se disponía de un sistema físico real que capture entradas uniforme. Esto sucede especialmente en los ejemplos de entrenamiento que componen la base de datos. Es importante recalcar que el cambio de resolución en una captura podría significar una pérdida de información importante que incide directamente en la correcta detección y reconocimiento del carácter, ya que su vector de característica es directamente afectado. Por otro lado, la variación del ángulo de captura genera distorsión en las imágenes por lo que también incide directamente en la clasificación de caracteres, producto de la variación en el vector de medida. 
  
  \subsection{Reconocimiento de caracteres que forman parte de la base de datos}
  
@@ -79,7 +81,13 @@ En la Figura \ref{fig:placaext179edb}, se muestra un caso que a simple vista se 
 
 En la Figura \ref{fig:placaext243edb}, los inconvenientes se presentan en forma similar al anterior, pero es importante destacar que en la extracción se puede observar que los contornos superan las medidas límites de los cuadros como es el caso particular de la letra D y E. A pesar de lo anterior, el sistema de reconocimiento fue capaz de reconocer la letra D, sin embargo, la letra E la clasificó con una F. Este problema de reconocimiento no se origina en el modelo del algoritmo SVM sino en la extracción de caracteres. Su solución recae en mejorar el rendimiento de extracción de caracteres.
 
-A continuación se presenta la Tabla \ref{Tab:prueba1}, en la cual se reporta la placa, caracteres detectados y reconocidos a fin de evaluar su desempeño.
+Se presenta la Tabla \ref{Tab:prueba1}, en la cual se reporta la placa, caracteres detectados y reconocidos a fin de evaluar su desempeño. 
+
+En la Tabla \ref{Tab:pruebas1} se observan los resultados obtenidos de 50 muestras que participaron en el entrenamiento de la base de datos. En este experimento se obtuvo una tasa de éxito de 84.4\% en la detección de caracteres para las muestras dónde el algoritmo fue capaz de detectar en su totalidad la placa. 
+
+El sistema falló en la detección de caracteres de 7 de 50 placas, dado que el \textit{Módulo de segmentación de caracteres} no logró encontrar al menos 6 caracteres dentro de la matrícula o, por el contrario, reconoció más de 7 contornos. Cuando esto sucede el sistema clasifica esto como un error. Es posible que el algoritmo reconozca un contorno que matemáticamente se parezca al área y aspect ratio establecidos para los caracteres de una placa, pero no lo sea. Debido a lo anterior, 7 placas fueron clasificadas como error. Las mismas no están incluidas en la Tabla \ref{Tab:prueba1}.
+
+Sin embargo, aunque estas 7 placas fueron clasificadas como error el \textit{Módulo de segmentación de caracteres} si fue capaz de detectar algunos de los caracteres contenidas en estas. Tomando en cuenta el número total de caracteres detectado, incluso en las placas clasificadas como error el rendimiento del \textit{Módulo de segmentación de caracteres} es de 98,01\%. Mientras que en el rendimiento de reconocimiento de caracteres obtuvo una tasa de éxito 98,90\%. 
 
 \begin{table}[H]
 	\centering
@@ -138,7 +146,7 @@ A continuación se presenta la Tabla \ref{Tab:prueba1}, en la cual se reporta la 
 	\end{tabular}
 \end{table}
 
-El rendimiento por caracter se presenta en la Tabla \ref{Tab:pruebas1}.
+El rendimiento por caracter se presenta en la Tabla \ref{Tab:pruebas1}. En las Figuras \ref{fig:tasaE0}, \ref{fig:tasaeM} y \ref{fig:tasaeKcaracterk}, se muestran gráficos circulares de la tasa de éxito y error del reconocimiento de los caracteres E, M y K.
 
 \begin{table}[H]
 	\centering
@@ -187,11 +195,29 @@ El rendimiento por caracter se presenta en la Tabla \ref{Tab:pruebas1}.
 	\end{tabular}
 \end{table}
 
-En la Tabla \ref{Tab:pruebas1} se observan los resultados obtenidos de 50 muestras que participaron en el entrenamiento de la base de datos. En este experimento se obtuvo una tasa de éxito de 84.4\% en la detección de caracteres para las muestras dónde el algoritmo fue capaz de detectar en su totalidad la placa. 
+\begin{figure}[H]
+\centering
+\includegraphics[width=0.5\linewidth]{Imagenes/TasaCaracterE}
+\caption{ Tasa de éxito de reconocimiento de la letra E}
+\label{fig:tasaeE}
+\end{figure}
 
-El sistema falló en la detección de caracteres de 7 placas de 50, dado que el \textit{Módulo de detección de caracteres} no logró encontrar al menos 6 caracteres dentro de la matrícula o , por el contrario, reconoció más de 7 contornos. Cuando esto sucede el sistema clasifica esto como un error. Es posible que el algoritmo reconozca un contorno que matemáticamente se parezca al área y aspect ratio establecidos para los caracteres de una placa. Debido a lo anterior, 7 placas fueron clasificadas como error. Las mismas no están incluidas en la Tabla \ref{Tab:prueba1}.
+\begin{figure}[H]
+\centering
+\includegraphics[width=0.5\linewidth]{Imagenes/TasaCaracterM}
+\caption{Tasa de éxito de reconocimiento de la letra M}
+\label{fig:tasaeM}
+\end{figure}
 
-Sin embargo, aunque estas 7 fueron clasificadas como error el \textit{Módulo de detección de caracteres} si fue capaz de detectar algunos de los caracteres contenidas en estas. Tomando en cuenta el número total de caracteres detectado, incluso en las placas clasificadas como error el rendimiento del \textit{Módulo de detección de caracteres} es de 98,01\%. Mientras que en el rendimiento de reconocimiento de caracteres obtuvo una tasa de éxito 98,90\%. 
+\begin{figure}[H]
+\centering
+\includegraphics[width=0.5\linewidth]{Imagenes/TasaCaracterK}
+\caption{Tasa de éxito de reconocimiento de la letra K	}
+\label{fig:tasaeKcaracterk}
+\end{figure}
+
+
+
 
 A continuación se presentan las placas que fueron clasificadas como error: 
 
@@ -259,7 +285,7 @@ En las Figuras \ref{fig:p1e97} y \ref{fig:p1e144} se detectaron todos los caract
 
 \subsection{Reconocimiento de caracteres que no forman parte de la base de datos}
 
-Para esta prueba se consideraron las siguientes condiciones: 2 metros de distancia respecto a la placa del automóvil y un metro de altura respecto al suelo. Las condiciones de iluminación eran tenues ya que los vehículos se encontraban en un estacionamiento. Por lo tanto, teniendo en cuenta estas variables controladas se obtuvo la captura de 10 automóviles diferentes para evaluar el desempeño de detección de placa, detección de caracteres y reconocimiento de caracteres. 
+Para esta prueba se consideraron las siguientes condiciones: 2 metros de distancia respecto a la placa del automóvil y un metro de altura respecto al suelo. Así mismo, las capturas se realizaron con iluminación flash del celular para mejorar la detección de la placa, considerando que de iluminación eran tenues ya que los vehículos se encontraban en un estacionamiento. Por lo tanto, teniendo en cuenta estas variables controladas se obtuvo la captura de 10 automóviles diferentes para evaluar el desempeño de detección de placa, detección de caracteres y reconocimiento de caracteres. 
 
 
 \begin{figure}[H]
@@ -428,7 +454,28 @@ De esta forma, el sistema continúa hasta la detección de caracteres. Dado que la
 	\end{tabular}
 \end{table}
 
-  En la Tabla \ref{Tab:producion} se observan los resultados obtenidos de las 10 capturas. La tasa de éxito obtenida en la detección de carácter fue de 100\% Por otro lado, la tasa de éxito en el reconocimiento de caracteres es de  93,40\% en reconocimiento de caracteres.
+\begin{figure}[H]
+\centering
+\includegraphics[width=0.4\linewidth]{Imagenes/TasaCaracter0}
+\caption{Tasa de éxito de reconocimiento de la letra 0.}
+\label{fig:tasaE0}
+\end{figure}
+\begin{figure}[H]
+\centering
+\includegraphics[width=0.5\linewidth]{Imagenes/TasaCaracterA}
+\caption{Tasa de éxito de reconocimiento de la letra A.}
+\label{fig:tasaEA}
+\end{figure}
+
+\begin{figure}[H]
+\centering
+\includegraphics[width=0.4\linewidth]{Imagenes/TasaCaracterB}
+\caption{Tasa de éxito de reconocimiento de la letra B.}
+\label{fig:tasaEB}
+\end{figure}
+
+
+  En la Tabla \ref{Tab:producion} se observan los resultados obtenidos de las 10 capturas. La tasa de éxito obtenida en la detección de carácter fue de 100\% Por otro lado, la tasa de éxito en el reconocimiento de caracteres es de  93,40\% en reconocimiento de caracteres. En las Figuras \ref{fig:tasaE0}, \ref{fig:tasaEA} y \ref{fig:tasaEB}, se muestran gráficos circulares de la tasa de éxito y error del reconocimiento de los caracteres 0, A Y B.
   
   \subsection{Tiempos de ejecución}
   
@@ -442,7 +489,7 @@ De esta forma, el sistema continúa hasta la detección de caracteres. Dado que la
   	\caption{Tiempos de procesamiento y reconocimiento }\label{Tab:prueba3}
   	\begin{tabular}{lccc}
   		\toprule
-  		Placa ID & Número de Placa& Procesamiento de imagen [s] & Reconocimiento de caracteres [s] \\
+  		Placa ID & Número de Placa& \parbox{3cm}{\centering Procesamiento de imagen [s]} & \parbox{3cm}{\centering Reconocimiento de caracteres [s]} \\
   		\midrule
   		1&AA230OU&0.839&0.338 \\
   		2&ABW19H&0.55&0.268 \\
@@ -457,5 +504,14 @@ De esta forma, el sistema continúa hasta la detección de caracteres. Dado que la
   	\end{tabular}
   \end{table}
   
+  En la Figura \ref{fig:tiempocpu}, se muestra la gráfica de línea del tiempo de CPU del procesamiento de imagen y del reconocimiento de caracteres.
   
-  En promedio se obtiene que el tiempo de procesamiento de imagen es 0.624s y tiempo de reconocimiento de caracteres 0.266s. 
+  \begin{figure}[H]
+  \centering
+  \includegraphics[width=0.7\linewidth]{Imagenes/TiempoCPU}
+  \caption{Gráfica tiempo del CPU del sistema para el procesamiento de imagen y reconocimiento de caracteres.}
+  \label{fig:tiempocpu}
+  \end{figure}
+  
+  
+  En promedio se obtiene que el tiempo de procesamiento de imagen es 0.624s y el tiempo de reconocimiento de caracteres 0.266s. 

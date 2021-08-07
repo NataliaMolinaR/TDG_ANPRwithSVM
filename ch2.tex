@@ -134,7 +134,8 @@ En base a las particularidades entre algoritmos categorizan los métodos de umbra
 \end{itemize}
 
 
-\section{Machine Learning y Máquina de Soporte Vectorial}
+\section{Machine Learning y Máquina de Soporte Vectorial}\label{CAP:ML}
+
 
 ``\textit{Machine Learning}'' (ML) o aprendizaje automático (por su traducción al español) es una rama de la inteligencia artificial que está constituida por un conjunto de algoritmos que automatizan la construcción de modelos analíticos a partir del análisis de datos. La ML se fundamenta en la idea de que los sistemas pueden aprender de los datos, identificar patrones y tomar decisiones con una mínima intervención humana. La ML también se puede definir como el proceso de resolver un problema práctico mediante (\cite{SarkarBaliSharma:2018}): 1)~la recopilación de un conjunto de datos y 2) la construcción algorítmica de un modelo estadístico basado en ese conjunto de datos.
 
@@ -208,11 +209,11 @@ En caso que los datos no sean linealmente separables, existen procedimientos que
 
 Asumamos que los datos a clasificar pueden ser separados linealmente en dos clases,
 \[
-(\x_{1},y_{1}),(\x_{2},y_{2}),\ldots,(\x_{m},y_{m}),\quad\x\in\R^{n},\quad y_{i}\in\{-1,+1\},
+(\x_{1},y_{1}),(\x_{2},y_{2}),\ldots,(\x_{p},y_{p}),\quad\x\in\R^{n},\quad y_{i}\in\{-1,+1\},
 \]
 donde el $(\x_{i},y_{i})$ es un dato de entrenamiento, con $\x_{i}$ el \textit{vector de atributos} e $y_{i}$ la \textit{etiqueta}. Se desea encontrar una función $f:\R^{n}\to\{-1,+1\}$, denominada \textit{función de clasificación}, que separe los dos clases de datos, es decir,
 \[
-f(\x_{i}) = y_{i},\quad i=1,2,\ldots,m.
+f(\x_{i}) = y_{i},\quad i=1,2,\ldots,p.
 \]
 Ahora bien, como los datos son linealmente separables, existen $\w\in\R^{n}$ y $b\in\R$ tales que el hiperplano 
 \[
@@ -266,7 +267,7 @@ El problema \eqref{posvm2} se puede expresar en forma matricial como:
 \mbox{sujeto a:} & \quad AX^{\top}\w + b\y \geq \uno,
 \end{split}
 \end{equation}
-donde $A=\mathrm{diag}(y_{1},y_{2},\ldots,y_{N})\in\R^{p\times p}$ es una matriz diagonal, $\y=(y_{1},y_{2},\ldots,y_{p})^{\top}\in\R^{p}$ es el \textit{vector de etiquetas}, $\uno\in\R^{p}$ es el vector de unos, y $X=\begin{pmatrix}\x_{1} & \x_{2} & \cdots & \x_{p}\end{pmatrix}\in\R^{n\times p}$ es la matriz de atributos, cuyas columnas son 
+donde $A=\mathrm{diag}(y_{1},y_{2},\ldots,y_{p})\in\R^{p\times p}$ es una matriz diagonal, $\y=(y_{1},y_{2},\ldots,y_{p})^{\top}\in\R^{p}$ es el \textit{vector de etiquetas}, $\uno\in\R^{p}$ es el vector de unos, y $X=\begin{pmatrix}\x_{1} & \x_{2} & \cdots & \x_{p}\end{pmatrix}\in\R^{n\times p}$ es la matriz de atributos, cuyas columnas son 
 los datos $\x_{i}$.
 
 Utilizando los multiplicadores de Lagrange, el problema \eqref{posvm3} puede expresarse en la siguiente forma, denominada \textit{problema dual de Wolfe},
@@ -313,7 +314,7 @@ son linealmente separables \cite{Cover:1965}. Usando este hecho se puede encontr
 \[
 f(\x) = \sgn(\phi(\x)^{\top}\w^{*} + b^{*}),
 \]
-donde $\w^{*}$ y $b^{*}$ se obtienen resolviendo el problema \eqref{posvm4} y aplicando el Procedimiento de Separación, tomando $\z_{1},\z_{2},\ldots,\z_{p}$ como datos de entrenamiento. La función $\phi$, en general, no se conoce explícitamente, además, es poco práctico calcularla. En la práctica, se usan las funciones llamadas \textit{núcleo}, $\mathcal{K}:\R^{m}\times\R^{m}\to\R$, tales que
+donde $\w^{*}$ y $b^{*}$ se obtienen resolviendo el problema \eqref{posvm4} y aplicando el Procedimiento de Separación, tomando $\z_{1},\z_{2},\ldots,\z_{p}$ como datos de entrenamiento. La función $\phi$, en general, no se conoce explícitamente, además, es poco práctico calcularla. En la práctica, se usan las funciones llamadas \textit{núcleo}, $\mathcal{K}:\R^{n}\times\R^{n}\to\R$, tales que
 \[
 \mathcal{K}(\x,\z) = \phi(\x)^{\top}\phi(\z),\qquad\mbox{para }\x,\z\in\R^{n}.
 \]
@@ -338,7 +339,7 @@ No toda función $\mathcal{K}$ es un núcleo. La funciones núcleo deben ser simétr
   
   \item \textit{Polinomio de grado $d$}: $\mathcal{K}(\x,\z) = (\gamma\x^{\top}\z + r)$, con parámetros $\gamma,r\in\R$.
       
-  \item \textit{Base radial (RBF)}: $\mathcal{K}(\x,\z) = e^{-\gamma\|\x-\z\|^{2}}$, con parámetro $\gamma\R$.
+  \item \textit{Base radial (RBF)}: $\mathcal{K}(\x,\z) = e^{-\gamma\|\x-\z\|^{2}}$, con parámetro $\gamma\ in \R$.
       
   \item \textit{Red neuronal (Sigmoid)}: $\mathcal{K}(\x,\z) = \tanh(\gamma\x^{\top}\z + r)$, con parámetros $\gamma,r\in\R$.
 \end{enumerate}
@@ -364,14 +365,14 @@ En resumen, el objetivo de la SVM es idear un método de aprendizaje computaciona
 Python es un lenguaje de programación multiparadigma, multiplataforma, dinámico e interpretado, es decir, se ejecuta directamente mediante un intérprete dejando a un lado la compilación. Actualmente, Python es  administrado por Python Software Foundation. El software posee una licencia de código abierto denominada Python Software Fondation License.
 
 
-Python se caracteriza por su amplia aplicabilidad en diferentes campos del desarrollo de nuevas tecnologías como lo es el Machine Learning, Data Science, Vision por Computador, entre otros. Python soporta diferentes librerías como  OpenCV  y Scikit-Learn, las cuales cuentan con extensa documentación acerca de sus aplicaciones e implementaciones. La versión que se utilizó para la implementación de este trabajo fue Python 3.1.
+Python se caracteriza por su amplia aplicabilidad en diferentes campos del desarrollo de nuevas tecnologías como: Machine Learning, Data Science, Vision por Computador, entre otros. Python soporta diferentes librerías como  OpenCV  y Scikit-Learn, las cuales cuentan con extensa documentación acerca de sus aplicaciones e implementaciones. La versión que se utilizó para la implementación de este trabajo fue Python 3.1.
 
 \section{OpenCV}
 
 Open Computer Vision (OpenCV, por sus siglás en inglés) es una librería libre de visión artificial desarrollada originalmente por Intel. Especializada en la visión por computador y el procesamiento de imágenes cuenta con diferentes herramientas que permiten manipular la información dentro de una imagen. Para mayor información visitar  https://opencv.org/. La versión que se utilizó para la implementación de este trabajo fue OpenCV 3.4.
 
 
-Entre las funciones que ofrece:
+Específicamente, las funciones de OpenCV empleadas en la implementación son:
 
 \begin{itemize}
 	
@@ -389,9 +390,9 @@ Entre las funciones que ofrece:
 	
 	\item \verb|cv2.adaptiveThreshold|: el método adaptativetreshold binariza una imagen de acuerdo a un valor de umbral que cálcula para pequeñas regiones de la imagen digital. Así, el filtro gaussiano realiza una convolución con cada punto de la matriz generando una matriz de salida. El valor de umbral es calculado como la suma ponderada de los valores del vecindario donde los pesos son una ventana gaussiana. Las dimesiones del kernel representa el tamaño del vecindario de pixeles usados para calcular el valor umbral. \cite{AdaptTresh}
 	
-	\item \verb|cv2.dilate|: Dilate es un método de transformación morfológica. Las operaciones morfológicas aplican un elemento estructurante a la imagen de entrada y generan una de salida con características morfológicas diferentes. Dilate utiliza un kernel \textit{B} el cual se escanea sobre la imagen, calcula el valor máximo de pixeles superpuestos por \textit{B}  y reemplazamos el píxel de la imagen en la posición del punto de anclaje con ese valor máximo. Como se puede deducir, esta operación de maximización hace que las regiones brillantes dentro de una imagen "crezcan". \cite{Dilate}
+	\item \verb|cv2.dilate|: Dilate es un método de transformación morfológica. Las operaciones morfológicas aplican un elemento estructurante a la imagen de entrada y generan una de salida con características morfológicas diferentes. Dilate utiliza un kernel \textit{B} el cual se escanea sobre la imagen, calcula el valor máximo de pixeles superpuestos por \textit{B}  y reemplazamos el píxel de la imagen en la posición del punto de anclaje con ese valor máximo. Como se puede deducir, esta operación de maximización hace que las regiones brillantes dentro de una imagen `` crezcan". \cite{Dilate}
 	
-	\item \verb|cv2.findcontours|: definiendo contorno como una curva todos los puntos continuos que tienen el mismo color o intensidad, este método encuentra los contornos definidos en una imagen, preferiblemente binarizada. Este método requiere diferentes parámetros de entrada que definen su modo de funcionamiento como le modo de recuperación de contorno y método de aproximación de contorno. Ambos parámetros son explicados en las fuentes de documentación. \cite{findContours}
+	\item \verb|cv2.findcontours|: definiendo contorno como una curva donde todos los puntos continuos  tienen el mismo color o intensidad, este método encuentra los contornos definidos en una imagen, preferiblemente binarizada. Este método requiere diferentes parámetros de entrada que definen su modo de funcionamiento como le modo de recuperación de contorno y método de aproximación de contorno. Ambos parámetros son explicados en las fuentes de documentación. \cite{findContours}
 	
 	\item \verb|cv2.boundingRect|: esta función calcula y devuelve el rectángulo delimitador de un contorno o un conjunto de píxeles de la misma intensidad y distintos de cero. Esta función cálcula un rectangulo recto, es decir, no considera ángulo de rotación por lo tanto el área del rectángulo no será mínima. Esta función devuelve las coordenadas de la esquina superior izquierda del rectángulo, su ancho y alto. \cite{boundRectangle}
 	

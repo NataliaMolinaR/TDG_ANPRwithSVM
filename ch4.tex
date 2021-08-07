@@ -9,9 +9,9 @@ En el presente capítulo se describe el proceso de desarrollo del proyecto, donde
 
 El software se basó en una arquitectura estructural. Para cumplir la condición anterior, dado el problema que se desea resolver a través de un algoritmo, se divide dicho algoritmo en módulos siguiendo los principios de diseño de descomposición por refinamiento sucesivo, creación de jerarquía modular y elaboración de módulos independientes.
 
-Los procesos descritos fueron diseñados para trabajar de forma modular e independientes, cada uno con una funcionalidad específica. Este proyecto se dividió en tres grandes módulos: detección de texto, procesamiento de imágenes y reconocimiento de caracteres. 
+Los procesos descritos fueron diseñados para trabajar de forma modular e independientes, cada uno con una funcionalidad específica. Este proyecto se dividió en dos grandes módulos: procesamiento de imágenes y reconocimiento de caracteres. 
 
-Se seleccionó esta arquitectura ya que la solución propuesta para la problemática planteada se puede describir en tres diferentes etapas, cuyas  funcionalidades son independientes entre sí, pudiéndose  definir las interacciones entre las entradas y salidas. En la Figura \ref{fig:tdmodulos} se puede observar un esquema general del proyecto expresada en módulos.
+Se seleccionó esta arquitectura ya que la solución propuesta para la problemática planteada se puede describir en dos etapas diferentes, cuyas  funcionalidades son independientes entre sí, pudiéndose  definir las interacciones entre las entradas y salidas. En la Figura \ref{fig:tdgmodulos} se puede observar un esquema general del proyecto expresada en módulos.
 
 \begin{figure}[H]
 	\centering
@@ -25,7 +25,7 @@ Se seleccionó esta arquitectura ya que la solución propuesta para la problemátic
 
 \section{Componentes del sistema}
 
-Se busca recrear de manera computarizada el proceso de observar una placa y leer su información. Por ello, se cuenta con una serie de herramientas y técnicas desarrolladas en Machine Learning y Visión Computarizada. La detección de texto basado en el aprendizaje profundo de máquinas, el procesamiento de imágenes con OpenCV, el filtrado de la información y por último la SVM imitará el reconocimiento de caracteres, cumpliendo así con los objetivos planteados. 
+Se busca recrear de manera computarizada el proceso de observar una placa y leer su información. Por ello, se cuenta con una serie de herramientas y técnicas desarrolladas en Machine Learning y Visión Computarizada. El procesamiento de imágenes con OpenCV, el filtrado de la información y por último la SVM imitará el reconocimiento de caracteres, cumpliendo así con los objetivos planteados. 
 
 Dado lo anterior, se necesitará: un computador dónde se ejecutará el algoritmo del proyecto y una base de datos compuesta por un conjunto de imágenes de caracteres que conformarán el conjunto de entrenamiento. Dado que el presente proyecto consiste en el diseño de software, no contempla la captura de escenas.   Las pruebas se realizarán con tomas previamente capturadas en condiciones controladas tanto en iluminación como en la posición del objeto. Con lo anterior expuesto, el único componente físico que se requiere es un  computador. 
 
@@ -60,7 +60,7 @@ El computador es una máquina Toshiba Satellite C55 Series. El sistema operativo 
 
 En general, existen númerosas bases de datos de matrículas vehículares de diferentes países del mundo y estas incluyen fotos de la placa completa. Es por ello que no es posible emplearlas para el entrenamiento de la SVM tomando en cuenta los objetivos del presente proyecto. 
 
-Para cumplir con los requerimientos planteados, es fundamental contar con una base de datos compuesta por imágenes de todas las letras y números del abecedario español individualmente. Es decir, cada imagen debe contener solo un tipo de carácter. Por lo tanto, para entrenar la SVM fue necesario construir dicha base de datos.
+Para cumplir con los requerimientos planteados, es fundamental contar con una base de datos compuesta por imágenes de todas las letras y números del abecedario español individualmente que participen en la identificación de la matrícula. Es decir, cada imagen debe contener solo un tipo de carácter. Por lo tanto, para entrenar la SVM fue necesario construir dicha base de datos.
 
 Se construyó una base de datos que cuenta con 1496 imágenes de caracteres de letras y números. Para su construcción se recopiló al menos 250 fotos de placas vehículares de origen Venezolano y se procesaron utilizando herramientas provistas por la librería OpenCV, a fin de obtener la información de interés. 
 
@@ -73,7 +73,7 @@ En el diseño, una de las mayores dificultades fue la construcción de la base de 
 \begin{figure}[H]
 	\centering
 	\includegraphics[width=0.7\linewidth]{Imagenes/data_base}
-	\caption{Muestras de imágenes del set e entrenamientos creada.}
+	\caption{Muestras de imágenes del conjunto de entrenamiento creado.}
 	\label{fig:database}
 \end{figure}
 
@@ -201,7 +201,7 @@ Así, el software se divide en los siguientes tres módulos:
 
 \subsection{Detección de la placa}
 
-El módulo de detección (ver Apéndice \ref{CAP:anexo1} en el Anexo) de la placa se define como un sistema dónde se ingresa una imagen frontal o posterior  de un vehículo y se obtiene la placa contenida. Se puede describir este proceso en las siguientes etapas:
+El módulo de detección (ver Apéndice \ref{CAP:anexo1}) de la placa se define como un sistema dónde se ingresa una imagen frontal o posterior  de un vehículo y se obtiene la placa contenida. Se puede describir este proceso en las siguientes etapas:
 
 \begin{itemize}
 	
@@ -211,19 +211,53 @@ El módulo de detección (ver Apéndice \ref{CAP:anexo1} en el Anexo) de la placa s
 	
 \end{itemize}
 
-De esta forma, es necesario emplear técnicas o herramientas que permitan detectar la localización de la placa. Considerando que la placa contiene texto, es posible utilizar técnicas avanzadas como los detectores de texto, como por ejemplo máquinas de aprendizaje basadas en aprendizaje profundo. Estas herramientas creadas a partir de Machine Learning, permiten detectar el texto en una imagen según las características de su entrenamiento.
+De esta forma, es necesario emplear técnicas y herramientas que permitan detectar la localización de la placa mediante el procesamiento imagen. Se diseñó un procedimiento que sigue una serie de pasos con el fin de filtrar la información y detectar la placa en una captura de imagen. Para ello se emplearon funciones de la biblioteca OpenCV. Adicionalmente, se establecieron parámetros para la captura de imagen que dará entrada al sistema, las cuales se contemplan: distancia de 2 metros entre el vehículo y la cámara fotográfica, distancia de 1 metro de altura respecto al suelo y la cámara fotográfica, con el vehículo centrado en el medio del marco de captura  y tomar la fotografía con el flash activo. Se describe dicho proceso en el siguiente diagrama de flujo: 
 
-El modelo EAST es un detector de texto basado en el aprendizaje profundo y OpenCV. Dado que el objeto del presente proyecto es reconocer los caracteres de la placa, es posible emplear módulos de detección de texto ya desarrollados. Se empleó el modelo EAST  para detectar la localización de la placa en la fotografía y, tomando en consideración el área de la placa, se extrae el contenido de interés. 
+\begin{figure}[H]
+\centering
+\includegraphics[width=0.85\linewidth]{Imagenes/diagramaDTPL}
+\caption{Proceso de detección de la placa.}
+\label{fig:diagramadtpl}
+\end{figure}
+
+
+
+
+
+ Así, se describe el procedimiento para la detección y extracción de la siguiente forma: 
+
+\begin{enumerate}
+
+\item \textbf{Suavizado de ruido}: En primer lugar, es necesario suavizar el ruido de la imagen que contiene la placa, limpiándola de características no deseadas. En la  placa, particularmente, se halla rodeada de mucho ruido debido que se encuentran muchos objetos alrededor del carro, por lo que es muy importante realizar este procedimiento. Para realizar esto se empleó con un núcleo gaussiano mediante la función \verb|cv2.GaussianBlur|.
+
+\item \textbf{Redimensionamiento de imagen}: La imagen que contiene la placa es redimensionada para reducir el mapa de pixeles dónde se estima que estará la placa. Esto con el fin de facilitar el trabajo de la posterior detección de contornos. En las condiciones controladas presentadas se establece que el vehículo se debe encontrar en el medio del marco de captura, por lo que aproximadamente el 20\% de los laterales de la fotografía se considera ruido.  Así, se elimina el 20\% de los laterales y este redimensionamiento se logra empleando fundamentalmente la función \verb|cv2.rezise|. 
+
+
+\item  \textbf{Umbralización}: La umbralización se realiza con el fin de binarizar la imagen. Para la detección de contornos es imprescindible que la binarización sea inversa. De esta forma, los contornos detectados se resaltan en blanco y el fondo en negro. En este proyecto se empleó la umbralización adaptativa \verb|cv2.adaptativetresholding|. La \textit{umbralización adaptativa} es una función que a partir de los parámetros ingresados binariza considerando pequeñas regiones de la imagen, a diferencia de una umbralización estandar. Por lo tanto, la umbralización adaptativa cálcula el valor umbral adecuado para cada región, mediante un núcleo gaussiano. La importancia de  su capacidad adaptativa radica en que factores externos como la variación de la iluminación pueden afectar significativamente el proceso de binarización.
+
+\item  \textbf{Detección de contorno}: La detección de contornos se aplica sobre la imagen umbralizada, donde ya la mayoría del ruido ha sido filtrado. En este paso, se utilizó la función \verb|cv2.findcontours| la cuál retorna una variable que contiene los contornos detectados. La detección de los contornos en la imagen depende de los parámetros ingresados en la función. En este caso, se detectan los contornos cerrados en la imagen.
+
+\item \textbf{Filtrado de contorno}: La filtración de contorno consiste en seleccionar los contornos de interés. Se empleó lógica condicional a fin de verificar si el contorno califica o no. Para ello, se estimó el área y el aspect ratio que ocupa un caracter dentro de la placa. Se ponderaron los valores de ancho y alto de varias muestras para obtener un valor umbral. Para obtener las coordenadas de los caracteres se utilizó la función \verb|cv2.boundingrectangle|, la cual permite encerrar en rectángulos los contornos detectados y devuelve los valores que permiten definir su posición en la imagen.
+
+\item \textbf{Extracción de la placa}: Así, se extrajo recortando la imagen  con funciones básicas de Python, que consiste en extraer un segmento de la imagen a partir de las coordenadas indicadas. 
+
+
+\end{enumerate}
+
+
 
 \subsection{Segmentación de los caracteres.}
 
 
-El módulo de segmentación (ver Apéndice \ref{CAP:anexo2} en el Anexo) se encarga de detectar y extraer los caracteres de interés dentro de la placa. Esto se realizó mediante técnicas de procesamiento de imágenes mediante la librería la librería OpenCV. Se describe  dicho proceso en el siguiente diagrama de flujo:
+El módulo de segmentación (ver Apéndice \ref{CAP:anexo2}) se encarga de detectar, segmentar y extraer los caracteres de interés dentro de la placa. La secuencia de pasos a seguir en este módulo es muy similar al de módudulo anterior \textit{Detección de la placa}, pues se requiere un tratamiento para la extracción de cada caracter. Considerando lo anterior, se detallarán las diferencias de importancia.
+
+
+Esto se realizó mediante técnicas de procesamiento de imágenes mediante la librería la librería OpenCV. Se describe  dicho proceso en el siguiente diagrama de flujo:
 
 \begin{figure}[H]
 	\centering
 	\includegraphics[width=1\linewidth]{Imagenes/Segmentacion_caracter_diagrama}
-	\caption{Proceso de segmentación de los caracteres de una matrícula.}
+	\caption{Procedimiento de segmentación de los caracteres de la matrícula.}
 	\label{fig:segmentacioncaracterdiagrama}
 \end{figure}
 
@@ -231,17 +265,17 @@ El módulo de segmentación (ver Apéndice \ref{CAP:anexo2} en el Anexo) se encarga
 \begin{enumerate}
 	
 	
-	\item \textbf{Suavizado de ruido:} En primer lugar, es necesario suavizar el ruido de la imagen que contiene la placa limpiándola de características no deseadas. Una característica no deseada puede aparecer debido a que la placa físicamente posee desperfectos que intervienen significativamente en la detección de contornos o, por otro lado, si la fotografía es tomada fuera de las condiciones ideales. Para realizar esto se suavizó el ruido con un kernel gaussiano mediante la función \verb|cv2.GaussianBlur|.
+	\item \textbf{Suavizado de ruido:}  Con el fin de eliminar las características no deseadas en la placa  se emplea el suavizado de  ruido con un kernel gaussiano mediante la función \verb|cv2.GaussianBlur|.
 	
 	\item \textbf{Redimensionamiento de la imagen:} La imagen que contiene la placa es redimensionada hasta obtener 150px de altura, posteriormente permitirá que el algoritmo pueda detectar y extraer los caracteres en segmentos  de 25 x 45 px. En general, los ejemplos de entrenamiento son contenidos en imágenes de dimensiones pequeñas considerando que cada pixel que la compone es una característica de entrada para el algoritmo, lo cual significa un importante costo computacional. Para lograr el redimensionamiento se empleó fundamentalmente la función \verb|cv2.rezise|. 
 	
-	\item \textbf{Umbralización de la imagen:} La umbralización se realiza con el fin de binarizar la imagen. Para la detección de contornos es imprescindible que la binarización sea inversa. De esta forma, los contornos detectados son colocados en blanco y el fondo en negro. En este proyecto se utilizó umbralización adaptativa \verb|cv2.adaptativetresholding|. La umbralización adaptativa es una función que a partir de los parámetros ingresados binariza considerando pequeñas regiones de la imagen, a diferencia de una umbralización estandar. Por lo tanto, la umbralización adaptativa cálcula el valor umbral adecuado para cada región, mediante un núcleo gaussiano. Es importante que la umbralización sea adaptable por región, ya que factores externos como la iluminación pueden afectar significativamente el proceso de binarización.
+	\item \textbf{Umbralización de la imagen:} Se binariza la imagen inversamente mediante la Umbralización adaptativa empleando un núcleo Gaussiano y se implementa utilizando la función \verb|cv2.adaptativetresholding|. 
 	
-	\item \textbf{Detección de contorno:} La detección de contornos se aplica sobre la imagen umbralizada, donde ya la mayoría del ruido ha sido filtrado. En este paso, se utilizó la función \verb|cv2.findcontours| la cuál retorna una variable que contiene los contornos detectados. La detección de los contornos de la imagen depende de los parámetros ingresados en la función. En este caso, se detectan los contornos cerrados en la imagen.
+	\item \textbf{Detección de contorno:} Se detectan los contornos cerrados de la imagen binarizada mediante la función \verb|cv2.findcontours| la cuál retorna una variable que contiene los contornos detectados. 
 	
-	\item \textbf{Filtración de contornos:} La filtración de contorno consiste en seleccionar los contornos de interés. Se empleó lógica condicional a fin de verificar si el contorno clasifica o no. Para ello, se estimó el área y el aspect ratio que ocupa un caracter dentro de la placa. Se ponderaron los valores de ancho y alto de varias muestras para obtener un valor umbral. Así, se definió una relación porcentual del área del carácter respecto al área de la placa y un bias que permita cubrir la mayoría de las variaciones. De esta forma se estableció el filtro de contornos dónde se detectan los caracteres de la matrícula. Para obtener las coordenadas de los caracteres se utilizó la función \verb|cv2.boundingrectangle|, la cual permite encerrar en rectángulos los contornos detectados y devuelve los valores que permiten definir su posición en la imagen.
+	\item \textbf{Filtración de contornos:} Empleando la lógica condicional se filtran los contornos de interés en la imagen binarizada. Para ello, se estimó el área y el aspect ratio que ocupa un caracter dentro de la placa. Se ponderaron los valores de ancho y alto de varias muestras para obtener un valor umbral. Así, se definió una relación porcentual del área del carácter respecto al área de la placa y un bias que permita cubrir la mayoría de las variaciones. Para obtener las coordenadas de los caracteres se utilizó la función \verb|cv2.boundingrectangle|, la cual permite encerrar en rectángulos los contornos detectados y devuelve los valores que permiten definir su posición en la imagen.
 	
-	\item \textbf{Recorte de los caracteres:} Con las coordenadas de los caracteres, se extrajeron recortando la imagen con un margen de provisión adecuado. Así, se aseguró contener completamente cada caracter en un segmento. Para la recortar la imagen se usaron las funciones básicas de Python, que consiste en extraer un segmento de la imagen a partir de unas coordenadas dadas.
+	\item \textbf{Recorte de los caracteres:} Con las coordenadas de los caracteres, se  recortaron de la imagen con un margen de provisión adecuado. Así, se aseguró contener completamente cada caracter en un segmento. Para la recortar la imagen se usaron las funciones básicas de Python, que consiste en extraer un segmento de la imagen a partir de unas coordenadas dadas. Así mismo, los caracteres son ordenados mediante la función sorted de Python, empleando una Key a través del cual se logran ordenar de izquierda a derecha.
 	
 	\item \textbf{Escritura en computador de los caracteres:} Una vez obtenido todos los segmentos se escriben en el computador utilizando \verb|cv2.imwrite|, con formato .jpg.
 	
@@ -252,15 +286,15 @@ El módulo de segmentación (ver Apéndice \ref{CAP:anexo2} en el Anexo) se encarga
 
 \subsection{Clasificación de caracteres.}
  
- La etapa de clasificación de caracteres se lleva a cabo mediante el modelo entrenado.  En las ecuaciones (\ref{posvm2}) se describió como se puede obtener una etiqueta a partir de los parámetros obtenidos y la nueva observación. Esta etiqueta es la predicción de clase para la imagen de entrada que se está clasificando. En conclusión, este módulo se encarga de predecir la clasificación de cada nuevo carácter en base al modelo obtenido del entrenamiento (ver apéndice \ref{CAP:anexo4} en el Anexo).
+ La etapa de clasificación de caracteres se lleva a cabo mediante el modelo entrenado.  En el Capitulo \ref{CAP:teor} en la Sección \ref{CAP:ML}  se describió como se puede obtener una etiqueta a partir de los parámetros obtenidos y la nueva observación. Esta etiqueta es la predicción de clase para la imagen de entrada que se está clasificando. En conclusión, este módulo se encarga de predecir la clasificación de cada nuevo carácter en base al modelo obtenido del entrenamiento (ver apéndice \ref{CAP:anexo4} en el Anexo).
  
- El clasificador es un método para determinar la clase más probable de una entrada desconocida con respecto a un número de ejemplos de dichas clases. Este conjunto de ejemplos se denomina conjunto de entrenamiento. 
+ El clasificador es un método para determinar la clase más probable de una entrada desconocida con respecto a un número de ejemplos de todas las clases. Este conjunto de ejemplos se denomina conjunto de entrenamiento. 
  
  El primer paso en el proceso de clasificación es la extracción de características de una entrada, esto se traduce en expresar cada instancia u objeto como un vector de medidas. Cuando las imágenes están siendo clasificadas, usualmente el vector es extraído a partir de las intensidades de los píxeles. Generalmente se lleva a cabo un paso de reducción de características, ya que disminuye los costos computacionales. Es importante considerar que la reducción no debe provocar una pérdida significativa de la información. Las medidas obtenidas son denominadas características y pueden ser reales, enteras o categóricas. 
  
- Una vez extraídas las características se introducen al algoritmo clasificador el cuál trabaja en dos naturalezas distintas: supervisado o no supervisado. En este proyecto se utilizará la clasificación supervisada, ya que se conoce la relación entre la entrada y la salida. Es decir, en la clasificación supervisada durante el entrenamiento conocemos la entrada y cuál debería ser su clasificación. En la clasificación no supervisada no se conoce la relación entre la entrada y la salida. 
+ Una vez extraídas las características se introducen al algoritmo clasificador el cuál trabaja en dos naturalezas distintas: supervisado o no supervisado. En este proyecto se utilizará la clasificación supervisada, ya que se conoce la relación entre la entrada y la salida. En la clasificación supervisada, durante el entrenamiento conocemos la entrada y cuál debería ser su clasificación. En la clasificación no supervisada no se conoce la relación entre la entrada y la salida. 
  
- Para la extracción de características se  emplearon las diferentes herramientas de procesamientos de imágenes que ofrece OpenCV para convertir esa entrada en un vector plano que pudiera leer el algoritmo de clasificación. En el  Figura \ref{fig:procesodeclasificaicon} se puede observar  el diagrama del proceso de clasificación.
+ Para la extracción de características se  emplearon las diferentes herramientas de manejo de matrices  que ofrece Python para convertir esa entrada en un vector plano que pudiera leer el algoritmo de clasificación. En el  Figura \ref{fig:procesodeclasificaicon} se puede observar  el diagrama del proceso de clasificación.
  
  \begin{figure}[H]
  	\centering

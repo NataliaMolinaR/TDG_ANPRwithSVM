@@ -1,65 +1,80 @@
 This is BibTeX, Version 0.99d
 Capacity: max_strings=200000, hash_size=200000, hash_prime=170003
 The top-level auxiliary file: EIETdeG.aux
-Reallocating 'name_of_file' (item size: 1) to 9 items.
-The style file: IEEEtran.bst
+Reallocating 'name_of_file' (item size: 1) to 4 items.
+The style file: acm.bst
 Reallocating 'name_of_file' (item size: 1) to 5 items.
-Reallocating 'singl_function' (item size: 4) to 100 items.
-Reallocating 'singl_function' (item size: 4) to 100 items.
-Reallocating 'singl_function' (item size: 4) to 100 items.
-Reallocating 'wiz_functions' (item size: 4) to 6000 items.
-Reallocating 'singl_function' (item size: 4) to 100 items.
 Database file #1: NMTG.bib
-Warning--I didn't find a database entry for "SarkarBaliSharma:2018"
-Warning--I didn't find a database entry for "Vapnik:1995"
-Warning--I didn't find a database entry for "Cover:1965"
--- IEEEtran.bst version 1.14 (2015/08/26) by Michael Shell.
--- http://www.michaelshell.org/tex/ieeetran/bibtex/
--- See the "IEEEtran_bst_HOWTO.pdf" manual for usage information.
-Warning--missing publisher in ImageProcess
-Warning--missing publisher in MaskDev
-Warning--missing publisher in Operadores
-
-Done.
-You've used 24 entries,
-            4087 wiz_defined-function locations,
-            954 strings with 11321 characters,
-and the built_in function-call counts, 10478 in all, are:
-= -- 883
-> -- 139
-< -- 36
-+ -- 64
-- -- 27
-* -- 332
-:= -- 1855
-add.period$ -- 71
-call.type$ -- 24
-change.case$ -- 37
-chr.to.int$ -- 84
-cite$ -- 27
-duplicate$ -- 842
-empty$ -- 966
-format.name$ -- 30
-if$ -- 2388
+Warning--entry type for "Alonso2018" isn't style-file defined
+--line 43 of file NMTG.bib
+Warning--entry type for "Alegsa2010" isn't style-file defined
+--line 51 of file NMTG.bib
+Warning--entry type for "imread" isn't style-file defined
+--line 100 of file NMTG.bib
+Warning--entry type for "imgshape" isn't style-file defined
+--line 109 of file NMTG.bib
+Warning--entry type for "resize" isn't style-file defined
+--line 118 of file NMTG.bib
+Warning--entry type for "GaussianBlur" isn't style-file defined
+--line 127 of file NMTG.bib
+Warning--entry type for "cvTcolor" isn't style-file defined
+--line 136 of file NMTG.bib
+Warning--entry type for "AdaptTresh" isn't style-file defined
+--line 145 of file NMTG.bib
+Warning--entry type for "Dilate" isn't style-file defined
+--line 154 of file NMTG.bib
+Warning--entry type for "findContours" isn't style-file defined
+--line 164 of file NMTG.bib
+Warning--entry type for "boundRectangle" isn't style-file defined
+--line 173 of file NMTG.bib
+Warning--entry type for "rectangle" isn't style-file defined
+--line 182 of file NMTG.bib
+Warning--entry type for "Sklearn" isn't style-file defined
+--line 216 of file NMTG.bib
+Warning--empty publisher in MaskDev
+Warning--empty chapter and pages in MaskDev
+Warning--empty publisher in Operadores
+Warning--empty chapter and pages in Operadores
+Warning--empty publisher in ImageProcess
+You've used 27 entries,
+            2253 wiz_defined-function locations,
+            673 strings with 8343 characters,
+and the built_in function-call counts, 6438 in all, are:
+= -- 616
+> -- 214
+< -- 0
++ -- 94
+- -- 64
+* -- 334
+:= -- 1095
+add.period$ -- 94
+call.type$ -- 27
+change.case$ -- 114
+chr.to.int$ -- 0
+cite$ -- 32
+duplicate$ -- 263
+empty$ -- 626
+format.name$ -- 64
+if$ -- 1369
 int.to.chr$ -- 0
-int.to.str$ -- 24
-missing$ -- 176
-newline$ -- 95
-num.names$ -- 24
-pop$ -- 443
+int.to.str$ -- 27
+missing$ -- 18
+newline$ -- 151
+num.names$ -- 54
+pop$ -- 188
 preamble$ -- 1
-purify$ -- 0
-quote$ -- 2
-skip$ -- 852
+purify$ -- 86
+quote$ -- 0
+skip$ -- 153
 stack$ -- 0
-substring$ -- 163
-swap$ -- 558
-text.length$ -- 8
+substring$ -- 208
+swap$ -- 51
+text.length$ -- 0
 text.prefix$ -- 0
-top$ -- 5
-type$ -- 24
-warning$ -- 3
-while$ -- 36
-width$ -- 26
-write$ -- 233
-(There were 6 warnings)
+top$ -- 0
+type$ -- 94
+warning$ -- 5
+while$ -- 59
+width$ -- 29
+write$ -- 308
+(There were 18 warnings)
